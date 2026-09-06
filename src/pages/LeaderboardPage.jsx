@@ -14,6 +14,7 @@ import {
   Star
 } from 'lucide-react';
 import { supabase, isSupabaseConfigured, MOCK_STUDENTS_LEADERBOARD } from '../lib/supabase';
+import { useAuth } from '../context/AuthContext';
 
 const DOMAIN_OPTIONS = [
   'All Domains',
@@ -35,6 +36,7 @@ const COLLEGE_OPTIONS = [
 ];
 
 export default function LeaderboardPage() {
+  const { profile } = useAuth();
   const [leaderboard, setLeaderboard] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -45,11 +47,13 @@ export default function LeaderboardPage() {
 
   useEffect(() => {
     fetchLeaderboard();
-  }, []);
+  }, [profile]);
 
   async function fetchLeaderboard() {
     setLoading(true);
     try {
+      let list = JSON.parse(JSON.stringify(MOCK_STUDENTS_LEADERBOARD));
+
       if (isSupabaseConfigured) {
         const { data, error } = await supabase
           .from('profiles')
@@ -58,14 +62,38 @@ export default function LeaderboardPage() {
           .order('innovation_score', { ascending: false });
 
         if (!error && data && data.length > 0) {
-          setLeaderboard(data);
-          setLoading(false);
-          return;
+          list = data;
         }
       }
 
-      // Fallback mock leaderboard data
-      setLeaderboard(MOCK_STUDENTS_LEADERBOARD);
+      // If user profile exists, update/merge user entry into leaderboard
+      if (profile && profile.role === 'student') {
+        const userIndex = list.findIndex(
+          (s) => s.id === profile.id || s.full_name?.toLowerCase() === profile.full_name?.toLowerCase()
+        );
+        const userEntry = {
+          id: profile.id || 'user_current',
+          full_name: profile.full_name || 'Marthi Jayaraam',
+          college: profile.college || 'IIT Bombay',
+          domain: profile.domain || 'AI & Machine Learning',
+          project_count: 5,
+          avg_ai_score: 94.0,
+          avg_faculty_rating: 4.9,
+          stage_bonus: 16,
+          innovation_score: profile.innovation_score || 609.5
+        };
+
+        if (userIndex >= 0) {
+          list[userIndex] = { ...list[userIndex], ...userEntry };
+        } else {
+          list.unshift(userEntry);
+        }
+      }
+
+      // Sort by innovation_score descending
+      list.sort((a, b) => (b.innovation_score || 0) - (a.innovation_score || 0));
+
+      setLeaderboard(list);
     } catch (err) {
       console.warn("Leaderboard fetch error:", err);
       setLeaderboard(MOCK_STUDENTS_LEADERBOARD);
@@ -99,7 +127,7 @@ export default function LeaderboardPage() {
         <p className="text-sm text-slate-400 mt-2">
           Ranked dynamically by total Innovation Score: <br className="hidden sm:inline" />
           <code className="text-xs text-emerald-300 bg-emerald-950/60 border border-emerald-800/40 px-2 py-0.5 rounded font-mono mt-1 inline-block">
-            (Projects × 10) + (AI Score × 5) + (Faculty Rating × 15) + Stage Bonus
+            Formula: (Projects × 10) + (AI Score × 5) + (Faculty Rating × 15) + Stage Bonus
           </code>
         </p>
       </div>

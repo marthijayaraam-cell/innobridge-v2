@@ -162,8 +162,8 @@ export default function StudentDashboard() {
           <div className="text-4xl font-extrabold text-white mb-1">
             {currentScore}
           </div>
-          <p className="text-[10px] text-slate-400">
-            Formula: Projects × 10 + AI Score × 5 + Rating × 15 + Stage
+          <p className="text-[10px] text-slate-400 font-mono">
+            Formula: (Projects × 10) + (AI Score × 5) + (Faculty Rating × 15) + Stage Bonus
           </p>
         </div>
 

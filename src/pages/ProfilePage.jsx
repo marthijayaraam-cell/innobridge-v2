@@ -120,6 +120,9 @@ export default function ProfilePage() {
                 <Award className="w-5 h-5 text-amber-400" />
                 <span>{innovationScore}</span>
               </div>
+              <span className="text-[9px] text-slate-400 font-mono block mt-1">
+                Formula: (Projects × 10) + (AI Score × 5) + (Faculty Rating × 15) + Stage Bonus
+              </span>
             </div>
 
             <button 

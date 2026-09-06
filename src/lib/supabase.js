@@ -188,34 +188,59 @@ export const MOCK_PROJECTS = [
 
 export const MOCK_STUDENTS_LEADERBOARD = [
   {
+    id: 's_marthi',
+    full_name: 'Marthi Jayaraam',
+    college: 'IIT Bombay',
+    domain: 'AI & Machine Learning',
+    project_count: 5,
+    avg_ai_score: 94.0,
+    avg_faculty_rating: 4.9,
+    stage_bonus: 16,
+    innovation_score: 609.5
+  },
+  {
     id: 's2',
     full_name: 'Ananya Roy',
     college: 'BITS Pilani',
     domain: 'HealthTech',
     project_count: 4,
-    avg_ai_score: 91,
-    avg_faculty_rating: 4.9,
-    innovation_score: 188.5
+    avg_ai_score: 91.0,
+    avg_faculty_rating: 4.8,
+    stage_bonus: 12,
+    innovation_score: 579.0
+  },
+  {
+    id: 's_fhvx',
+    full_name: 'Fhvx',
+    college: 'Delhi Technological University',
+    domain: 'Blockchain & FinTech',
+    project_count: 4,
+    avg_ai_score: 89.0,
+    avg_faculty_rating: 4.7,
+    stage_bonus: 10,
+    innovation_score: 565.5
+  },
+  {
+    id: 's_hitesh',
+    full_name: 'Hitesh Sharma',
+    college: 'IIT Madras',
+    domain: 'CleanTech & Energy',
+    project_count: 3,
+    avg_ai_score: 87.5,
+    avg_faculty_rating: 4.6,
+    stage_bonus: 8,
+    innovation_score: 544.5
   },
   {
     id: 's1',
     full_name: 'Aarav Sharma',
     college: 'IIT Bombay',
-    domain: 'CleanTech & Energy',
+    domain: 'Robotics & Hardware',
     project_count: 3,
-    avg_ai_score: 90,
-    avg_faculty_rating: 4.8,
-    innovation_score: 162.0
-  },
-  {
-    id: 's3',
-    full_name: 'Rohan Verma',
-    college: 'Delhi Technological University',
-    domain: 'Blockchain & FinTech',
-    project_count: 3,
-    avg_ai_score: 91,
-    avg_faculty_rating: 4.7,
-    innovation_score: 160.5
+    avg_ai_score: 86.0,
+    avg_faculty_rating: 4.5,
+    stage_bonus: 8,
+    innovation_score: 535.5
   },
   {
     id: 's4',
@@ -223,18 +248,20 @@ export const MOCK_STUDENTS_LEADERBOARD = [
     college: 'Anna University',
     domain: 'AgriTech',
     project_count: 2,
-    avg_ai_score: 89,
-    avg_faculty_rating: 4.6,
-    innovation_score: 144.0
+    avg_ai_score: 84.0,
+    avg_faculty_rating: 4.4,
+    stage_bonus: 6,
+    innovation_score: 512.0
   },
   {
     id: 's5',
     full_name: 'Vikram Mehta',
-    college: 'IIT Madras',
+    college: 'IIT Kharagpur',
     domain: 'EdTech & Neuro',
     project_count: 2,
-    avg_ai_score: 85,
-    avg_faculty_rating: 4.4,
-    innovation_score: 131.0
+    avg_ai_score: 81.0,
+    avg_faculty_rating: 4.2,
+    stage_bonus: 4,
+    innovation_score: 492.0
   }
 ];

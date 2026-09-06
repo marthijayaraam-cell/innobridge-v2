@@ -101,14 +101,28 @@ export function AuthProvider({ children }) {
     }
   }
 
+  function formatCleanName(name, email) {
+    if (name && name.trim().length > 0 && !/^\d/.test(name) && !name.includes('24eu')) {
+      return name;
+    }
+    if (email && email.toLowerCase().includes('24eu')) return 'Marthi Jayaraam';
+    if (email && email.includes('@')) {
+      const prefix = email.split('@')[0];
+      if (/^\d/.test(prefix)) return 'Marthi Jayaraam';
+      return prefix.charAt(0).toUpperCase() + prefix.slice(1);
+    }
+    return 'Marthi Jayaraam';
+  }
+
   async function signUp({ email, password, fullName, role, college, companyName }) {
     setLoading(true);
+    const cleanName = formatCleanName(fullName, email);
     const userMeta = {
-      full_name: fullName || (email ? email.split('@')[0] : 'Innovator'),
+      full_name: cleanName,
       role: role || 'student',
       college: college || 'IIT Bombay',
       company_name: companyName || '',
-      innovation_score: 150.0
+      innovation_score: 609.5
     };
 
     const mockUser = { 
@@ -141,7 +155,7 @@ export function AuthProvider({ children }) {
               role: userMeta.role,
               college: userMeta.college,
               company_name: userMeta.company_name,
-              innovation_score: 150.0
+              innovation_score: 609.5
             });
           } catch (upsertErr) {
             console.warn("Profiles table upsert warning:", upsertErr);
@@ -191,11 +205,12 @@ export function AuthProvider({ children }) {
 
   async function signIn({ email, password }) {
     setLoading(true);
+    const cleanName = formatCleanName('', email);
     const userMeta = {
-      full_name: email ? email.split('@')[0] : 'Innovator',
+      full_name: cleanName,
       role: 'student',
       college: 'IIT Bombay',
-      innovation_score: 162.0
+      innovation_score: 609.5
     };
 
     const mockUser = { 

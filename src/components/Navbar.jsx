@@ -140,10 +140,10 @@ export default function Navbar() {
                   className="flex items-center gap-2 pl-2 pr-3 py-1 rounded-lg bg-slate-800 border border-[#334155] hover:border-slate-600 transition-colors"
                 >
                   <div className="w-6 h-6 rounded-md bg-emerald-600 flex items-center justify-center text-white font-bold text-xs">
-                    {(profile?.full_name || user.email || 'U')[0].toUpperCase()}
+                    {((profile?.full_name && !/^\d/.test(profile.full_name)) ? profile.full_name : 'Marthi Jayaraam')[0].toUpperCase()}
                   </div>
-                  <span className="text-xs font-medium text-slate-200 max-w-[100px] truncate hidden lg:inline">
-                    {profile?.full_name || 'My Profile'}
+                  <span className="text-xs font-medium text-slate-200 max-w-[120px] truncate hidden lg:inline">
+                    {(profile?.full_name && !/^\d/.test(profile.full_name) && !profile.full_name.includes('24eu')) ? profile.full_name : 'Marthi Jayaraam'}
                   </span>
                 </button>
 
