@@ -18,22 +18,24 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* High-Contrast Legible Dropdowns */
+  /* High-Contrast Large Legible Dropdowns */
   select {
-    font-size: 0.875rem !important;
-    font-weight: 600 !important;
-    color: #F8FAFC !important;
+    font-size: 1rem !important; /* 16px */
+    font-weight: 700 !important;
+    color: #FFFFFF !important;
     background-color: #111827 !important;
+    padding-top: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
   }
 
   option {
     background-color: #111827 !important;
     color: #FFFFFF !important;
-    font-size: 0.875rem !important;
-    font-weight: 600 !important;
-    padding: 10px 14px !important;
-    min-height: 36px !important;
-    line-height: 1.5 !important;
+    font-size: 1.05rem !important; /* 17px */
+    font-weight: 700 !important;
+    padding: 14px 18px !important;
+    min-height: 48px !important;
+    line-height: 1.6 !important;
   }
 }
 

@@ -138,16 +138,16 @@ export default function InnovationFeedPage() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
           {/* Domain Filter */}
           <div>
-            <label className="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1">
+            <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
               Domain / Industry
             </label>
             <select
               value={selectedDomain}
               onChange={(e) => setSelectedDomain(e.target.value)}
-              className="w-full px-3 py-2.5 rounded-xl bg-[#111827] border border-[#334155] text-sm font-semibold text-white outline-none focus:border-emerald-500 transition-colors cursor-pointer"
+              className="w-full px-4 py-3 rounded-xl bg-[#111827] border-2 border-[#334155] text-base font-extrabold text-white outline-none focus:border-emerald-500 transition-colors cursor-pointer"
             >
               {DOMAIN_OPTIONS.map((d) => (
-                <option key={d} value={d} className="bg-[#111827] text-white py-2 font-semibold text-sm">
+                <option key={d} value={d} className="bg-[#111827] text-white py-3 font-extrabold text-base">
                   {d}
                 </option>
               ))}
@@ -156,16 +156,16 @@ export default function InnovationFeedPage() {
 
           {/* Stage Filter */}
           <div>
-            <label className="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1">
+            <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
               Development Stage
             </label>
             <select
               value={selectedStage}
               onChange={(e) => setSelectedStage(e.target.value)}
-              className="w-full px-3 py-2.5 rounded-xl bg-[#111827] border border-[#334155] text-sm font-semibold text-white outline-none focus:border-emerald-500 transition-colors cursor-pointer"
+              className="w-full px-4 py-3 rounded-xl bg-[#111827] border-2 border-[#334155] text-base font-extrabold text-white outline-none focus:border-emerald-500 transition-colors cursor-pointer"
             >
               {STAGE_OPTIONS.map((s) => (
-                <option key={s} value={s} className="bg-[#111827] text-white py-2 font-semibold text-sm">
+                <option key={s} value={s} className="bg-[#111827] text-white py-3 font-extrabold text-base">
                   {s}
                 </option>
               ))}
