@@ -1,0 +1,236 @@
+import React, { useState } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+import { 
+  Sparkles, 
+  Compass, 
+  Trophy, 
+  LayoutDashboard, 
+  LogOut, 
+  LogIn, 
+  UserPlus, 
+  GraduationCap, 
+  Building2, 
+  Award,
+  BookOpen,
+  User,
+  Home,
+  Menu,
+  X
+} from 'lucide-react';
+
+export default function Navbar() {
+  const { user, profile, signOut } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const getDashboardPath = () => {
+    if (!profile) return '/auth';
+    if (profile.role === 'faculty') return '/dashboard/faculty';
+    if (profile.role === 'company') return '/dashboard/company';
+    return '/dashboard/student';
+  };
+
+  const isActive = (path) => location.pathname === path;
+
+  return (
+    <>
+      {/* Top Header Navbar */}
+      <header className="sticky top-0 z-40 w-full border-b border-[#334155] bg-[#0B1120]/90 backdrop-blur-md">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+          
+          {/* Logo & Brand Statement */}
+          <Link to="/" className="flex items-center gap-3 group shrink-0">
+            <div className="w-8 h-8 rounded-lg bg-emerald-600 flex items-center justify-center text-white font-black text-sm shadow-sm group-hover:bg-emerald-500 transition-colors">
+              IB
+            </div>
+            <div className="flex flex-col">
+              <span className="font-extrabold text-lg tracking-tight text-white flex items-center gap-1.5">
+                InnoBridge
+              </span>
+              <span className="text-[10px] uppercase tracking-wider text-slate-400 font-semibold -mt-1 hidden sm:inline">
+                Showcase • Get Scored • Get Discovered
+              </span>
+            </div>
+          </Link>
+
+          {/* Desktop Navigation Links */}
+          <nav className="hidden md:flex items-center gap-1">
+            <Link
+              to="/"
+              className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-colors flex items-center gap-1.5 ${
+                isActive('/')
+                  ? 'bg-slate-800 text-emerald-400 font-bold'
+                  : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
+              }`}
+            >
+              <Home className="w-3.5 h-3.5" />
+              Home
+            </Link>
+
+            <Link
+              to="/feed"
+              className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-colors flex items-center gap-1.5 ${
+                isActive('/feed')
+                  ? 'bg-slate-800 text-emerald-400 font-bold'
+                  : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
+              }`}
+            >
+              <Compass className="w-3.5 h-3.5" />
+              Innovation Feed
+            </Link>
+
+            <Link
+              to="/leaderboard"
+              className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-colors flex items-center gap-1.5 ${
+                isActive('/leaderboard')
+                  ? 'bg-slate-800 text-emerald-400 font-bold'
+                  : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
+              }`}
+            >
+              <Trophy className="w-3.5 h-3.5 text-amber-400" />
+              Leaderboard
+            </Link>
+
+            {user && (
+              <Link
+                to={getDashboardPath()}
+                className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-colors flex items-center gap-1.5 ${
+                  location.pathname.startsWith('/dashboard')
+                    ? 'bg-slate-800 text-emerald-400 font-bold'
+                    : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
+                }`}
+              >
+                <LayoutDashboard className="w-3.5 h-3.5" />
+                Workspace
+              </Link>
+            )}
+
+            {user && (
+              <Link
+                to="/profile"
+                className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-colors flex items-center gap-1.5 ${
+                  isActive('/profile')
+                    ? 'bg-slate-800 text-emerald-400 font-bold'
+                    : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
+                }`}
+              >
+                <User className="w-3.5 h-3.5" />
+                Portfolio
+              </Link>
+            )}
+          </nav>
+
+          {/* Right Action / Role-Aware User Controls */}
+          <div className="flex items-center gap-3">
+            {user ? (
+              <div className="flex items-center gap-2.5">
+                {/* AI Score Badge (Student) */}
+                {profile?.role === 'student' && profile?.innovation_score !== undefined && (
+                  <div className="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-md badge-ai text-xs font-bold">
+                    <Award className="w-3.5 h-3.5 text-emerald-400" />
+                    <span>Score: {profile.innovation_score}</span>
+                  </div>
+                )}
+
+                {/* Profile Link */}
+                <button
+                  onClick={() => navigate('/profile')}
+                  className="flex items-center gap-2 pl-2 pr-3 py-1 rounded-lg bg-slate-800 border border-[#334155] hover:border-slate-600 transition-colors"
+                >
+                  <div className="w-6 h-6 rounded-md bg-emerald-600 flex items-center justify-center text-white font-bold text-xs">
+                    {(profile?.full_name || user.email || 'U')[0].toUpperCase()}
+                  </div>
+                  <span className="text-xs font-medium text-slate-200 max-w-[100px] truncate hidden lg:inline">
+                    {profile?.full_name || 'My Profile'}
+                  </span>
+                </button>
+
+                <button
+                  onClick={signOut}
+                  title="Sign Out"
+                  className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+                >
+                  <LogOut className="w-4 h-4" />
+                </button>
+              </div>
+            ) : (
+              <div className="flex items-center gap-2">
+                <Link
+                  to="/auth?tab=login"
+                  className="px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white transition-colors"
+                >
+                  Sign In
+                </Link>
+                <Link
+                  to="/auth?tab=signup"
+                  className="px-4 py-1.5 rounded-lg text-xs font-semibold bg-emerald-600 hover:bg-emerald-500 text-white shadow-sm transition-all"
+                >
+                  Join as Student
+                </Link>
+              </div>
+            )}
+
+            {/* Mobile Hamburger Menu Toggle */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden p-2 rounded-lg text-slate-400 hover:text-white"
+            >
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
+          </div>
+        </div>
+
+        {/* Collapsible Mobile Menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden px-4 pt-2 pb-4 border-b border-[#334155] bg-[#111827] space-y-2 text-sm font-medium">
+            <Link to="/" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-200 hover:text-emerald-400">Home</Link>
+            <Link to="/feed" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-200 hover:text-emerald-400">Innovation Feed</Link>
+            <Link to="/leaderboard" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-200 hover:text-emerald-400">Leaderboard</Link>
+            {user && <Link to={getDashboardPath()} onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-200 hover:text-emerald-400">Workspace</Link>}
+            {user && <Link to="/profile" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-200 hover:text-emerald-400">My Portfolio</Link>}
+          </div>
+        )}
+      </header>
+
+      {/* Mobile Bottom Tab Bar (For Hackathons & Phone Demos) */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#0B1120]/95 backdrop-blur-lg border-t border-[#334155] py-2 px-3 flex items-center justify-around text-[10px] font-medium text-slate-400">
+        <Link to="/" className={`flex flex-col items-center gap-1 ${isActive('/') ? 'text-emerald-400 font-bold' : ''}`}>
+          <Home className="w-4 h-4" />
+          <span>Home</span>
+        </Link>
+
+        <Link to="/feed" className={`flex flex-col items-center gap-1 ${isActive('/feed') ? 'text-emerald-400 font-bold' : ''}`}>
+          <Compass className="w-4 h-4" />
+          <span>Feed</span>
+        </Link>
+
+        {user ? (
+          <Link to={getDashboardPath()} className={`flex flex-col items-center gap-1 ${location.pathname.startsWith('/dashboard') ? 'text-emerald-400 font-bold' : ''}`}>
+            <LayoutDashboard className="w-4 h-4" />
+            <span>Workspace</span>
+          </Link>
+        ) : (
+          <Link to="/auth?tab=signup" className="flex flex-col items-center gap-1 text-emerald-400 font-bold">
+            <UserPlus className="w-4 h-4" />
+            <span>Join</span>
+          </Link>
+        )}
+
+        <Link to="/leaderboard" className={`flex flex-col items-center gap-1 ${isActive('/leaderboard') ? 'text-amber-400 font-bold' : ''}`}>
+          <Trophy className="w-4 h-4" />
+          <span>Ranks</span>
+        </Link>
+
+        {user && (
+          <Link to="/profile" className={`flex flex-col items-center gap-1 ${isActive('/profile') ? 'text-emerald-400 font-bold' : ''}`}>
+            <User className="w-4 h-4" />
+            <span>Profile</span>
+          </Link>
+        )}
+      </div>
+    </>
+  );
+}
+

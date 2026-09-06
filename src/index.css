@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  /* Default Dark Mode Theme */
+  body {
+    background-color: #0B1120;
+    color: #F8FAFC;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* Design Tokens & Theme Surface Utilities */
+.bg-theme-main {
+  background-color: #0B1120;
+}
+
+.bg-theme-card {
+  background-color: #111827;
+  border: 1px solid #334155;
+}
+
+.bg-theme-elevated {
+  background-color: #1E293B;
+  border: 1px solid #334155;
+}
+
+/* Card Hover Elevation */
+.card-hover-effect {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-hover-effect:hover {
+  transform: translateY(-2px);
+  border-color: #475569;
+  box-shadow: 0 12px 25px -8px rgba(0, 0, 0, 0.4);
+}
+
+/* Brand Color Language Utilities */
+/* AI Intelligence Pill & Badge (Green) */
+.badge-ai {
+  background-color: rgba(34, 197, 94, 0.12);
+  color: #4ADE80;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+/* Domain Pill (Cyan) */
+.badge-cyan {
+  background-color: rgba(56, 189, 248, 0.1);
+  color: #38BDF8;
+  border: 1px solid rgba(56, 189, 248, 0.25);
+}
+
+/* Launched & High Score Badge (Green) */
+.badge-success {
+  background-color: rgba(34, 197, 94, 0.1);
+  color: #4ADE80;
+  border: 1px solid rgba(34, 197, 94, 0.25);
+}
+
+/* Prototype & Pilot Badge (Amber) */
+.badge-warning {
+  background-color: rgba(245, 158, 11, 0.1);
+  color: #FBBF24;
+  border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B1120;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #22C55E;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
