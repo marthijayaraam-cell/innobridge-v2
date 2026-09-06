@@ -106,7 +106,9 @@ export default function LeaderboardPage() {
       });
 
       // Ensure Marthi Jayaraam is present at Rank 1 (Score 609.5)
-      const marthiIndex = list.findIndex(s => s.full_name?.toLowerCase().includes('marthi') || s.full_name?.toLowerCase().includes('jayaraam'));
+      const marthiIndex = list.findIndex(
+        (s) => s && s.full_name && (s.full_name.toLowerCase().includes('marthi') || s.full_name.toLowerCase().includes('jayaraam'))
+      );
       if (marthiIndex >= 0) {
         list[marthiIndex] = {
           ...list[marthiIndex],
@@ -137,6 +139,7 @@ export default function LeaderboardPage() {
       const seen = new Set();
       const uniqueList = [];
       for (const item of list) {
+        if (!item) continue;
         const k = (item.full_name || '').toLowerCase().trim();
         if (!seen.has(k)) {
           seen.add(k);
@@ -157,9 +160,12 @@ export default function LeaderboardPage() {
   }
 
   const filteredLeaderboard = leaderboard.filter((student) => {
+    if (!student) return false;
+    const name = student.full_name || '';
+    const college = student.college || '';
     const matchesSearch =
-      student.full_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      (student.college && student.college.toLowerCase().includes(searchQuery.toLowerCase()));
+      name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      college.toLowerCase().includes(searchQuery.toLowerCase());
 
     const matchesDomain = selectedDomain === 'All Domains' || student.domain === selectedDomain;
     const matchesCollege = selectedCollege === 'All Universities' || student.college === selectedCollege;
