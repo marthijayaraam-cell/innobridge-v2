@@ -144,10 +144,10 @@ export default function InnovationFeedPage() {
             <select
               value={selectedDomain}
               onChange={(e) => setSelectedDomain(e.target.value)}
-              className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700/70 text-xs text-slate-200 outline-none focus:border-emerald-500"
+              className="w-full px-3 py-2.5 rounded-xl bg-[#111827] border border-[#334155] text-sm font-semibold text-white outline-none focus:border-emerald-500 transition-colors cursor-pointer"
             >
               {DOMAIN_OPTIONS.map((d) => (
-                <option key={d} value={d} className="bg-slate-800">
+                <option key={d} value={d} className="bg-[#111827] text-white py-2 font-semibold text-sm">
                   {d}
                 </option>
               ))}
@@ -162,10 +162,10 @@ export default function InnovationFeedPage() {
             <select
               value={selectedStage}
               onChange={(e) => setSelectedStage(e.target.value)}
-              className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700/70 text-xs text-slate-200 outline-none focus:border-emerald-500"
+              className="w-full px-3 py-2.5 rounded-xl bg-[#111827] border border-[#334155] text-sm font-semibold text-white outline-none focus:border-emerald-500 transition-colors cursor-pointer"
             >
               {STAGE_OPTIONS.map((s) => (
-                <option key={s} value={s} className="bg-slate-800">
+                <option key={s} value={s} className="bg-[#111827] text-white py-2 font-semibold text-sm">
                   {s}
                 </option>
               ))}

@@ -256,15 +256,15 @@ export default function AuthPage() {
                 <select
                   value={formData.college}
                   onChange={(e) => setFormData({ ...formData, college: e.target.value })}
-                  className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#0B1120] border border-[#334155] focus:border-emerald-500 text-slate-100 text-xs outline-none transition-colors"
+                  className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#0B1120] border border-[#334155] focus:border-emerald-500 text-slate-100 text-sm font-semibold outline-none transition-colors cursor-pointer"
                 >
-                  <option value="IIT Bombay">IIT Bombay</option>
-                  <option value="BITS Pilani">BITS Pilani</option>
-                  <option value="Delhi Technological University">Delhi Technological University</option>
-                  <option value="Anna University">Anna University</option>
-                  <option value="IIT Madras">IIT Madras</option>
-                  <option value="IIT Kharagpur">IIT Kharagpur</option>
-                  <option value="NIT Trichy">NIT Trichy</option>
+                  <option value="IIT Bombay" className="bg-[#111827] text-white py-2 font-semibold text-sm">IIT Bombay</option>
+                  <option value="BITS Pilani" className="bg-[#111827] text-white py-2 font-semibold text-sm">BITS Pilani</option>
+                  <option value="Delhi Technological University" className="bg-[#111827] text-white py-2 font-semibold text-sm">Delhi Technological University</option>
+                  <option value="Anna University" className="bg-[#111827] text-white py-2 font-semibold text-sm">Anna University</option>
+                  <option value="IIT Madras" className="bg-[#111827] text-white py-2 font-semibold text-sm">IIT Madras</option>
+                  <option value="IIT Kharagpur" className="bg-[#111827] text-white py-2 font-semibold text-sm">IIT Kharagpur</option>
+                  <option value="NIT Trichy" className="bg-[#111827] text-white py-2 font-semibold text-sm">NIT Trichy</option>
                 </select>
               </div>
             </div>

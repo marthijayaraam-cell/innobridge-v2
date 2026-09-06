@@ -17,6 +17,24 @@
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
   }
+
+  /* High-Contrast Legible Dropdowns */
+  select {
+    font-size: 0.875rem !important;
+    font-weight: 600 !important;
+    color: #F8FAFC !important;
+    background-color: #111827 !important;
+  }
+
+  option {
+    background-color: #111827 !important;
+    color: #FFFFFF !important;
+    font-size: 0.875rem !important;
+    font-weight: 600 !important;
+    padding: 10px 14px !important;
+    min-height: 36px !important;
+    line-height: 1.5 !important;
+  }
 }
 
 /* Design Tokens & Theme Surface Utilities */

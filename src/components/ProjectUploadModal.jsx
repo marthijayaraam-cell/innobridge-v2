@@ -220,10 +220,10 @@ export default function ProjectUploadModal({ isOpen, onClose, onProjectCreated }
                 <select
                   value={formData.domain}
                   onChange={(e) => setFormData({ ...formData, domain: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-xl bg-[#0B1120] border border-[#334155] focus:border-emerald-500 text-slate-100 text-xs outline-none transition-colors"
+                  className="w-full px-4 py-2.5 rounded-xl bg-[#0B1120] border border-[#334155] focus:border-emerald-500 text-slate-100 text-sm font-semibold outline-none transition-colors cursor-pointer"
                 >
                   {DOMAINS.map((d) => (
-                    <option key={d} value={d} className="bg-[#111827]">
+                    <option key={d} value={d} className="bg-[#111827] text-white py-2 font-semibold text-sm">
                       {d}
                     </option>
                   ))}
@@ -237,10 +237,10 @@ export default function ProjectUploadModal({ isOpen, onClose, onProjectCreated }
                 <select
                   value={formData.stage}
                   onChange={(e) => setFormData({ ...formData, stage: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-xl bg-[#0B1120] border border-[#334155] focus:border-emerald-500 text-slate-100 text-xs outline-none transition-colors"
+                  className="w-full px-4 py-2.5 rounded-xl bg-[#0B1120] border border-[#334155] focus:border-emerald-500 text-slate-100 text-sm font-semibold outline-none transition-colors cursor-pointer"
                 >
                   {ALL_11_STAGES.map((s, idx) => (
-                    <option key={s} value={s} className="bg-[#111827]">
+                    <option key={s} value={s} className="bg-[#111827] text-white py-2 font-semibold text-sm">
                       Stage {idx + 1}: {s}
                     </option>
                   ))}
