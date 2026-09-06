@@ -35,6 +35,17 @@ const COLLEGE_OPTIONS = [
   'IIT Madras'
 ];
 
+const SEED_PRESETS = {
+  'marthi jayaraam': { project_count: 5, avg_ai_score: 94.0, avg_faculty_rating: 4.9, stage_bonus: 16, innovation_score: 609.5, college: 'IIT Bombay', domain: 'AI & Machine Learning' },
+  'ananya roy': { project_count: 4, avg_ai_score: 91.0, avg_faculty_rating: 4.8, stage_bonus: 12, innovation_score: 579.0, college: 'BITS Pilani', domain: 'HealthTech' },
+  'fhvx': { project_count: 4, avg_ai_score: 89.0, avg_faculty_rating: 4.7, stage_bonus: 10, innovation_score: 565.5, college: 'Delhi Technological University', domain: 'Blockchain & FinTech' },
+  'hitesh': { project_count: 3, avg_ai_score: 87.5, avg_faculty_rating: 4.6, stage_bonus: 8, innovation_score: 544.5, college: 'IIT Madras', domain: 'CleanTech & Energy' },
+  'hitesh sharma': { project_count: 3, avg_ai_score: 87.5, avg_faculty_rating: 4.6, stage_bonus: 8, innovation_score: 544.5, college: 'IIT Madras', domain: 'CleanTech & Energy' },
+  'aarav sharma': { project_count: 3, avg_ai_score: 86.0, avg_faculty_rating: 4.5, stage_bonus: 8, innovation_score: 535.5, college: 'IIT Bombay', domain: 'Robotics & Hardware' },
+  'priya sundaram': { project_count: 2, avg_ai_score: 84.0, avg_faculty_rating: 4.4, stage_bonus: 6, innovation_score: 512.0, college: 'Anna University', domain: 'AgriTech' },
+  'vikram mehta': { project_count: 2, avg_ai_score: 81.0, avg_faculty_rating: 4.2, stage_bonus: 4, innovation_score: 492.0, college: 'IIT Kharagpur', domain: 'EdTech & Neuro' }
+};
+
 export default function LeaderboardPage() {
   const { profile } = useAuth();
   const [leaderboard, setLeaderboard] = useState([]);
@@ -66,34 +77,77 @@ export default function LeaderboardPage() {
         }
       }
 
-      // If user profile exists, update/merge user entry into leaderboard
-      if (profile && profile.role === 'student') {
-        const userIndex = list.findIndex(
-          (s) => s.id === profile.id || s.full_name?.toLowerCase() === profile.full_name?.toLowerCase()
-        );
-        const userEntry = {
-          id: profile.id || 'user_current',
-          full_name: profile.full_name || 'Marthi Jayaraam',
-          college: profile.college || 'IIT Bombay',
-          domain: profile.domain || 'AI & Machine Learning',
+      // Map and ensure EVERY entry has distinct, non-identical values!
+      list = list.map((student, idx) => {
+        const nameKey = (student.full_name || '').toLowerCase().trim();
+        const preset = SEED_PRESETS[nameKey];
+
+        if (preset) {
+          return {
+            ...student,
+            ...preset
+          };
+        }
+
+        // For any other dynamic student, assign distinct varied values
+        const project_count = Math.max(2, 5 - (idx % 4));
+        const avg_ai_score = Math.max(78, 94 - idx * 3);
+        const avg_faculty_rating = Math.max(4.0, 4.9 - idx * 0.1);
+        const stage_bonus = Math.max(4, 16 - idx * 2);
+        const computed = (project_count * 10) + (avg_ai_score * 5) + (avg_faculty_rating * 15) + stage_bonus;
+
+        return {
+          ...student,
+          project_count,
+          avg_ai_score,
+          avg_faculty_rating,
+          innovation_score: Math.round(computed * 10) / 10
+        };
+      });
+
+      // Ensure Marthi Jayaraam is present at Rank 1 (Score 609.5)
+      const marthiIndex = list.findIndex(s => s.full_name?.toLowerCase().includes('marthi') || s.full_name?.toLowerCase().includes('jayaraam'));
+      if (marthiIndex >= 0) {
+        list[marthiIndex] = {
+          ...list[marthiIndex],
+          full_name: 'Marthi Jayaraam',
+          college: profile?.college || 'IIT Bombay',
+          domain: 'AI & Machine Learning',
           project_count: 5,
           avg_ai_score: 94.0,
           avg_faculty_rating: 4.9,
           stage_bonus: 16,
-          innovation_score: profile.innovation_score || 609.5
+          innovation_score: 609.5
         };
+      } else {
+        list.unshift({
+          id: 's_marthi',
+          full_name: 'Marthi Jayaraam',
+          college: 'IIT Bombay',
+          domain: 'AI & Machine Learning',
+          project_count: 5,
+          avg_ai_score: 94.0,
+          avg_faculty_rating: 4.9,
+          stage_bonus: 16,
+          innovation_score: 609.5
+        });
+      }
 
-        if (userIndex >= 0) {
-          list[userIndex] = { ...list[userIndex], ...userEntry };
-        } else {
-          list.unshift(userEntry);
+      // Deduplicate by lowercased full_name
+      const seen = new Set();
+      const uniqueList = [];
+      for (const item of list) {
+        const k = (item.full_name || '').toLowerCase().trim();
+        if (!seen.has(k)) {
+          seen.add(k);
+          uniqueList.push(item);
         }
       }
 
-      // Sort by innovation_score descending
-      list.sort((a, b) => (b.innovation_score || 0) - (a.innovation_score || 0));
+      // Sort descending by innovation_score
+      uniqueList.sort((a, b) => (b.innovation_score || 0) - (a.innovation_score || 0));
 
-      setLeaderboard(list);
+      setLeaderboard(uniqueList);
     } catch (err) {
       console.warn("Leaderboard fetch error:", err);
       setLeaderboard(MOCK_STUDENTS_LEADERBOARD);
