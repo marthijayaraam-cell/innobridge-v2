@@ -174,7 +174,7 @@ export default function LeaderboardPage() {
   });
 
   return (
-    <div className="min-h-screen bg-slate-900 text-slate-100 py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div className="min-h-screen w-full bg-[#0B1120] text-slate-100 py-8 sm:py-12 px-4 sm:px-8 lg:px-12 xl:px-16 max-w-[1600px] mx-auto">
       {/* Header */}
       <div className="text-center max-w-3xl mx-auto mb-10">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-xs font-semibold text-amber-400 mb-4 shadow-sm">
@@ -261,10 +261,10 @@ export default function LeaderboardPage() {
           <select
             value={selectedDomain}
             onChange={(e) => setSelectedDomain(e.target.value)}
-            className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-[#111827] border border-[#334155] focus:border-emerald-500 text-xs sm:text-sm md:text-base font-bold text-white outline-none cursor-pointer"
+            className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-[#111827] border border-[#334155] focus:border-emerald-500 text-sm sm:text-base font-semibold text-white outline-none cursor-pointer"
           >
             {DOMAIN_OPTIONS.map((d) => (
-              <option key={d} value={d} className="bg-[#111827] text-white font-bold text-xs sm:text-sm md:text-base py-2">
+              <option key={d} value={d} className="bg-[#111827] text-white font-semibold text-sm sm:text-base py-2.5">
                 {d}
               </option>
             ))}
@@ -276,10 +276,10 @@ export default function LeaderboardPage() {
           <select
             value={selectedCollege}
             onChange={(e) => setSelectedCollege(e.target.value)}
-            className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-[#111827] border border-[#334155] focus:border-emerald-500 text-xs sm:text-sm md:text-base font-bold text-white outline-none cursor-pointer"
+            className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-[#111827] border border-[#334155] focus:border-emerald-500 text-sm sm:text-base font-semibold text-white outline-none cursor-pointer"
           >
             {COLLEGE_OPTIONS.map((c) => (
-              <option key={c} value={c} className="bg-[#111827] text-white font-bold text-xs sm:text-sm md:text-base py-2">
+              <option key={c} value={c} className="bg-[#111827] text-white font-semibold text-sm sm:text-base py-2.5">
                 {c}
               </option>
             ))}

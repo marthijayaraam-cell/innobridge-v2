@@ -220,10 +220,10 @@ export default function ProjectUploadModal({ isOpen, onClose, onProjectCreated }
                 <select
                   value={formData.domain}
                   onChange={(e) => setFormData({ ...formData, domain: e.target.value })}
-                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-[#0B1120] border border-[#334155] focus:border-emerald-500 text-xs sm:text-sm md:text-base font-bold text-white outline-none cursor-pointer"
+                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-[#0B1120] border border-[#334155] focus:border-emerald-500 text-sm sm:text-base font-semibold text-white outline-none cursor-pointer"
                 >
                   {DOMAINS.map((d) => (
-                    <option key={d} value={d} className="bg-[#111827] text-white font-bold text-xs sm:text-sm md:text-base py-2">
+                    <option key={d} value={d} className="bg-[#111827] text-white font-semibold text-sm sm:text-base py-2.5">
                       {d}
                     </option>
                   ))}
@@ -237,10 +237,10 @@ export default function ProjectUploadModal({ isOpen, onClose, onProjectCreated }
                 <select
                   value={formData.stage}
                   onChange={(e) => setFormData({ ...formData, stage: e.target.value })}
-                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-[#0B1120] border border-[#334155] focus:border-emerald-500 text-xs sm:text-sm md:text-base font-bold text-white outline-none cursor-pointer"
+                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-[#0B1120] border border-[#334155] focus:border-emerald-500 text-sm sm:text-base font-semibold text-white outline-none cursor-pointer"
                 >
                   {ALL_11_STAGES.map((s, idx) => (
-                    <option key={s} value={s} className="bg-[#111827] text-white font-bold text-xs sm:text-sm md:text-base py-2">
+                    <option key={s} value={s} className="bg-[#111827] text-white font-semibold text-sm sm:text-base py-2.5">
                       Stage {idx + 1}: {s}
                     </option>
                   ))}

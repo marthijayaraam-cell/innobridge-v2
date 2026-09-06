@@ -121,7 +121,7 @@ export default function StudentDashboard() {
     : '0.0';
 
   return (
-    <div className="min-h-screen bg-[#0B1120] text-[#F8FAFC] py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative">
+    <div className="min-h-screen w-full bg-[#0B1120] text-[#F8FAFC] py-8 sm:py-12 px-4 sm:px-8 lg:px-12 xl:px-16 max-w-[1600px] mx-auto relative">
       
       {/* Command Center Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4 border-b border-[#334155] pb-6">

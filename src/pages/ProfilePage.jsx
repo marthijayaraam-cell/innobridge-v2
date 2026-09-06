@@ -67,7 +67,7 @@ export default function ProfilePage() {
   const innovationScore = profile?.innovation_score || (totalProjects * 10 + highestAIScore * 5 + 150);
 
   return (
-    <div className="min-h-screen bg-slate-900 text-slate-100 py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div className="min-h-screen w-full bg-[#0B1120] text-slate-100 py-8 sm:py-12 px-4 sm:px-8 lg:px-12 xl:px-16 max-w-[1600px] mx-auto">
       {/* Top Banner Card */}
       <div className="bg-gradient-to-r from-slate-800 via-slate-800 to-emerald-950/60 rounded-3xl p-6 sm:p-8 border border-slate-700/60 shadow-xl mb-8 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl -mr-20 -mt-20 pointer-events-none" />

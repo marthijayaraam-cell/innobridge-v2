@@ -125,10 +125,10 @@ export default function InteractiveScoreCalculatorWidget() {
               const matched = STAGE_OPTIONS.find(s => s.name === e.target.value);
               if (matched) setSelectedStage(matched);
             }}
-            className="w-full p-2.5 rounded-xl bg-[#14141C] border border-borderSubtle text-xs text-white outline-none focus:border-primary"
+            className="w-full p-2.5 rounded-xl bg-[#14141C] border border-borderSubtle text-sm font-semibold text-white outline-none focus:border-primary cursor-pointer"
           >
             {STAGE_OPTIONS.map((stg) => (
-              <option key={stg.name} value={stg.name} className="bg-[#14141C]">
+              <option key={stg.name} value={stg.name} className="bg-[#14141C] text-white font-semibold text-sm py-2">
                 {stg.name} (+{stg.bonus} pts)
               </option>
             ))}

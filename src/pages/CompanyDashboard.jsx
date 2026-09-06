@@ -130,7 +130,7 @@ export default function CompanyDashboard() {
   });
 
   return (
-    <div className="min-h-screen bg-[#0B1120] text-[#F8FAFC] py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div className="min-h-screen w-full bg-[#0B1120] text-[#F8FAFC] py-8 sm:py-12 px-4 sm:px-8 lg:px-12 xl:px-16 max-w-[1600px] mx-auto">
       
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4 border-b border-[#334155] pb-6">
@@ -194,10 +194,10 @@ export default function CompanyDashboard() {
                 <select
                   value={selectedDomain}
                   onChange={(e) => setSelectedDomain(e.target.value)}
-                  className="w-full px-3 py-2 rounded-xl bg-[#0B1120] border border-[#334155] text-xs text-slate-100 outline-none focus:border-emerald-500"
+                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-[#0B1120] border border-[#334155] text-sm sm:text-base font-semibold text-white outline-none focus:border-emerald-500 cursor-pointer"
                 >
                   {DOMAIN_OPTIONS.map((d) => (
-                    <option key={d} value={d} className="bg-[#111827]">
+                    <option key={d} value={d} className="bg-[#111827] text-white font-semibold text-sm sm:text-base py-2.5">
                       {d}
                     </option>
                   ))}
@@ -211,10 +211,10 @@ export default function CompanyDashboard() {
                 <select
                   value={selectedStage}
                   onChange={(e) => setSelectedStage(e.target.value)}
-                  className="w-full px-3 py-2 rounded-xl bg-[#0B1120] border border-[#334155] text-xs text-slate-100 outline-none focus:border-emerald-500"
+                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-[#0B1120] border border-[#334155] text-sm sm:text-base font-semibold text-white outline-none focus:border-emerald-500 cursor-pointer"
                 >
                   {['All Stages', ...ALL_11_STAGES].map((s) => (
-                    <option key={s} value={s} className="bg-[#111827]">
+                    <option key={s} value={s} className="bg-[#111827] text-white font-semibold text-sm sm:text-base py-2.5">
                       {s}
                     </option>
                   ))}

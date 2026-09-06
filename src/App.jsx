@@ -42,7 +42,7 @@ export default function App() {
     <div className="min-h-screen w-full bg-[#0B1120] text-slate-100 font-['Inter',sans-serif] overflow-x-hidden">
       <ScrollProgressBar />
       <Navbar />
-      <main>
+      <main className="w-full flex-1">
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/auth" element={<AuthPage />} />

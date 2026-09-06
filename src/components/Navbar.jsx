@@ -38,7 +38,7 @@ export default function Navbar() {
     <>
       {/* Top Header Navbar */}
       <header className="sticky top-0 z-40 w-full border-b border-[#334155] bg-[#0B1120]/90 backdrop-blur-md">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 h-16 flex items-center justify-between">
           
           {/* Logo & Brand Statement */}
           <Link to="/" className="flex items-center gap-3 group shrink-0">

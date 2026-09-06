@@ -95,7 +95,7 @@ export default function InnovationFeedPage() {
   });
 
   return (
-    <div className="min-h-screen bg-slate-900 text-slate-100 py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div className="min-h-screen w-full bg-[#0B1120] text-slate-100 py-8 sm:py-12 px-4 sm:px-8 lg:px-12 xl:px-16 max-w-[1600px] mx-auto">
       {/* Feed Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4 border-b border-slate-700/60 pb-6">
         <div>
@@ -144,10 +144,10 @@ export default function InnovationFeedPage() {
             <select
               value={selectedDomain}
               onChange={(e) => setSelectedDomain(e.target.value)}
-              className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-[#111827] border border-[#334155] focus:border-emerald-500 text-xs sm:text-sm md:text-base font-bold text-white outline-none transition-colors cursor-pointer"
+              className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-[#111827] border border-[#334155] focus:border-emerald-500 text-sm sm:text-base font-semibold text-white outline-none transition-colors cursor-pointer"
             >
               {DOMAIN_OPTIONS.map((d) => (
-                <option key={d} value={d} className="bg-[#111827] text-white font-bold text-xs sm:text-sm md:text-base py-2">
+                <option key={d} value={d} className="bg-[#111827] text-white font-semibold text-sm sm:text-base py-2.5">
                   {d}
                 </option>
               ))}
@@ -162,10 +162,10 @@ export default function InnovationFeedPage() {
             <select
               value={selectedStage}
               onChange={(e) => setSelectedStage(e.target.value)}
-              className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-[#111827] border border-[#334155] focus:border-emerald-500 text-xs sm:text-sm md:text-base font-bold text-white outline-none transition-colors cursor-pointer"
+              className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-[#111827] border border-[#334155] focus:border-emerald-500 text-sm sm:text-base font-semibold text-white outline-none transition-colors cursor-pointer"
             >
               {STAGE_OPTIONS.map((s) => (
-                <option key={s} value={s} className="bg-[#111827] text-white font-bold text-xs sm:text-sm md:text-base py-2">
+                <option key={s} value={s} className="bg-[#111827] text-white font-semibold text-sm sm:text-base py-2.5">
                   {s}
                 </option>
               ))}

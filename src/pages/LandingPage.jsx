@@ -66,13 +66,13 @@ export default function LandingPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0B1120] text-[#F8FAFC] relative overflow-hidden">
+    <div className="min-h-screen w-full bg-[#0B1120] text-[#F8FAFC] relative overflow-hidden">
       {/* Background subtle radial glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-b from-emerald-500/10 via-emerald-500/5 to-transparent pointer-events-none blur-3xl opacity-80" />
 
 
       {/* Hero Section */}
-      <section className="relative pt-20 pb-16 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto text-center">
+      <section className="relative pt-20 pb-16 px-4 sm:px-8 lg:px-12 xl:px-16 max-w-[1600px] w-full mx-auto text-center">
         
         {/* Core Brand Tagline Pill */}
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800/80 border border-[#334155] text-xs font-semibold text-emerald-400 mb-8 shadow-sm">
@@ -135,7 +135,7 @@ export default function LandingPage() {
       </section>
 
       {/* Trending Projects Preview Strip (Real Supabase / Seeded Data) */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-[#334155]">
+      <section className="py-16 px-4 sm:px-8 lg:px-12 xl:px-16 max-w-[1600px] w-full mx-auto border-t border-[#334155]">
         <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-8 gap-4">
           <div>
             <div className="flex items-center gap-2 text-xs font-bold text-emerald-400 uppercase tracking-wider mb-1">
@@ -173,7 +173,7 @@ export default function LandingPage() {
       </section>
 
       {/* Professional Core Value Proposition Grid */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-[#334155]">
+      <section className="py-16 px-4 sm:px-8 lg:px-12 xl:px-16 max-w-[1600px] w-full mx-auto border-t border-[#334155]">
         <div className="text-center max-w-2xl mx-auto mb-12">
           <h2 className="text-2xl sm:text-3xl font-extrabold text-white mb-3">
             Engineered as a Credible Innovation Ecosystem
