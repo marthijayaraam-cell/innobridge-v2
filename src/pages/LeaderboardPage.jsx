@@ -255,10 +255,10 @@ export default function LeaderboardPage() {
           <select
             value={selectedDomain}
             onChange={(e) => setSelectedDomain(e.target.value)}
-            className="w-full px-4 py-3 rounded-xl bg-[#111827] border-2 border-[#334155] text-base font-extrabold text-white outline-none focus:border-emerald-500 cursor-pointer"
+            className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-[#111827] border border-[#334155] focus:border-emerald-500 text-xs sm:text-sm md:text-base font-bold text-white outline-none cursor-pointer"
           >
             {DOMAIN_OPTIONS.map((d) => (
-              <option key={d} value={d} className="bg-[#111827] text-white py-3 font-extrabold text-base">
+              <option key={d} value={d} className="bg-[#111827] text-white font-bold text-xs sm:text-sm md:text-base py-2">
                 {d}
               </option>
             ))}
@@ -270,10 +270,10 @@ export default function LeaderboardPage() {
           <select
             value={selectedCollege}
             onChange={(e) => setSelectedCollege(e.target.value)}
-            className="w-full px-4 py-3 rounded-xl bg-[#111827] border-2 border-[#334155] text-base font-extrabold text-white outline-none focus:border-emerald-500 cursor-pointer"
+            className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-[#111827] border border-[#334155] focus:border-emerald-500 text-xs sm:text-sm md:text-base font-bold text-white outline-none cursor-pointer"
           >
             {COLLEGE_OPTIONS.map((c) => (
-              <option key={c} value={c} className="bg-[#111827] text-white py-3 font-extrabold text-base">
+              <option key={c} value={c} className="bg-[#111827] text-white font-bold text-xs sm:text-sm md:text-base py-2">
                 {c}
               </option>
             ))}

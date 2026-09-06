@@ -39,7 +39,7 @@ function ProtectedRoute({ children, allowedRoles = [] }) {
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-slate-900 text-slate-100 font-['Inter',sans-serif]">
+    <div className="min-h-screen w-full bg-[#0B1120] text-slate-100 font-['Inter',sans-serif] overflow-x-hidden">
       <ScrollProgressBar />
       <Navbar />
       <main>

@@ -256,15 +256,15 @@ export default function AuthPage() {
                 <select
                   value={formData.college}
                   onChange={(e) => setFormData({ ...formData, college: e.target.value })}
-                  className="w-full pl-10 pr-4 py-3 rounded-xl bg-[#0B1120] border-2 border-[#334155] focus:border-emerald-500 text-white text-base font-extrabold outline-none transition-colors cursor-pointer"
+                  className="w-full pl-10 pr-4 py-2.5 sm:py-3 rounded-xl bg-[#0B1120] border border-[#334155] focus:border-emerald-500 text-xs sm:text-sm font-bold text-white outline-none cursor-pointer"
                 >
-                  <option value="IIT Bombay" className="bg-[#111827] text-white py-3 font-extrabold text-base">IIT Bombay</option>
-                  <option value="BITS Pilani" className="bg-[#111827] text-white py-3 font-extrabold text-base">BITS Pilani</option>
-                  <option value="Delhi Technological University" className="bg-[#111827] text-white py-3 font-extrabold text-base">Delhi Technological University</option>
-                  <option value="Anna University" className="bg-[#111827] text-white py-3 font-extrabold text-base">Anna University</option>
-                  <option value="IIT Madras" className="bg-[#111827] text-white py-3 font-extrabold text-base">IIT Madras</option>
-                  <option value="IIT Kharagpur" className="bg-[#111827] text-white py-3 font-extrabold text-base">IIT Kharagpur</option>
-                  <option value="NIT Trichy" className="bg-[#111827] text-white py-3 font-extrabold text-base">NIT Trichy</option>
+                  <option value="IIT Bombay" className="bg-[#111827] text-white font-bold text-xs sm:text-sm py-2">IIT Bombay</option>
+                  <option value="BITS Pilani" className="bg-[#111827] text-white font-bold text-xs sm:text-sm py-2">BITS Pilani</option>
+                  <option value="Delhi Technological University" className="bg-[#111827] text-white font-bold text-xs sm:text-sm py-2">Delhi Technological University</option>
+                  <option value="Anna University" className="bg-[#111827] text-white font-bold text-xs sm:text-sm py-2">Anna University</option>
+                  <option value="IIT Madras" className="bg-[#111827] text-white font-bold text-xs sm:text-sm py-2">IIT Madras</option>
+                  <option value="IIT Kharagpur" className="bg-[#111827] text-white font-bold text-xs sm:text-sm py-2">IIT Kharagpur</option>
+                  <option value="NIT Trichy" className="bg-[#111827] text-white font-bold text-xs sm:text-sm py-2">NIT Trichy</option>
                 </select>
               </div>
             </div>
