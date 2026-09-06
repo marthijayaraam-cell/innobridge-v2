@@ -37,20 +37,17 @@ export default function Navbar() {
   return (
     <>
       {/* Top Header Navbar */}
-      <header className="sticky top-0 z-40 w-full border-b border-[#334155] bg-[#0B1120]/90 backdrop-blur-md">
-        <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 h-16 flex items-center justify-between">
+      <header className="sticky top-0 z-40 w-full border-b border-slate-800 bg-[#0B1120]/95 backdrop-blur-md">
+        <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 h-14 flex items-center justify-between">
           
           {/* Logo & Brand Statement */}
-          <Link to="/" className="flex items-center gap-3 group shrink-0">
-            <div className="w-8 h-8 rounded-lg bg-emerald-600 flex items-center justify-center text-white font-black text-sm shadow-sm group-hover:bg-emerald-500 transition-colors">
+          <Link to="/" className="flex items-center gap-2.5 group shrink-0">
+            <div className="w-7 h-7 rounded-md bg-emerald-600 flex items-center justify-center text-white font-bold text-xs group-hover:bg-emerald-500 transition-colors">
               IB
             </div>
             <div className="flex flex-col">
-              <span className="font-extrabold text-lg tracking-tight text-white flex items-center gap-1.5">
+              <span className="font-bold text-base tracking-tight text-white flex items-center gap-1.5">
                 InnoBridge
-              </span>
-              <span className="text-[10px] uppercase tracking-wider text-slate-400 font-semibold -mt-1 hidden sm:inline">
-                Showcase • Get Scored • Get Discovered
               </span>
             </div>
           </Link>
@@ -59,9 +56,9 @@ export default function Navbar() {
           <nav className="hidden md:flex items-center gap-1">
             <Link
               to="/"
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-colors flex items-center gap-1.5 ${
+              className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors flex items-center gap-1.5 ${
                 isActive('/')
-                  ? 'bg-slate-800 text-emerald-400 font-bold'
+                  ? 'bg-slate-800 text-emerald-400 font-semibold'
                   : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
               }`}
             >
@@ -71,9 +68,9 @@ export default function Navbar() {
 
             <Link
               to="/feed"
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-colors flex items-center gap-1.5 ${
+              className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors flex items-center gap-1.5 ${
                 isActive('/feed')
-                  ? 'bg-slate-800 text-emerald-400 font-bold'
+                  ? 'bg-slate-800 text-emerald-400 font-semibold'
                   : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
               }`}
             >
@@ -83,9 +80,9 @@ export default function Navbar() {
 
             <Link
               to="/leaderboard"
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-colors flex items-center gap-1.5 ${
+              className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors flex items-center gap-1.5 ${
                 isActive('/leaderboard')
-                  ? 'bg-slate-800 text-emerald-400 font-bold'
+                  ? 'bg-slate-800 text-emerald-400 font-semibold'
                   : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
               }`}
             >
@@ -96,9 +93,9 @@ export default function Navbar() {
             {user && (
               <Link
                 to={getDashboardPath()}
-                className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-colors flex items-center gap-1.5 ${
+                className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors flex items-center gap-1.5 ${
                   location.pathname.startsWith('/dashboard')
-                    ? 'bg-slate-800 text-emerald-400 font-bold'
+                    ? 'bg-slate-800 text-emerald-400 font-semibold'
                     : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
                 }`}
               >
@@ -110,9 +107,9 @@ export default function Navbar() {
             {user && (
               <Link
                 to="/profile"
-                className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-colors flex items-center gap-1.5 ${
+                className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors flex items-center gap-1.5 ${
                   isActive('/profile')
-                    ? 'bg-slate-800 text-emerald-400 font-bold'
+                    ? 'bg-slate-800 text-emerald-400 font-semibold'
                     : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
                 }`}
               >
@@ -125,10 +122,10 @@ export default function Navbar() {
           {/* Right Action / Role-Aware User Controls */}
           <div className="flex items-center gap-3">
             {user ? (
-              <div className="flex items-center gap-2.5">
+              <div className="flex items-center gap-2">
                 {/* AI Score Badge (Student) */}
                 {profile?.role === 'student' && profile?.innovation_score !== undefined && (
-                  <div className="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-md badge-ai text-xs font-bold">
+                  <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-emerald-950/80 border border-emerald-800/60 text-emerald-400 text-xs font-semibold">
                     <Award className="w-3.5 h-3.5 text-emerald-400" />
                     <span>Score: {profile.innovation_score}</span>
                   </div>
@@ -137,9 +134,9 @@ export default function Navbar() {
                 {/* Profile Link */}
                 <button
                   onClick={() => navigate('/profile')}
-                  className="flex items-center gap-2 pl-2 pr-3 py-1 rounded-lg bg-slate-800 border border-[#334155] hover:border-slate-600 transition-colors"
+                  className="flex items-center gap-2 px-2.5 py-1 rounded-md bg-slate-900 border border-slate-700 hover:border-slate-600 transition-colors"
                 >
-                  <div className="w-6 h-6 rounded-md bg-emerald-600 flex items-center justify-center text-white font-bold text-xs">
+                  <div className="w-5 h-5 rounded-full bg-emerald-600 flex items-center justify-center text-white font-semibold text-xs">
                     {((profile?.full_name && !/^\d/.test(profile.full_name)) ? profile.full_name : 'Marthi Jayaraam')[0].toUpperCase()}
                   </div>
                   <span className="text-xs font-medium text-slate-200 max-w-[120px] truncate hidden lg:inline">
@@ -150,7 +147,7 @@ export default function Navbar() {
                 <button
                   onClick={signOut}
                   title="Sign Out"
-                  className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+                  className="p-1.5 rounded-md text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
                 >
                   <LogOut className="w-4 h-4" />
                 </button>
@@ -159,13 +156,13 @@ export default function Navbar() {
               <div className="flex items-center gap-2">
                 <Link
                   to="/auth?tab=login"
-                  className="px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white transition-colors"
+                  className="px-3 py-1.5 rounded-md text-xs font-medium text-slate-300 hover:text-white transition-colors"
                 >
                   Sign In
                 </Link>
                 <Link
                   to="/auth?tab=signup"
-                  className="px-4 py-1.5 rounded-lg text-xs font-semibold bg-emerald-600 hover:bg-emerald-500 text-white shadow-sm transition-all"
+                  className="px-3.5 py-1.5 rounded-md text-xs font-medium bg-emerald-600 hover:bg-emerald-500 text-white transition-colors"
                 >
                   Join as Student
                 </Link>
@@ -175,7 +172,7 @@ export default function Navbar() {
             {/* Mobile Hamburger Menu Toggle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 rounded-lg text-slate-400 hover:text-white"
+              className="md:hidden p-1.5 rounded-md text-slate-400 hover:text-white"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -184,7 +181,7 @@ export default function Navbar() {
 
         {/* Collapsible Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden px-4 pt-2 pb-4 border-b border-[#334155] bg-[#111827] space-y-2 text-sm font-medium">
+          <div className="md:hidden px-4 pt-2 pb-4 border-b border-slate-800 bg-[#111827] space-y-1 text-sm font-medium">
             <Link to="/" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-200 hover:text-emerald-400">Home</Link>
             <Link to="/feed" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-200 hover:text-emerald-400">Innovation Feed</Link>
             <Link to="/leaderboard" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-200 hover:text-emerald-400">Leaderboard</Link>
@@ -195,7 +192,7 @@ export default function Navbar() {
       </header>
 
       {/* Mobile Bottom Tab Bar (For Hackathons & Phone Demos) */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#0B1120]/95 backdrop-blur-lg border-t border-[#334155] py-2 px-3 flex items-center justify-around text-[10px] font-medium text-slate-400">
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#0B1120]/95 backdrop-blur-lg border-t border-slate-800 py-2 px-3 flex items-center justify-around text-[10px] font-medium text-slate-400">
         <Link to="/" className={`flex flex-col items-center gap-1 ${isActive('/') ? 'text-emerald-400 font-bold' : ''}`}>
           <Home className="w-4 h-4" />
           <span>Home</span>

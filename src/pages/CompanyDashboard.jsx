@@ -133,7 +133,7 @@ export default function CompanyDashboard() {
     <div className="min-h-screen w-full bg-[#0B1120] text-[#F8FAFC] py-8 sm:py-12 px-4 sm:px-8 lg:px-12 xl:px-16 max-w-[1600px] mx-auto">
       
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4 border-b border-[#334155] pb-6">
+      <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4 border-b border-slate-800 pb-6">
         <div>
           <div className="flex items-center gap-2 text-xs font-semibold text-emerald-400 uppercase tracking-wider mb-1">
             <Building2 className="w-4 h-4" /> Industry & Talent Scouting Workspace
@@ -147,12 +147,12 @@ export default function CompanyDashboard() {
         </div>
 
         {/* Tab Switcher */}
-        <div className="flex items-center gap-2 p-1 rounded-xl bg-[#111827] border border-[#334155] text-xs font-semibold">
+        <div className="flex items-center gap-1.5 p-1 rounded-md bg-[#111827] border border-slate-800 text-xs font-semibold">
           <button
             onClick={() => setActiveTab('browse')}
-            className={`px-4 py-2 rounded-lg transition-all flex items-center gap-1.5 ${
+            className={`px-3.5 py-1.5 rounded-md transition-colors flex items-center gap-1.5 ${
               activeTab === 'browse'
-                ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold'
+                ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-medium'
                 : 'text-slate-400 hover:text-white'
             }`}
           >
@@ -160,9 +160,9 @@ export default function CompanyDashboard() {
           </button>
           <button
             onClick={() => setActiveTab('shortlist')}
-            className={`px-4 py-2 rounded-lg transition-all flex items-center gap-1.5 ${
+            className={`px-3.5 py-1.5 rounded-md transition-colors flex items-center gap-1.5 ${
               activeTab === 'shortlist'
-                ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold'
+                ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-medium'
                 : 'text-slate-400 hover:text-white'
             }`}
           >
@@ -174,7 +174,7 @@ export default function CompanyDashboard() {
       {activeTab === 'browse' ? (
         <>
           {/* Filters Bar */}
-          <div className="bg-[#111827] p-4 rounded-xl border border-[#334155] mb-8 space-y-4">
+          <div className="bg-[#111827] p-4 rounded-md border border-slate-800 mb-8 space-y-4">
             <div className="relative">
               <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
               <input
@@ -182,7 +182,7 @@ export default function CompanyDashboard() {
                 placeholder="Search high-potential projects by keyword or student name..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#0B1120] border border-[#334155] focus:border-emerald-500 text-slate-100 text-xs outline-none transition-colors"
+                className="w-full pl-10 pr-4 py-2.5 rounded-md bg-[#0B1120] border border-slate-800 focus:border-slate-600 text-slate-100 text-xs outline-none transition-colors"
               />
             </div>
 
@@ -194,10 +194,10 @@ export default function CompanyDashboard() {
                 <select
                   value={selectedDomain}
                   onChange={(e) => setSelectedDomain(e.target.value)}
-                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-[#0B1120] border border-[#334155] text-sm sm:text-base font-semibold text-white outline-none focus:border-emerald-500 cursor-pointer"
+                  className="w-full px-3 py-2 rounded-md bg-[#0B1120] border border-slate-800 text-xs font-medium text-white outline-none focus:border-slate-600 cursor-pointer"
                 >
                   {DOMAIN_OPTIONS.map((d) => (
-                    <option key={d} value={d} className="bg-[#111827] text-white font-semibold text-sm sm:text-base py-2.5">
+                    <option key={d} value={d} className="bg-[#111827] text-white font-normal text-xs py-2">
                       {d}
                     </option>
                   ))}
@@ -211,10 +211,10 @@ export default function CompanyDashboard() {
                 <select
                   value={selectedStage}
                   onChange={(e) => setSelectedStage(e.target.value)}
-                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-[#0B1120] border border-[#334155] text-sm sm:text-base font-semibold text-white outline-none focus:border-emerald-500 cursor-pointer"
+                  className="w-full px-3 py-2 rounded-md bg-[#0B1120] border border-slate-800 text-xs font-medium text-white outline-none focus:border-slate-600 cursor-pointer"
                 >
                   {['All Stages', ...ALL_11_STAGES].map((s) => (
-                    <option key={s} value={s} className="bg-[#111827] text-white font-semibold text-sm sm:text-base py-2.5">
+                    <option key={s} value={s} className="bg-[#111827] text-white font-normal text-xs py-2">
                       {s}
                     </option>
                   ))}
@@ -233,7 +233,7 @@ export default function CompanyDashboard() {
                   step="5"
                   value={minAIScore}
                   onChange={(e) => setMinAIScore(Number(e.target.value))}
-                  className="w-full accent-emerald-500 bg-[#0B1120] h-2 rounded-lg cursor-pointer"
+                  className="w-full accent-emerald-500 bg-[#0B1120] h-2 rounded-md cursor-pointer"
                 />
               </div>
             </div>
@@ -245,7 +245,7 @@ export default function CompanyDashboard() {
               Loading verified student innovations...
             </div>
           ) : filteredProjects.length === 0 ? (
-            <div className="bg-[#111827] rounded-2xl p-12 text-center border border-[#334155]">
+            <div className="bg-[#111827] rounded-md p-12 text-center border border-slate-800">
               <Building2 className="w-12 h-12 text-slate-500 mx-auto mb-3" />
               <h3 className="text-base font-bold text-white">No Projects Match Your Filter</h3>
               <p className="text-xs text-slate-400 max-w-sm mx-auto mt-1">
@@ -275,7 +275,7 @@ export default function CompanyDashboard() {
           </div>
 
           {interestedProjects.length === 0 ? (
-            <div className="bg-[#111827] rounded-2xl p-12 text-center border border-[#334155]">
+            <div className="bg-[#111827] rounded-md p-12 text-center border border-slate-800">
               <BookmarkCheck className="w-12 h-12 text-slate-500 mx-auto mb-3" />
               <h3 className="text-base font-bold text-white">No Expressed Interests Yet</h3>
               <p className="text-xs text-slate-400 max-w-sm mx-auto mt-1 mb-4">
@@ -283,7 +283,7 @@ export default function CompanyDashboard() {
               </p>
               <button
                 onClick={() => setActiveTab('browse')}
-                className="px-4 py-2 rounded-xl bg-emerald-600 text-white font-bold text-xs shadow-sm"
+                className="px-4 py-2 rounded-md bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-xs border border-emerald-500/40"
               >
                 Browse Projects
               </button>
@@ -293,11 +293,11 @@ export default function CompanyDashboard() {
               {interestedProjects.map((item) => (
                 <div
                   key={item.id}
-                  className="bg-[#111827] rounded-xl p-4 border border-emerald-500/30 flex flex-col md:flex-row md:items-center justify-between gap-4"
+                  className="bg-[#111827] rounded-md p-4 border border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-4"
                 >
                   <div className="flex items-start gap-3">
-                    <div className="w-9 h-9 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 flex items-center justify-center font-bold shrink-0">
-                      <GraduationCap className="w-5 h-5" />
+                    <div className="w-8 h-8 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 flex items-center justify-center font-bold shrink-0">
+                      <GraduationCap className="w-4 h-4" />
                     </div>
                     <div>
                       <h3 className="text-sm font-bold text-white">{item.project_title}</h3>
@@ -316,7 +316,7 @@ export default function CompanyDashboard() {
                         const proj = projects.find((p) => p.id === item.project_id);
                         if (proj) setSelectedProject(proj);
                       }}
-                      className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs text-slate-300 hover:text-white"
+                      className="px-3 py-1.5 rounded-md bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs text-slate-300 hover:text-white"
                     >
                       View Details
                     </button>

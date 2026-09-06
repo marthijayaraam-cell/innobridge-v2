@@ -124,7 +124,7 @@ export default function StudentDashboard() {
     <div className="min-h-screen w-full bg-[#0B1120] text-[#F8FAFC] py-8 sm:py-12 px-4 sm:px-8 lg:px-12 xl:px-16 max-w-[1600px] mx-auto relative">
       
       {/* Command Center Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4 border-b border-[#334155] pb-6">
+      <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4 border-b border-slate-800 pb-6">
         <div>
           <div className="flex items-center gap-2 text-xs font-semibold text-emerald-400 uppercase tracking-wider mb-1">
             <GraduationCap className="w-4 h-4 text-emerald-400" /> Student Innovation Workspace
@@ -139,7 +139,7 @@ export default function StudentDashboard() {
 
         <button
           onClick={() => setIsUploadOpen(true)}
-          className="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-sm flex items-center justify-center gap-2 transition-all hover:scale-[1.02]"
+          className="px-5 py-2.5 rounded-md bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-xs border border-emerald-500/40 flex items-center justify-center gap-2 transition-colors"
         >
           <Plus className="w-4 h-4" />
           Upload New Project
@@ -150,12 +150,12 @@ export default function StudentDashboard() {
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-10">
         
         {/* Large Prominent Total Innovation Score Card */}
-        <div className="bg-[#111827] rounded-xl p-5 border border-emerald-500/40 relative overflow-hidden bg-gradient-to-br from-emerald-500/10 via-[#111827] to-transparent">
+        <div className="bg-[#111827] rounded-md p-5 border border-slate-800 relative">
           <div className="flex items-center justify-between mb-2">
             <span className="text-[11px] uppercase tracking-wider text-slate-400 font-bold">
               Total Innovation Score
             </span>
-            <div className="w-8 h-8 rounded-lg badge-ai flex items-center justify-center">
+            <div className="w-8 h-8 rounded-md badge-ai flex items-center justify-center">
               <Award className="w-4 h-4 text-emerald-400" />
             </div>
           </div>
@@ -169,13 +169,13 @@ export default function StudentDashboard() {
 
 
         {/* Total Submissions Metric */}
-        <div className="bg-[#111827] rounded-xl p-5 border border-[#334155]">
+        <div className="bg-[#111827] rounded-md p-5 border border-slate-800">
           <div className="flex items-center justify-between mb-2">
             <span className="text-[11px] uppercase tracking-wider text-slate-400 font-bold">
               Total Submissions
             </span>
-            <div className="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-brandBlue">
-              <Layers className="w-4 h-4 text-electricCyan" />
+            <div className="w-8 h-8 rounded-md bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-300">
+              <Layers className="w-4 h-4 text-slate-300" />
             </div>
           </div>
           <div className="text-3xl font-extrabold text-white mb-1">
@@ -185,12 +185,12 @@ export default function StudentDashboard() {
         </div>
 
         {/* Avg Faculty Rating Metric */}
-        <div className="bg-[#111827] rounded-xl p-5 border border-[#334155]">
+        <div className="bg-[#111827] rounded-md p-5 border border-slate-800">
           <div className="flex items-center justify-between mb-2">
             <span className="text-[11px] uppercase tracking-wider text-slate-400 font-bold">
               Avg Faculty Rating
             </span>
-            <div className="w-8 h-8 rounded-lg bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
+            <div className="w-8 h-8 rounded-md bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
               <Star className="w-4 h-4 fill-amber-400" />
             </div>
           </div>
@@ -201,16 +201,16 @@ export default function StudentDashboard() {
         </div>
 
         {/* Avg AI Benchmark Metric */}
-        <div className="bg-[#111827] rounded-xl p-5 border border-[#334155]">
+        <div className="bg-[#111827] rounded-md p-5 border border-slate-800">
           <div className="flex items-center justify-between mb-2">
             <span className="text-[11px] uppercase tracking-wider text-slate-400 font-bold">
               Avg AI Evaluation
             </span>
-            <div className="w-8 h-8 rounded-lg badge-ai flex items-center justify-center">
-              <Sparkles className="w-4 h-4 text-aiIndigoDark" />
+            <div className="w-8 h-8 rounded-md badge-ai flex items-center justify-center">
+              <Sparkles className="w-4 h-4 text-emerald-400" />
             </div>
           </div>
-          <div className="text-3xl font-extrabold text-[#818CF8] mb-1">
+          <div className="text-3xl font-extrabold text-emerald-400 mb-1">
             {avgAIScore} <span className="text-xs text-slate-400 font-normal">/ 10</span>
           </div>
           <p className="text-[10px] text-slate-400">5-metric LLM benchmark</p>
@@ -229,7 +229,7 @@ export default function StudentDashboard() {
           Loading your innovation workspace...
         </div>
       ) : myProjects.length === 0 ? (
-        <div className="bg-[#111827] rounded-2xl p-12 text-center border border-[#334155]">
+        <div className="bg-[#111827] rounded-md p-12 text-center border border-slate-800">
           <FolderPlus className="w-12 h-12 text-slate-500 mx-auto mb-3" />
           <h3 className="text-base font-bold text-white">No Projects Submitted Yet</h3>
           <p className="text-xs text-slate-400 max-w-sm mx-auto mt-1 mb-6">
@@ -237,7 +237,7 @@ export default function StudentDashboard() {
           </p>
           <button
             onClick={() => setIsUploadOpen(true)}
-            className="px-5 py-2.5 rounded-xl bg-brandBlue text-white text-xs font-bold shadow-sm"
+            className="px-4 py-2 rounded-md bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-medium border border-emerald-500/40"
           >
             Upload First Project
           </button>

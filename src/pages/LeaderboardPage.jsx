@@ -176,83 +176,86 @@ export default function LeaderboardPage() {
   return (
     <div className="min-h-screen w-full bg-[#0B1120] text-slate-100 py-8 sm:py-12 px-4 sm:px-8 lg:px-12 xl:px-16 max-w-[1600px] mx-auto">
       {/* Header */}
-      <div className="text-center max-w-3xl mx-auto mb-10">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-xs font-semibold text-amber-400 mb-4 shadow-sm">
-          <Trophy className="w-4 h-4 text-amber-400" />
+      <div className="text-center max-w-3xl mx-auto mb-8">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-slate-900 border border-slate-700 text-xs font-medium text-amber-400 mb-3">
+          <Trophy className="w-3.5 h-3.5 text-amber-400" />
           <span>University Innovation Rankings</span>
         </div>
-        <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+        <h1 className="text-2xl sm:text-4xl font-bold text-white tracking-tight">
           Student Leaderboard
         </h1>
-        <p className="text-sm text-slate-400 mt-2">
+        <p className="text-xs sm:text-sm text-slate-400 mt-2 font-normal">
           Ranked dynamically by total Innovation Score: <br className="hidden sm:inline" />
-          <code className="text-xs text-emerald-300 bg-emerald-950/60 border border-emerald-800/40 px-2 py-0.5 rounded font-mono mt-1 inline-block">
+          <code className="text-xs text-emerald-400 bg-slate-900 border border-slate-800 px-2 py-0.5 rounded-md font-mono mt-1 inline-block">
             Formula: (Projects × 10) + (AI Score × 5) + (Faculty Rating × 15) + Stage Bonus
           </code>
         </p>
       </div>
 
-      {/* Top 3 Podiums */}
+      {/* Clean Minimal Top 3 Highlights Banner (GitHub/Linear Style) */}
       {!loading && filteredLeaderboard.length >= 3 && (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 max-w-4xl mx-auto items-end">
-          {/* Rank 2 - Silver */}
-          <div className="bg-slate-800/80 rounded-2xl p-6 border border-slate-400/30 text-center relative order-2 md:order-1 transform hover:-translate-y-1 transition-transform shadow-lg">
-            <div className="w-14 h-14 rounded-full bg-slate-700/60 border-2 border-slate-300 text-slate-200 flex items-center justify-center font-bold mx-auto mb-3 text-xl shadow-inner">
-              🥈
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 max-w-4xl mx-auto">
+          {/* Rank 1 - Gold Champion */}
+          <div className="bg-[#111827] rounded-md p-4 border border-amber-500/40 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <span className="text-xl">🥇</span>
+              <div>
+                <span className="text-[10px] uppercase font-semibold text-amber-400 block">Rank 1 • Gold</span>
+                <h3 className="text-sm font-bold text-white">{filteredLeaderboard[0].full_name}</h3>
+                <p className="text-[11px] text-slate-400 font-normal">{filteredLeaderboard[0].college}</p>
+              </div>
             </div>
-            <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Rank 2 • Silver</span>
-            <h3 className="text-lg font-bold text-white mt-1">{filteredLeaderboard[1].full_name}</h3>
-            <p className="text-xs text-slate-400 mb-3">{filteredLeaderboard[1].college}</p>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-700/60 border border-slate-600 text-slate-200 text-xs font-extrabold">
-              <Award className="w-3.5 h-3.5 text-slate-300" />
-              Score: {filteredLeaderboard[1].innovation_score}
+            <div className="text-right">
+              <span className="text-xs font-bold text-emerald-400 block">{filteredLeaderboard[0].innovation_score} pts</span>
+              <span className="text-[10px] text-slate-500 font-normal">{filteredLeaderboard[0].project_count} projects</span>
             </div>
           </div>
 
-          {/* Rank 1 - Gold */}
-          <div className="bg-gradient-to-b from-amber-500/15 via-slate-800 to-slate-800 rounded-2xl p-8 border-2 border-amber-400/60 text-center relative order-1 md:order-2 shadow-2xl transform hover:-translate-y-2 transition-transform">
-            <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 bg-amber-500 text-slate-950 font-black text-[10px] uppercase tracking-widest rounded-full shadow-md">
-              Top Innovator
+          {/* Rank 2 - Silver */}
+          <div className="bg-[#111827] rounded-md p-4 border border-slate-700 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <span className="text-xl">🥈</span>
+              <div>
+                <span className="text-[10px] uppercase font-semibold text-slate-400 block">Rank 2 • Silver</span>
+                <h3 className="text-sm font-bold text-white">{filteredLeaderboard[1].full_name}</h3>
+                <p className="text-[11px] text-slate-400 font-normal">{filteredLeaderboard[1].college}</p>
+              </div>
             </div>
-            <div className="w-18 h-18 rounded-full bg-amber-500/20 border-2 border-amber-400 text-amber-300 flex items-center justify-center font-bold mx-auto mb-3 text-3xl shadow-glow">
-              👑
-            </div>
-            <span className="text-[10px] uppercase font-bold text-amber-400 tracking-wider">Rank 1 • Gold Champion</span>
-            <h3 className="text-xl font-extrabold text-white mt-1">{filteredLeaderboard[0].full_name}</h3>
-            <p className="text-xs text-slate-300 mb-4">{filteredLeaderboard[0].college}</p>
-            <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-amber-500/20 border border-amber-400/40 text-amber-300 text-sm font-extrabold shadow-sm">
-              <Trophy className="w-4 h-4 text-amber-400" />
-              Score: {filteredLeaderboard[0].innovation_score}
+            <div className="text-right">
+              <span className="text-xs font-bold text-emerald-400 block">{filteredLeaderboard[1].innovation_score} pts</span>
+              <span className="text-[10px] text-slate-500 font-normal">{filteredLeaderboard[1].project_count} projects</span>
             </div>
           </div>
 
           {/* Rank 3 - Bronze */}
-          <div className="bg-slate-800/80 rounded-2xl p-6 border border-amber-700/40 text-center relative order-3 transform hover:-translate-y-1 transition-transform shadow-lg">
-            <div className="w-14 h-14 rounded-full bg-amber-900/30 border-2 border-amber-600 text-amber-400 flex items-center justify-center font-bold mx-auto mb-3 text-xl">
-              🥉
+          <div className="bg-[#111827] rounded-md p-4 border border-slate-700 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <span className="text-xl">🥉</span>
+              <div>
+                <span className="text-[10px] uppercase font-semibold text-slate-400 block">Rank 3 • Bronze</span>
+                <h3 className="text-sm font-bold text-white">{filteredLeaderboard[2].full_name}</h3>
+                <p className="text-[11px] text-slate-400 font-normal">{filteredLeaderboard[2].college}</p>
+              </div>
             </div>
-            <span className="text-[10px] uppercase font-bold text-amber-500 tracking-wider">Rank 3 • Bronze</span>
-            <h3 className="text-lg font-bold text-white mt-1">{filteredLeaderboard[2].full_name}</h3>
-            <p className="text-xs text-slate-400 mb-3">{filteredLeaderboard[2].college}</p>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-900/20 border border-amber-700/50 text-amber-400 text-xs font-extrabold">
-              <Award className="w-3.5 h-3.5 text-amber-400" />
-              Score: {filteredLeaderboard[2].innovation_score}
+            <div className="text-right">
+              <span className="text-xs font-bold text-emerald-400 block">{filteredLeaderboard[2].innovation_score} pts</span>
+              <span className="text-[10px] text-slate-500 font-normal">{filteredLeaderboard[2].project_count} projects</span>
             </div>
           </div>
         </div>
       )}
 
-      {/* Filter Options */}
-      <div className="bg-slate-800/80 p-4 rounded-2xl border border-slate-700/60 mb-8 grid grid-cols-1 sm:grid-cols-3 gap-4 shadow-sm">
+      {/* Filter Options Bar */}
+      <div className="bg-[#111827] p-4 rounded-md border border-slate-800 mb-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
         {/* Search */}
         <div className="relative">
-          <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
+          <Search className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
           <input
             type="text"
             placeholder="Search student or university..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700/70 text-xs text-slate-200 outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors"
+            className="w-full pl-9 pr-3 py-2 rounded-md bg-slate-900 border border-slate-700 text-xs text-slate-200 outline-none focus:border-emerald-500 transition-colors font-normal"
           />
         </div>
 
@@ -261,10 +264,10 @@ export default function LeaderboardPage() {
           <select
             value={selectedDomain}
             onChange={(e) => setSelectedDomain(e.target.value)}
-            className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-[#111827] border border-[#334155] focus:border-emerald-500 text-sm sm:text-base font-semibold text-white outline-none cursor-pointer"
+            className="w-full px-3 py-2 rounded-md bg-slate-900 border border-slate-700 focus:border-emerald-500 text-xs sm:text-sm font-semibold text-white outline-none cursor-pointer"
           >
             {DOMAIN_OPTIONS.map((d) => (
-              <option key={d} value={d} className="bg-[#111827] text-white font-semibold text-sm sm:text-base py-2.5">
+              <option key={d} value={d} className="bg-[#111827] text-white font-semibold text-xs sm:text-sm py-2">
                 {d}
               </option>
             ))}
@@ -276,10 +279,10 @@ export default function LeaderboardPage() {
           <select
             value={selectedCollege}
             onChange={(e) => setSelectedCollege(e.target.value)}
-            className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-[#111827] border border-[#334155] focus:border-emerald-500 text-sm sm:text-base font-semibold text-white outline-none cursor-pointer"
+            className="w-full px-3 py-2 rounded-md bg-slate-900 border border-slate-700 focus:border-emerald-500 text-xs sm:text-sm font-semibold text-white outline-none cursor-pointer"
           >
             {COLLEGE_OPTIONS.map((c) => (
-              <option key={c} value={c} className="bg-[#111827] text-white font-semibold text-sm sm:text-base py-2.5">
+              <option key={c} value={c} className="bg-[#111827] text-white font-semibold text-xs sm:text-sm py-2">
                 {c}
               </option>
             ))}
@@ -287,67 +290,66 @@ export default function LeaderboardPage() {
         </div>
       </div>
 
-      {/* Leaderboard Table */}
+      {/* Leaderboard Table - GitHub Style Clean Borders & Subtle Hover */}
       {loading ? (
-        <div className="py-20 text-center text-slate-400 flex flex-col items-center justify-center">
-          <Sparkles className="w-8 h-8 text-emerald-400 animate-spin mb-3" />
-          <span>Computing innovation score leaderboard...</span>
+        <div className="py-16 text-center text-slate-400 flex flex-col items-center justify-center space-y-2">
+          <Sparkles className="w-6 h-6 text-emerald-400 animate-spin" />
+          <span className="text-xs font-normal">Computing innovation score leaderboard...</span>
         </div>
       ) : (
-        <div className="bg-slate-800/80 rounded-2xl border border-slate-700/60 overflow-hidden shadow-xl">
+        <div className="bg-[#111827] rounded-md border border-slate-800 overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="bg-slate-900/80 text-slate-400 text-xs uppercase tracking-wider border-b border-slate-700/60">
-                  <th className="py-4 px-6 font-semibold">Rank</th>
-                  <th className="py-4 px-6 font-semibold">Student Innovator</th>
-                  <th className="py-4 px-6 font-semibold">University</th>
-                  <th className="py-4 px-6 font-semibold">Domain</th>
-                  <th className="py-4 px-6 font-semibold text-center">Projects</th>
-                  <th className="py-4 px-6 font-semibold text-center">Avg AI Score</th>
-                  <th className="py-4 px-6 font-semibold text-right">Innovation Score</th>
+                <tr className="bg-slate-900 text-slate-400 text-xs uppercase tracking-wider border-b border-slate-800">
+                  <th className="py-3 px-4 font-semibold">Rank</th>
+                  <th className="py-3 px-4 font-semibold">Student Innovator</th>
+                  <th className="py-3 px-4 font-semibold">University</th>
+                  <th className="py-3 px-4 font-semibold">Domain</th>
+                  <th className="py-3 px-4 font-semibold text-center">Projects</th>
+                  <th className="py-3 px-4 font-semibold text-center">Avg AI Score</th>
+                  <th className="py-3 px-4 font-semibold text-right">Innovation Score</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-700/40 text-xs">
+              <tbody className="divide-y divide-slate-800/80 text-xs font-normal">
                 {filteredLeaderboard.map((student, index) => (
-                  <tr key={student.id || index} className="hover:bg-slate-700/30 transition-colors">
-                    <td className="py-4 px-6 font-bold text-white">
+                  <tr key={student.id || index} className="hover:bg-slate-800/40 transition-colors">
+                    <td className="py-3 px-4 font-semibold text-white">
                       {index === 0 ? (
-                        <span className="inline-flex items-center gap-1 text-amber-400 font-extrabold">🥇 #1</span>
+                        <span className="inline-flex items-center gap-1 text-amber-400 font-bold">🥇 #1</span>
                       ) : index === 1 ? (
-                        <span className="inline-flex items-center gap-1 text-slate-300 font-extrabold">🥈 #2</span>
+                        <span className="inline-flex items-center gap-1 text-slate-300 font-bold">🥈 #2</span>
                       ) : index === 2 ? (
-                        <span className="inline-flex items-center gap-1 text-amber-500 font-extrabold">🥉 #3</span>
+                        <span className="inline-flex items-center gap-1 text-amber-500 font-bold">🥉 #3</span>
                       ) : (
-                        <span className="text-slate-400 font-semibold">#{index + 1}</span>
+                        <span className="text-slate-400 font-medium">#{index + 1}</span>
                       )}
                     </td>
-                    <td className="py-4 px-6">
-                      <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center font-bold text-xs">
+                    <td className="py-3 px-4">
+                      <div className="flex items-center gap-2.5">
+                        <div className="w-7 h-7 rounded-full bg-emerald-600 text-white flex items-center justify-center font-medium text-xs shrink-0">
                           {student.full_name?.charAt(0) || 'S'}
                         </div>
                         <div>
-                          <div className="font-bold text-white text-sm">{student.full_name}</div>
-                          <div className="text-[11px] text-slate-400 font-medium">Verified Student</div>
+                          <div className="font-semibold text-white text-xs">{student.full_name}</div>
                         </div>
                       </div>
                     </td>
-                    <td className="py-4 px-6 text-slate-300 font-medium">{student.college || 'IIT Bombay'}</td>
-                    <td className="py-4 px-6">
-                      <span className="px-2.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 font-medium text-[11px]">
+                    <td className="py-3 px-4 text-slate-300 font-normal">{student.college || 'IIT Bombay'}</td>
+                    <td className="py-3 px-4">
+                      <span className="px-2.5 py-0.5 rounded-md bg-slate-800 text-slate-300 border border-slate-700 font-medium text-[11px]">
                         {student.domain || 'AI & Tech'}
                       </span>
                     </td>
-                    <td className="py-4 px-6 text-center font-semibold text-slate-200">
+                    <td className="py-3 px-4 text-center font-medium text-slate-300">
                       {student.project_count || 3}
                     </td>
-                    <td className="py-4 px-6 text-center">
-                      <span className="px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-300 font-bold border border-emerald-500/20">
+                    <td className="py-3 px-4 text-center">
+                      <span className="px-2 py-0.5 rounded-md bg-emerald-950/80 text-emerald-400 font-semibold border border-emerald-800/60 text-[11px]">
                         {student.avg_ai_score || 90}
                       </span>
                     </td>
-                    <td className="py-4 px-6 text-right font-extrabold text-base text-emerald-400">
+                    <td className="py-3 px-4 text-right font-bold text-sm text-emerald-400">
                       {student.innovation_score}
                     </td>
                   </tr>

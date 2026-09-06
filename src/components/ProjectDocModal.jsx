@@ -92,37 +92,35 @@ export default function ProjectDocModal({ project, isOpen, onClose, userRole = '
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-fade-in">
-      <div className="glass-panel w-full max-w-5xl rounded-3xl p-6 md:p-8 border border-borderSubtle shadow-glowLg relative max-h-[92vh] overflow-y-auto flex flex-col">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
+      <div className="bg-[#111827] w-full max-w-5xl rounded-lg p-6 md:p-8 border border-slate-800 shadow-lg relative max-h-[92vh] overflow-y-auto flex flex-col">
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-6 right-6 p-2 rounded-full text-subtext hover:text-white hover:bg-white/10 transition-colors z-10"
+          className="absolute top-6 right-6 p-1.5 rounded-md text-slate-400 hover:text-white hover:bg-slate-800 transition-colors z-10"
         >
           <X className="w-5 h-5" />
         </button>
 
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 border-b border-borderSubtle/70 pb-6 pr-8">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 border-b border-slate-800 pb-6 pr-8">
           <div className="flex items-start gap-4">
-            <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-emerald-500 to-teal-600 p-0.5 shadow-md shrink-0">
-              <div className="w-full h-full bg-[#14141C] rounded-[14px] flex items-center justify-center">
-                <FileText className="w-7 h-7 text-emerald-400" />
-              </div>
+            <div className="w-12 h-12 rounded-md bg-emerald-950/80 border border-emerald-800/60 p-0.5 shrink-0 flex items-center justify-center text-emerald-400">
+              <FileText className="w-6 h-6 text-emerald-400" />
             </div>
             <div>
               <div className="flex items-center gap-2 mb-1 flex-wrap">
-                <span className="px-3 py-0.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-xs font-semibold text-cyan-300">
+                <span className="px-2.5 py-0.5 rounded-md bg-slate-800 text-slate-300 border border-slate-700 text-xs font-medium">
                   {domain}
                 </span>
-                <span className="px-3 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-xs font-bold text-emerald-400 flex items-center gap-1">
+                <span className="px-2.5 py-0.5 rounded-md bg-emerald-950/80 border border-emerald-800/60 text-xs font-semibold text-emerald-400 flex items-center gap-1">
                   <span>Stage {currentRank}/11:</span> {stage}
                 </span>
               </div>
-              <h2 className="text-2xl font-extrabold text-white">{title}</h2>
-              <p className="text-xs text-subtext mt-0.5 flex items-center gap-3">
+              <h2 className="text-xl font-bold text-white">{title}</h2>
+              <p className="text-xs text-slate-400 mt-0.5 flex items-center gap-3 font-normal">
                 <span className="flex items-center gap-1 text-slate-300">
-                  <GraduationCap className="w-3.5 h-3.5 text-emerald-400" /> {student_name}
+                  <GraduationCap className="w-3.5 h-3.5 text-slate-400" /> {student_name}
                 </span>
                 •
                 <span className="flex items-center gap-1">
@@ -133,20 +131,20 @@ export default function ProjectDocModal({ project, isOpen, onClose, userRole = '
           </div>
 
           {/* AI Composite Score Box */}
-          <div className="flex items-center gap-3 self-start md:self-auto bg-[#0A0A0F] p-3 rounded-2xl border border-emerald-500/30">
+          <div className="flex items-center gap-3 self-start md:self-auto bg-[#0B1120] p-3 rounded-md border border-slate-800">
             <div className="text-right">
-              <div className="text-[10px] uppercase font-bold text-subtext">AI Score</div>
-              <div className="text-2xl font-extrabold text-emerald-400">{ai_scores.overall_score || 88}</div>
+              <div className="text-[10px] uppercase font-semibold text-slate-400">AI Score</div>
+              <div className="text-2xl font-bold text-emerald-400">{ai_scores.overall_score || 88}</div>
             </div>
-            <div className="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 shadow-sm">
-              <Sparkles className="w-5 h-5 text-emerald-400" />
+            <div className="w-9 h-9 rounded-md bg-emerald-950/80 border border-emerald-800/60 flex items-center justify-center text-emerald-400">
+              <Sparkles className="w-4 h-4 text-emerald-400" />
             </div>
           </div>
         </div>
 
         {/* 11-Stage Interactive Timeline Bar */}
-        <div className="bg-[#0A0A0F] p-4 rounded-2xl border border-borderSubtle mb-6">
-          <div className="text-xs font-bold text-subtext uppercase tracking-wider mb-3 flex items-center justify-between">
+        <div className="bg-[#0B1120] p-4 rounded-md border border-slate-800 mb-6">
+          <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3 flex items-center justify-between">
             <span>Structured 11-Stage Development Pipeline</span>
             <span className="text-emerald-400 font-semibold">
               Currently at Stage {currentRank} of 11
@@ -163,28 +161,28 @@ export default function ProjectDocModal({ project, isOpen, onClose, userRole = '
               return (
                 <div
                   key={s.key}
-                  className={`min-w-[140px] p-2.5 rounded-xl border text-left shrink-0 transition-all ${
+                  className={`min-w-[140px] p-2.5 rounded-md border text-left shrink-0 transition-colors ${
                     isCurrent
-                      ? 'bg-emerald-500/20 border-emerald-500 text-white shadow-sm scale-105'
+                      ? 'bg-emerald-950/80 border-emerald-800 text-white font-medium'
                       : isCompleted
-                      ? 'bg-white/5 border-emerald-500/30 text-slate-200'
-                      : 'bg-[#14141C]/40 border-borderSubtle/50 text-gray-500 opacity-60'
+                      ? 'bg-slate-900 border-slate-800 text-slate-300'
+                      : 'bg-slate-950/60 border-slate-800/60 text-slate-600 opacity-60'
                   }`}
                 >
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-[9px] font-extrabold text-subtext uppercase">
+                    <span className="text-[9px] font-semibold text-slate-400 uppercase">
                       #{s.rank}
                     </span>
                     {isCurrent ? (
-                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+                      <span className="w-2 h-2 rounded-full bg-emerald-400" />
                     ) : isCompleted ? (
                       <CheckCircle2 className="w-3 h-3 text-emerald-400" />
                     ) : (
-                      <Lock className="w-3 h-3 text-gray-600" />
+                      <Lock className="w-3 h-3 text-slate-600" />
                     )}
                   </div>
-                  <div className="text-[11px] font-bold truncate">{s.name}</div>
-                  <div className="text-[9px] text-subtext truncate mt-0.5">{s.desc}</div>
+                  <div className="text-[11px] font-semibold truncate">{s.name}</div>
+                  <div className="text-[9px] text-slate-400 truncate mt-0.5 font-normal">{s.desc}</div>
                 </div>
               );
             })}
@@ -192,23 +190,23 @@ export default function ProjectDocModal({ project, isOpen, onClose, userRole = '
         </div>
 
         {/* Navigation Tabs */}
-        <div className="flex items-center gap-2 border-b border-borderSubtle mb-6 text-xs font-semibold">
+        <div className="flex items-center gap-2 border-b border-slate-800 mb-6 text-xs font-medium">
           <button
             onClick={() => setActiveTab('doc')}
-            className={`pb-3 px-4 transition-all border-b-2 flex items-center gap-2 ${
+            className={`pb-3 px-4 transition-colors border-b-2 flex items-center gap-2 ${
               activeTab === 'doc'
-                ? 'border-emerald-500 text-emerald-400 font-bold'
-                : 'border-transparent text-subtext hover:text-white'
+                ? 'border-emerald-500 text-emerald-400 font-semibold'
+                : 'border-transparent text-slate-400 hover:text-white'
             }`}
           >
             <FileText className="w-4 h-4" /> 11-Stage Structured IP Document
           </button>
           <button
             onClick={() => setActiveTab('ai_scores')}
-            className={`pb-3 px-4 transition-all border-b-2 flex items-center gap-2 ${
+            className={`pb-3 px-4 transition-colors border-b-2 flex items-center gap-2 ${
               activeTab === 'ai_scores'
-                ? 'border-emerald-500 text-emerald-400 font-bold'
-                : 'border-transparent text-subtext hover:text-white'
+                ? 'border-emerald-500 text-emerald-400 font-semibold'
+                : 'border-transparent text-slate-400 hover:text-white'
             }`}
           >
             <Sparkles className="w-4 h-4" /> AI Evaluation Breakdown
@@ -221,10 +219,10 @@ export default function ProjectDocModal({ project, isOpen, onClose, userRole = '
           <div className="space-y-6 flex-1">
             {/* Outsider Security Warning Banner for Early Stages */}
             {currentRank <= 4 && (
-              <div className="p-4 rounded-2xl bg-purple-500/10 border border-purple-500/30 text-xs text-purple-200 flex items-start gap-3">
-                <ShieldCheck className="w-5 h-5 text-purple-400 shrink-0 mt-0.5" />
+              <div className="p-4 rounded-md bg-slate-900 border border-slate-700 text-xs text-slate-300 flex items-start gap-3">
+                <ShieldCheck className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
                 <div>
-                  <span className="font-bold text-white block mb-0.5">
+                  <span className="font-semibold text-white block mb-0.5">
                     🔒 Intellectual Property (IP) Protection Active for Outsiders
                   </span>
                   This project is currently in early stage (Stage {currentRank}/11: {stage}). To protect the innovator's IP, high-level concept details are public, while internal technical blueprints and codebase specs are locked for public viewers.
@@ -233,47 +231,47 @@ export default function ProjectDocModal({ project, isOpen, onClose, userRole = '
             )}
 
             {/* STAGES 1 & 2: IDEA & PROBLEM (Always Publicly Unlocked) */}
-            <div className="glass-card rounded-2xl p-6 border border-borderSubtle space-y-4">
-              <div className="flex items-center justify-between border-b border-borderSubtle pb-2">
-                <h3 className="text-sm font-bold text-white flex items-center gap-2">
+            <div className="bg-[#0B1120] rounded-md p-5 border border-slate-800 space-y-4">
+              <div className="flex items-center justify-between border-b border-slate-800 pb-2">
+                <h3 className="text-sm font-semibold text-white flex items-center gap-2">
                   <Lightbulb className="w-4 h-4 text-amber-400" />
                   Stages 1 & 2: Idea Formulation & Problem Definition
                 </h3>
-                <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 flex items-center gap-1">
+                <span className="text-[10px] font-medium px-2.5 py-0.5 rounded-md bg-emerald-950/80 text-emerald-400 border border-emerald-800/60 flex items-center gap-1">
                   <Eye className="w-3 h-3" /> Public Overview Unlocked
                 </span>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
                 <div>
-                  <span className="text-subtext font-semibold uppercase tracking-wider block mb-1">🎯 Problem Statement</span>
-                  <p className="text-slate-200 leading-relaxed">
+                  <span className="text-slate-400 font-medium uppercase tracking-wider block mb-1">🎯 Problem Statement</span>
+                  <p className="text-slate-300 leading-relaxed font-normal">
                     Existing systems in {domain} suffer from inefficiency and lack real-time AI automation.
                   </p>
                 </div>
                 <div>
-                  <span className="text-subtext font-semibold uppercase tracking-wider block mb-1">💡 Core Solution Thesis</span>
-                  <p className="text-slate-200 leading-relaxed">{description}</p>
+                  <span className="text-slate-400 font-medium uppercase tracking-wider block mb-1">💡 Core Solution Thesis</span>
+                  <p className="text-slate-300 leading-relaxed font-normal">{description}</p>
                 </div>
               </div>
             </div>
 
             {/* STAGES 3 & 4: RESEARCH & REQUIREMENTS (Unlocked if Rank >= 3, 4) */}
-            <div className={`glass-card rounded-2xl p-6 border transition-all ${
+            <div className={`bg-[#0B1120] rounded-md p-5 border transition-colors ${
               currentRank < 3
-                ? 'border-dashed border-gray-700/60 bg-[#14141C]/40 opacity-75'
-                : 'border-borderSubtle'
+                ? 'border-dashed border-slate-800 opacity-75'
+                : 'border-slate-800'
             }`}>
-              <div className="flex items-center justify-between border-b border-borderSubtle pb-2 mb-3">
-                <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                  <ClipboardList className="w-4 h-4 text-blue-400" />
+              <div className="flex items-center justify-between border-b border-slate-800 pb-2 mb-3">
+                <h3 className="text-sm font-semibold text-white flex items-center gap-2">
+                  <ClipboardList className="w-4 h-4 text-slate-400" />
                   Stages 3 & 4: Research, Requirements & Planning
                 </h3>
                 {currentRank < 3 ? (
-                  <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/30 flex items-center gap-1">
+                  <span className="text-[10px] font-medium px-2.5 py-0.5 rounded-md bg-amber-950/80 text-amber-400 border border-amber-800/60 flex items-center gap-1">
                     <Lock className="w-3 h-3" /> Locked (Outsider Protection)
                   </span>
                 ) : (
-                  <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 flex items-center gap-1">
+                  <span className="text-[10px] font-medium px-2.5 py-0.5 rounded-md bg-emerald-950/80 text-emerald-400 border border-emerald-800/60 flex items-center gap-1">
                     <CheckCircle2 className="w-3 h-3" /> Unlocked
                   </span>
                 )}
@@ -281,42 +279,42 @@ export default function ProjectDocModal({ project, isOpen, onClose, userRole = '
 
               {currentRank < 3 ? (
                 <div className="py-4 text-center space-y-2 text-xs">
-                  <Lock className="w-6 h-6 text-amber-400 mx-auto" />
-                  <p className="text-subtext max-w-sm mx-auto">
+                  <Lock className="w-5 h-5 text-amber-400 mx-auto" />
+                  <p className="text-slate-400 max-w-sm mx-auto font-normal">
                     Market research data and project requirement specifications are locked for public security.
                   </p>
                 </div>
               ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-normal">
                   <div>
-                    <span className="text-subtext font-semibold uppercase tracking-wider block mb-1">🔎 Literature & Competitor Analysis</span>
-                    <p className="text-slate-200">Benchmarked against existing legacy APIs; delivers 4x throughput efficiency.</p>
+                    <span className="text-slate-400 font-medium uppercase tracking-wider block mb-1">🔎 Literature & Competitor Analysis</span>
+                    <p className="text-slate-300">Benchmarked against existing legacy APIs; delivers 4x throughput efficiency.</p>
                   </div>
                   <div>
-                    <span className="text-subtext font-semibold uppercase tracking-wider block mb-1">📋 Technical Requirements (PRD)</span>
-                    <p className="text-slate-200">REST microservices, sub-150ms execution latency, and role-based ACLs.</p>
+                    <span className="text-slate-400 font-medium uppercase tracking-wider block mb-1">📋 Technical Requirements (PRD)</span>
+                    <p className="text-slate-300">REST microservices, sub-150ms execution latency, and role-based ACLs.</p>
                   </div>
                 </div>
               )}
             </div>
 
             {/* STAGES 5 & 6: ARCHITECTURE & PROTOTYPE (Unlocked if Rank >= 5, 6) */}
-            <div className={`glass-card rounded-2xl p-6 border transition-all ${
+            <div className={`bg-[#0B1120] rounded-md p-5 border transition-colors ${
               currentRank < 5
-                ? 'border-dashed border-gray-700/60 bg-[#14141C]/40 opacity-75'
-                : 'border-borderSubtle'
+                ? 'border-dashed border-slate-800 opacity-75'
+                : 'border-slate-800'
             }`}>
-              <div className="flex items-center justify-between border-b border-borderSubtle pb-2 mb-3">
-                <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                  <Layers className="w-4 h-4 text-purple-400" />
+              <div className="flex items-center justify-between border-b border-slate-800 pb-2 mb-3">
+                <h3 className="text-sm font-semibold text-white flex items-center gap-2">
+                  <Layers className="w-4 h-4 text-slate-400" />
                   Stages 5 & 6: Architecture, Design & Proof of Concept
                 </h3>
                 {currentRank < 5 ? (
-                  <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/30 flex items-center gap-1">
+                  <span className="text-[10px] font-medium px-2.5 py-0.5 rounded-md bg-amber-950/80 text-amber-400 border border-amber-800/60 flex items-center gap-1">
                     <Lock className="w-3 h-3" /> Architecture Locked
                   </span>
                 ) : (
-                  <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 flex items-center gap-1">
+                  <span className="text-[10px] font-medium px-2.5 py-0.5 rounded-md bg-emerald-950/80 text-emerald-400 border border-emerald-800/60 flex items-center gap-1">
                     <CheckCircle2 className="w-3 h-3" /> Unlocked
                   </span>
                 )}
@@ -324,15 +322,15 @@ export default function ProjectDocModal({ project, isOpen, onClose, userRole = '
 
               {currentRank < 5 ? (
                 <div className="py-5 text-center space-y-3">
-                  <Lock className="w-8 h-8 text-amber-400 mx-auto" />
-                  <h4 className="text-sm font-bold text-white">System Architecture & Blueprint Sealed</h4>
-                  <p className="text-xs text-subtext max-w-md mx-auto">
+                  <Lock className="w-6 h-6 text-amber-400 mx-auto" />
+                  <h4 className="text-sm font-semibold text-white">System Architecture & Blueprint Sealed</h4>
+                  <p className="text-xs text-slate-400 max-w-md mx-auto font-normal">
                     To prevent unauthorized copying of this innovation, internal system diagrams are protected until Stage 5.
                   </p>
                   <button
                     onClick={handleRequestAccess}
                     disabled={accessRequested}
-                    className="px-4 py-2 rounded-xl bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-500/40 text-emerald-400 text-xs font-bold inline-flex items-center gap-2"
+                    className="px-3.5 py-1.5 rounded-md bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 text-xs font-medium inline-flex items-center gap-2 transition-colors"
                   >
                     {accessRequested ? (
                       <>
@@ -348,19 +346,19 @@ export default function ProjectDocModal({ project, isOpen, onClose, userRole = '
               ) : (
                 <div className="space-y-4 text-xs">
                   <div>
-                    <span className="text-subtext font-semibold uppercase tracking-wider block mb-1">🏗️ System Architecture Flow</span>
-                    <div className="p-3 rounded-xl bg-[#0A0A0F] font-mono text-[11px] text-emerald-400 border border-borderSubtle">
+                    <span className="text-slate-400 font-medium uppercase tracking-wider block mb-1">🏗️ System Architecture Flow</span>
+                    <div className="p-3 rounded-md bg-[#111827] font-mono text-[11px] text-emerald-400 border border-slate-800">
                       Client Frontend → API Gateway → AI Microservice → Supabase Postgres Ledger
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
                     {demo_url && (
-                      <a href={demo_url} target="_blank" rel="noreferrer" className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold flex items-center gap-2 text-xs">
+                      <a href={demo_url} target="_blank" rel="noreferrer" className="px-3.5 py-1.5 rounded-md bg-emerald-600 hover:bg-emerald-500 text-white font-medium flex items-center gap-2 text-xs transition-colors">
                         <ExternalLink className="w-3.5 h-3.5" /> Launch Working Prototype
                       </a>
                     )}
                     {github_url && (
-                      <a href={github_url} target="_blank" rel="noreferrer" className="px-4 py-2 rounded-xl bg-white/5 text-subtext hover:text-white font-medium flex items-center gap-2 text-xs">
+                      <a href={github_url} target="_blank" rel="noreferrer" className="px-3.5 py-1.5 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-medium flex items-center gap-2 text-xs transition-colors">
                         <Github className="w-3.5 h-3.5" /> Repository
                       </a>
                     )}
@@ -370,76 +368,76 @@ export default function ProjectDocModal({ project, isOpen, onClose, userRole = '
             </div>
 
             {/* STAGES 7 & 8: MVP & TESTING (Unlocked if Rank >= 7, 8) */}
-            <div className={`glass-card rounded-2xl p-6 border transition-all ${
+            <div className={`bg-[#0B1120] rounded-md p-5 border transition-colors ${
               currentRank < 7
-                ? 'border-dashed border-gray-700/60 bg-[#14141C]/40 opacity-75'
-                : 'border-borderSubtle'
+                ? 'border-dashed border-slate-800 opacity-75'
+                : 'border-slate-800'
             }`}>
-              <div className="flex items-center justify-between border-b border-borderSubtle pb-2 mb-3">
-                <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                  <Cpu className="w-4 h-4 text-emerald-400" />
+              <div className="flex items-center justify-between border-b border-slate-800 pb-2 mb-3">
+                <h3 className="text-sm font-semibold text-white flex items-center gap-2">
+                  <Cpu className="w-4 h-4 text-slate-400" />
                   Stages 7 & 8: MVP Engineering & User Testing
                 </h3>
                 {currentRank < 7 ? (
-                  <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-gray-500/10 text-gray-400 border border-gray-500/30 flex items-center gap-1">
+                  <span className="text-[10px] font-medium px-2.5 py-0.5 rounded-md bg-slate-800 text-slate-400 border border-slate-700 flex items-center gap-1">
                     <Lock className="w-3 h-3" /> Upcoming Stage
                   </span>
                 ) : (
-                  <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 flex items-center gap-1">
+                  <span className="text-[10px] font-medium px-2.5 py-0.5 rounded-md bg-emerald-950/80 text-emerald-400 border border-emerald-800/60 flex items-center gap-1">
                     <CheckCircle2 className="w-3 h-3" /> Active MVP
                   </span>
                 )}
               </div>
 
               {currentRank >= 7 && (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-normal">
                   <div>
-                    <span className="text-subtext font-semibold uppercase tracking-wider block mb-1">⚙️ MVP Feature Set</span>
-                    <p className="text-slate-200">Core engine deployed with automated background batch processing.</p>
+                    <span className="text-slate-400 font-medium uppercase tracking-wider block mb-1">⚙️ MVP Feature Set</span>
+                    <p className="text-slate-300">Core engine deployed with automated background batch processing.</p>
                   </div>
                   <div>
-                    <span className="text-subtext font-semibold uppercase tracking-wider block mb-1">🔬 Testing & QA Benchmarks</span>
-                    <p className="text-slate-200">96.4% test suite pass rate across 500 simulated user requests.</p>
+                    <span className="text-slate-400 font-medium uppercase tracking-wider block mb-1">🔬 Testing & QA Benchmarks</span>
+                    <p className="text-slate-300">96.4% test suite pass rate across 500 simulated user requests.</p>
                   </div>
                 </div>
               )}
             </div>
 
             {/* STAGES 9, 10 & 11: PILOT, FINAL PRODUCT, SCALE (Unlocked if Rank >= 9, 10, 11) */}
-            <div className={`glass-card rounded-2xl p-6 border transition-all ${
+            <div className={`bg-[#0B1120] rounded-md p-5 border transition-colors ${
               currentRank < 9
-                ? 'border-dashed border-gray-700/60 bg-[#14141C]/40 opacity-75'
-                : 'border-borderSubtle'
+                ? 'border-dashed border-slate-800 opacity-75'
+                : 'border-slate-800'
             }`}>
-              <div className="flex items-center justify-between border-b border-borderSubtle pb-2 mb-3">
-                <h3 className="text-sm font-bold text-white flex items-center gap-2">
+              <div className="flex items-center justify-between border-b border-slate-800 pb-2 mb-3">
+                <h3 className="text-sm font-semibold text-white flex items-center gap-2">
                   <Rocket className="w-4 h-4 text-amber-400" />
                   Stages 9, 10 & 11: Pilot, Launch & Scale
                 </h3>
                 {currentRank < 9 ? (
-                  <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-gray-500/10 text-gray-400 border border-gray-500/30 flex items-center gap-1">
+                  <span className="text-[10px] font-medium px-2.5 py-0.5 rounded-md bg-slate-800 text-slate-400 border border-slate-700 flex items-center gap-1">
                     <Lock className="w-3 h-3" /> Future Milestones
                   </span>
                 ) : (
-                  <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 flex items-center gap-1">
+                  <span className="text-[10px] font-medium px-2.5 py-0.5 rounded-md bg-emerald-950/80 text-emerald-400 border border-emerald-800/60 flex items-center gap-1">
                     <CheckCircle2 className="w-3 h-3" /> Commercial Scale
                   </span>
                 )}
               </div>
 
               {currentRank >= 9 && (
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-normal">
                   <div>
-                    <span className="text-subtext font-semibold uppercase tracking-wider block mb-1">🌍 Pilot Sandbox</span>
-                    <p className="text-slate-200">{college} Innovation Lab</p>
+                    <span className="text-slate-400 font-medium uppercase tracking-wider block mb-1">🌍 Pilot Sandbox</span>
+                    <p className="text-slate-300">{college} Innovation Lab</p>
                   </div>
                   <div>
-                    <span className="text-subtext font-semibold uppercase tracking-wider block mb-1">🚀 Launch Status</span>
-                    <p className="text-slate-200">Production Live Deployment</p>
+                    <span className="text-slate-400 font-medium uppercase tracking-wider block mb-1">🚀 Launch Status</span>
+                    <p className="text-slate-300">Production Live Deployment</p>
                   </div>
                   <div>
-                    <span className="text-subtext font-semibold uppercase tracking-wider block mb-1">📈 Scale & Patent</span>
-                    <p className="text-slate-200">Provisional IP Granted</p>
+                    <span className="text-slate-400 font-medium uppercase tracking-wider block mb-1">📈 Scale & Patent</span>
+                    <p className="text-slate-300">Provisional IP Granted</p>
                   </div>
                 </div>
               )}
@@ -450,41 +448,41 @@ export default function ProjectDocModal({ project, isOpen, onClose, userRole = '
         {/* Tab 2: AI Score Breakdown */}
         {activeTab === 'ai_scores' && (
           <div className="space-y-4">
-            <div className="glass-card rounded-2xl p-5 border border-emerald-500/30 flex items-center justify-between">
+            <div className="bg-[#0B1120] rounded-md p-4 border border-slate-800 flex items-center justify-between">
               <div>
-                <span className="text-xs uppercase font-bold text-subtext">Composite AI Score</span>
-                <div className="text-3xl font-extrabold text-white mt-1">
+                <span className="text-xs uppercase font-medium text-slate-400">Composite AI Score</span>
+                <div className="text-2xl font-bold text-white mt-1">
                   {ai_scores.overall_score || 88} / 100
                 </div>
               </div>
-              <Award className="w-10 h-10 text-emerald-400" />
+              <Award className="w-8 h-8 text-emerald-400" />
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-              <div className="p-3 rounded-xl bg-[#0A0A0F] border border-borderSubtle flex justify-between">
-                <span>Innovation Score</span>
-                <span className="font-bold text-emerald-400">{ai_scores.innovation_score || 85}</span>
+              <div className="p-3 rounded-md bg-[#0B1120] border border-slate-800 flex justify-between">
+                <span className="text-slate-400 font-medium">Innovation Score</span>
+                <span className="font-semibold text-emerald-400">{ai_scores.innovation_score || 85}</span>
               </div>
-              <div className="p-3 rounded-xl bg-[#0A0A0F] border border-borderSubtle flex justify-between">
-                <span>Feasibility Score</span>
-                <span className="font-bold text-blue-400">{ai_scores.feasibility_score || 80}</span>
+              <div className="p-3 rounded-md bg-[#0B1120] border border-slate-800 flex justify-between">
+                <span className="text-slate-400 font-medium">Feasibility Score</span>
+                <span className="font-semibold text-blue-400">{ai_scores.feasibility_score || 80}</span>
               </div>
-              <div className="p-3 rounded-xl bg-[#0A0A0F] border border-borderSubtle flex justify-between">
-                <span>Impact Score</span>
-                <span className="font-bold text-emerald-400">{ai_scores.impact_score || 90}</span>
+              <div className="p-3 rounded-md bg-[#0B1120] border border-slate-800 flex justify-between">
+                <span className="text-slate-400 font-medium">Impact Score</span>
+                <span className="font-semibold text-emerald-400">{ai_scores.impact_score || 90}</span>
               </div>
-              <div className="p-3 rounded-xl bg-[#0A0A0F] border border-borderSubtle flex justify-between">
-                <span>Technical Score</span>
-                <span className="font-bold text-cyan-400">{ai_scores.technical_score || 88}</span>
+              <div className="p-3 rounded-md bg-[#0B1120] border border-slate-800 flex justify-between">
+                <span className="text-slate-400 font-medium">Technical Score</span>
+                <span className="font-semibold text-cyan-400">{ai_scores.technical_score || 88}</span>
               </div>
             </div>
           </div>
         )}
 
-        <div className="mt-6 pt-4 border-t border-borderSubtle flex justify-end">
+        <div className="mt-6 pt-4 border-t border-slate-800 flex justify-end">
           <button
             onClick={onClose}
-            className="px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold shadow-md transition-all"
+            className="px-4 py-2 rounded-md bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-medium transition-colors"
           >
             Close Document View
           </button>

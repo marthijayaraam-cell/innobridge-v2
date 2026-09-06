@@ -80,28 +80,28 @@ export default function AuthPage() {
 
   return (
     <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center p-4 py-12 bg-[#0B1120] relative">
-      <div className="w-full max-w-md bg-[#111827] rounded-2xl p-6 sm:p-8 border border-[#334155] shadow-card relative">
+      <div className="w-full max-w-md bg-[#111827] rounded-md p-6 sm:p-8 border border-slate-800 relative">
         
         {/* Header Icon & Title */}
         <div className="flex flex-col items-center text-center mb-6">
-          <div className="w-10 h-10 rounded-xl bg-emerald-600 flex items-center justify-center text-white font-bold mb-3 shadow-sm">
-            <Sparkles className="w-5 h-5" />
+          <div className="w-9 h-9 rounded-md bg-emerald-950/80 border border-emerald-800/60 flex items-center justify-center text-emerald-400 font-bold mb-3">
+            <Sparkles className="w-4 h-4" />
           </div>
           <h1 className="text-2xl font-extrabold text-white">
             {isSignUp ? 'Join InnoBridge Platform' : 'Welcome Back'}
           </h1>
-          <p className="text-xs text-slate-400 mt-1">
+          <p className="text-xs text-slate-400 mt-1 font-normal">
             {isSignUp ? 'Create your professional ecosystem account' : 'Sign in to access your innovation workspace'}
           </p>
         </div>
 
         {/* Tab Switcher */}
-        <div className="grid grid-cols-2 p-1 rounded-xl bg-[#0B1120] border border-[#334155] mb-6 text-xs font-semibold">
+        <div className="grid grid-cols-2 p-1 rounded-md bg-[#0B1120] border border-slate-800 mb-6 text-xs font-medium">
           <button
             type="button"
             onClick={() => { setIsSignUp(false); setErrorMsg(''); }}
-            className={`py-2 rounded-lg transition-all ${
-              !isSignUp ? 'bg-emerald-600 text-white shadow-sm' : 'text-slate-400 hover:text-white'
+            className={`py-1.5 rounded-md transition-colors ${
+              !isSignUp ? 'bg-emerald-600 text-white font-medium' : 'text-slate-400 hover:text-white'
             }`}
           >
             Sign In
@@ -109,8 +109,8 @@ export default function AuthPage() {
           <button
             type="button"
             onClick={() => { setIsSignUp(true); setErrorMsg(''); }}
-            className={`py-2 rounded-lg transition-all ${
-              isSignUp ? 'bg-emerald-600 text-white shadow-sm' : 'text-slate-400 hover:text-white'
+            className={`py-1.5 rounded-md transition-colors ${
+              isSignUp ? 'bg-emerald-600 text-white font-medium' : 'text-slate-400 hover:text-white'
             }`}
           >
             Create Account
@@ -118,7 +118,7 @@ export default function AuthPage() {
         </div>
 
         {errorMsg && (
-          <div className="mb-4 p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-xs text-red-400 flex items-start justify-between gap-2">
+          <div className="mb-4 p-3 rounded-md bg-red-500/10 border border-red-500/30 text-xs text-red-400 flex items-start justify-between gap-2">
             <div className="flex items-start gap-2">
               <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
               <div>
@@ -149,39 +149,39 @@ export default function AuthPage() {
                 <button
                   type="button"
                   onClick={() => setRole('student')}
-                  className={`p-2.5 rounded-xl border flex flex-col items-center justify-center gap-1.5 transition-all ${
+                  className={`p-2.5 rounded-md border flex flex-col items-center justify-center gap-1.5 transition-colors ${
                     role === 'student'
-                      ? 'bg-emerald-500/15 border-emerald-500 text-white font-bold'
-                      : 'bg-[#0B1120] border-[#334155] text-slate-400 hover:text-white'
+                      ? 'bg-emerald-500/15 border-emerald-500 text-white font-medium'
+                      : 'bg-[#0B1120] border-slate-800 text-slate-400 hover:text-white'
                   }`}
                 >
-                  <GraduationCap className="w-5 h-5 text-emerald-400" />
+                  <GraduationCap className="w-4 h-4 text-emerald-400" />
                   <span className="text-[11px]">Student</span>
                 </button>
 
                 <button
                   type="button"
                   onClick={() => setRole('faculty')}
-                  className={`p-2.5 rounded-xl border flex flex-col items-center justify-center gap-1.5 transition-all ${
+                  className={`p-2.5 rounded-md border flex flex-col items-center justify-center gap-1.5 transition-colors ${
                     role === 'faculty'
-                      ? 'bg-amber-500/15 border-amber-500 text-white font-bold'
-                      : 'bg-[#0B1120] border-[#334155] text-slate-400 hover:text-white'
+                      ? 'bg-amber-500/15 border-amber-500 text-white font-medium'
+                      : 'bg-[#0B1120] border-slate-800 text-slate-400 hover:text-white'
                   }`}
                 >
-                  <ShieldCheck className="w-5 h-5 text-amber-400" />
+                  <ShieldCheck className="w-4 h-4 text-amber-400" />
                   <span className="text-[11px]">Faculty</span>
                 </button>
 
                 <button
                   type="button"
                   onClick={() => setRole('company')}
-                  className={`p-2.5 rounded-xl border flex flex-col items-center justify-center gap-1.5 transition-all ${
+                  className={`p-2.5 rounded-md border flex flex-col items-center justify-center gap-1.5 transition-colors ${
                     role === 'company'
-                      ? 'bg-emerald-500/15 border-emerald-500 text-white font-bold'
-                      : 'bg-[#0B1120] border-[#334155] text-slate-400 hover:text-white'
+                      ? 'bg-emerald-500/15 border-emerald-500 text-white font-medium'
+                      : 'bg-[#0B1120] border-slate-800 text-slate-400 hover:text-white'
                   }`}
                 >
-                  <Building2 className="w-5 h-5 text-emerald-400" />
+                  <Building2 className="w-4 h-4 text-emerald-400" />
                   <span className="text-[11px]">Company</span>
                 </button>
               </div>
@@ -202,7 +202,7 @@ export default function AuthPage() {
                   placeholder="e.g. Aarav Sharma"
                   value={formData.fullName}
                   onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                  className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#0B1120] border border-[#334155] focus:border-emerald-500 text-slate-100 text-xs outline-none transition-colors"
+                  className="w-full pl-10 pr-4 py-2.5 rounded-md bg-[#0B1120] border border-slate-800 focus:border-slate-600 text-slate-100 text-xs outline-none transition-colors"
                 />
               </div>
             </div>
@@ -221,7 +221,7 @@ export default function AuthPage() {
                 placeholder="name@university.edu"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#0B1120] border border-[#334155] focus:border-emerald-500 text-slate-100 text-xs outline-none transition-colors"
+                className="w-full pl-10 pr-4 py-2.5 rounded-md bg-[#0B1120] border border-slate-800 focus:border-slate-600 text-slate-100 text-xs outline-none transition-colors"
               />
             </div>
           </div>
@@ -240,7 +240,7 @@ export default function AuthPage() {
                 placeholder="••••••••"
                 value={formData.password}
                 onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#0B1120] border border-[#334155] focus:border-emerald-500 text-slate-100 text-xs outline-none transition-colors"
+                className="w-full pl-10 pr-4 py-2.5 rounded-md bg-[#0B1120] border border-slate-800 focus:border-slate-600 text-slate-100 text-xs outline-none transition-colors"
               />
             </div>
           </div>
@@ -256,15 +256,15 @@ export default function AuthPage() {
                 <select
                   value={formData.college}
                   onChange={(e) => setFormData({ ...formData, college: e.target.value })}
-                  className="w-full pl-10 pr-4 py-2.5 sm:py-3 rounded-xl bg-[#0B1120] border border-[#334155] focus:border-emerald-500 text-sm sm:text-base font-semibold text-white outline-none cursor-pointer"
+                  className="w-full pl-10 pr-4 py-2 rounded-md bg-[#0B1120] border border-slate-800 focus:border-slate-600 text-xs font-medium text-white outline-none cursor-pointer"
                 >
-                  <option value="IIT Bombay" className="bg-[#111827] text-white font-semibold text-sm sm:text-base py-2.5">IIT Bombay</option>
-                  <option value="BITS Pilani" className="bg-[#111827] text-white font-semibold text-sm sm:text-base py-2.5">BITS Pilani</option>
-                  <option value="Delhi Technological University" className="bg-[#111827] text-white font-semibold text-sm sm:text-base py-2.5">Delhi Technological University</option>
-                  <option value="Anna University" className="bg-[#111827] text-white font-semibold text-sm sm:text-base py-2.5">Anna University</option>
-                  <option value="IIT Madras" className="bg-[#111827] text-white font-semibold text-sm sm:text-base py-2.5">IIT Madras</option>
-                  <option value="IIT Kharagpur" className="bg-[#111827] text-white font-semibold text-sm sm:text-base py-2.5">IIT Kharagpur</option>
-                  <option value="NIT Trichy" className="bg-[#111827] text-white font-semibold text-sm sm:text-base py-2.5">NIT Trichy</option>
+                  <option value="IIT Bombay" className="bg-[#111827] text-white font-normal text-xs py-2">IIT Bombay</option>
+                  <option value="BITS Pilani" className="bg-[#111827] text-white font-normal text-xs py-2">BITS Pilani</option>
+                  <option value="Delhi Technological University" className="bg-[#111827] text-white font-normal text-xs py-2">Delhi Technological University</option>
+                  <option value="Anna University" className="bg-[#111827] text-white font-normal text-xs py-2">Anna University</option>
+                  <option value="IIT Madras" className="bg-[#111827] text-white font-normal text-xs py-2">IIT Madras</option>
+                  <option value="IIT Kharagpur" className="bg-[#111827] text-white font-normal text-xs py-2">IIT Kharagpur</option>
+                  <option value="NIT Trichy" className="bg-[#111827] text-white font-normal text-xs py-2">NIT Trichy</option>
                 </select>
               </div>
             </div>
@@ -284,7 +284,7 @@ export default function AuthPage() {
                   placeholder="e.g. Nexus Venture Partners"
                   value={formData.companyName}
                   onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
-                  className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#0B1120] border border-[#334155] focus:border-emerald-500 text-slate-100 text-xs outline-none transition-colors"
+                  className="w-full pl-10 pr-4 py-2.5 rounded-md bg-[#0B1120] border border-slate-800 focus:border-slate-600 text-slate-100 text-xs outline-none transition-colors"
                 />
               </div>
             </div>
@@ -294,7 +294,7 @@ export default function AuthPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold shadow-sm flex items-center justify-center gap-2 transition-all mt-6"
+            className="w-full py-2.5 rounded-md bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-medium border border-emerald-500/40 flex items-center justify-center gap-2 transition-colors mt-6"
           >
             {loading ? (
               <Loader2 className="w-4 h-4 animate-spin" />

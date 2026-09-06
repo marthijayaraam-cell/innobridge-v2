@@ -65,29 +65,29 @@ export default function ProjectCard({
   };
 
   return (
-    <div className="bg-[#111827] rounded-xl p-5 border border-[#334155] shadow-card hover:shadow-cardHover card-hover-effect flex flex-col justify-between relative group">
+    <div className="bg-[#111827] rounded-md p-4 border border-slate-800 hover:border-slate-700 transition-colors flex flex-col justify-between relative group">
       <div>
         {/* Header Badges */}
         <div className="flex items-center justify-between gap-2 mb-3">
-          {/* Domain Tag - Cyan Tinted */}
-          <span className="text-xs font-semibold px-2.5 py-0.5 rounded-md badge-cyan">
+          {/* Domain Tag - GitHub Topic Tag Style */}
+          <span className="text-xs font-medium px-2.5 py-0.5 rounded-md bg-slate-800 text-slate-300 border border-slate-700">
             {domain}
           </span>
 
           <div className="flex items-center gap-2">
             {/* Stage Badge */}
-            <span className={`text-[11px] font-semibold px-2.5 py-0.5 rounded-md border ${getStageBadgeStyle(stage)}`}>
+            <span className={`text-[11px] font-medium px-2.5 py-0.5 rounded-md border ${getStageBadgeStyle(stage)}`}>
               {stage}
             </span>
 
-            {/* Prominent AI Score Badge - Indigo Tinted */}
+            {/* Prominent AI Score Badge - Flat Green */}
             <div 
               onClick={() => onViewDetails && onViewDetails(project)}
-              className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-md badge-ai cursor-pointer hover:bg-aiIndigo/20 transition-colors"
+              className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-emerald-950/80 border border-emerald-800/60 text-emerald-400 cursor-pointer hover:bg-emerald-900/60 transition-colors"
               title="View AI 5-parameter evaluation breakdown"
             >
-              <Sparkles className="w-3.5 h-3.5 text-aiIndigoDark" />
-              <span className="text-xs font-bold text-aiIndigoDark">AI Score: {formattedAIScore}</span>
+              <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
+              <span className="text-xs font-semibold text-emerald-400">AI Score: {formattedAIScore}</span>
             </div>
           </div>
         </div>
@@ -95,27 +95,27 @@ export default function ProjectCard({
         {/* Project Title */}
         <h3 
           onClick={() => onViewDetails && onViewDetails(project)}
-          className="text-base font-bold text-white group-hover:text-emerald-400 transition-colors line-clamp-1 mb-1.5 cursor-pointer flex items-center justify-between"
+          className="text-base font-bold text-white group-hover:text-emerald-400 transition-colors line-clamp-1 mb-1 cursor-pointer flex items-center justify-between"
         >
           <span>{title}</span>
-          <ChevronRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity text-emerald-400" />
+          <ChevronRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity text-slate-400" />
         </h3>
 
         {/* Project Description */}
         <p 
           onClick={() => onViewDetails && onViewDetails(project)}
-          className="text-slate-400 text-xs line-clamp-2 leading-relaxed mb-4 cursor-pointer hover:text-slate-300 transition-colors"
+          className="text-slate-400 text-xs line-clamp-2 leading-relaxed mb-4 cursor-pointer hover:text-slate-300 transition-colors font-normal"
         >
           {description}
         </p>
 
         {/* Student Name, College & Project ID Metadata */}
-        <div className="flex items-center justify-between text-[11px] text-slate-400 pb-3 mb-3 border-b border-[#334155]/60">
+        <div className="flex items-center justify-between text-[11px] text-slate-400 pb-3 mb-3 border-b border-slate-800/80">
           <div className="flex items-center gap-1.5 truncate max-w-[200px]">
-            <GraduationCap className="w-3.5 h-3.5 text-slate-300 shrink-0" />
-            <span className="font-semibold text-slate-200 truncate">{student_name}</span>
-            <span className="text-slate-500">•</span>
-            <span className="truncate">{college}</span>
+            <GraduationCap className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+            <span className="font-medium text-slate-300 truncate">{student_name}</span>
+            <span className="text-slate-600">•</span>
+            <span className="truncate text-slate-400">{college}</span>
           </div>
           <span className="text-[10px] font-mono text-slate-500 shrink-0">ID: {id?.slice(0, 6)}</span>
         </div>
@@ -138,7 +138,7 @@ export default function ProjectCard({
                 />
               ))}
             </div>
-            <span className="font-semibold text-slate-200">
+            <span className="font-medium text-slate-300">
               {avg_faculty_rating > 0 ? avg_faculty_rating.toFixed(1) : 'Unrated'}
             </span>
             {reviews_count > 0 && (
@@ -148,23 +148,23 @@ export default function ProjectCard({
 
           <button
             onClick={() => onViewDetails && onViewDetails(project)}
-            className="text-[11px] font-semibold text-slate-300 hover:text-emerald-400 transition-colors flex items-center gap-1"
+            className="text-[11px] font-medium text-slate-400 hover:text-white transition-colors flex items-center gap-1"
           >
             <FileText className="w-3.5 h-3.5" />
-            IP Document & Stages
+            IP & Stages
           </button>
         </div>
 
 
         {/* Action Buttons */}
-        <div className="flex items-center justify-between gap-2 pt-2 border-t border-[#334155]/60">
+        <div className="flex items-center justify-between gap-2 pt-2 border-t border-slate-800/80">
           <div className="flex items-center gap-2">
             {demo_url && (
               <a
                 href={demo_url}
                 target="_blank"
                 rel="noreferrer"
-                className="p-1.5 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white transition-colors"
+                className="p-1.5 rounded-md bg-slate-800/80 hover:bg-slate-700 text-slate-400 hover:text-white transition-colors"
                 title="Live Demo"
               >
                 <ExternalLink className="w-3.5 h-3.5" />
@@ -175,7 +175,7 @@ export default function ProjectCard({
                 href={github_url}
                 target="_blank"
                 rel="noreferrer"
-                className="p-1.5 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white transition-colors"
+                className="p-1.5 rounded-md bg-slate-800/80 hover:bg-slate-700 text-slate-400 hover:text-white transition-colors"
                 title="GitHub Repository"
               >
                 <Github className="w-3.5 h-3.5" />
@@ -187,9 +187,9 @@ export default function ProjectCard({
           {userRole === 'faculty' && onReview && (
             <button
               onClick={() => onReview(project)}
-              className="px-3 py-1 rounded-md bg-blue-600/20 hover:bg-blue-600/30 text-blue-300 border border-blue-500/30 text-xs font-semibold flex items-center gap-1.5 transition-all"
+              className="px-3 py-1.5 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-medium flex items-center gap-1.5 transition-colors"
             >
-              <Star className="w-3.5 h-3.5 fill-blue-400 text-blue-400" />
+              <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
               Review Project
             </button>
           )}
@@ -198,10 +198,10 @@ export default function ProjectCard({
             <button
               onClick={handleInterestClick}
               disabled={interestSubmitted}
-              className={`px-3 py-1 rounded-md text-xs font-semibold flex items-center gap-1.5 transition-all ${
+              className={`px-3 py-1.5 rounded-md text-xs font-medium flex items-center gap-1.5 transition-colors ${
                 interestSubmitted
-                  ? 'bg-emerald-500/20 border border-emerald-500/40 text-emerald-300'
-                  : 'bg-brandBlue hover:bg-brandBlueHover text-white shadow-sm'
+                  ? 'bg-emerald-950/80 border border-emerald-800/60 text-emerald-300'
+                  : 'bg-emerald-600 hover:bg-emerald-500 text-white'
               }`}
             >
               {interestSubmitted ? (
@@ -221,7 +221,7 @@ export default function ProjectCard({
           {userRole === 'student' && (
             <button
               onClick={() => onViewDetails && onViewDetails(project)}
-              className="px-3 py-1 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium flex items-center gap-1 transition-colors"
+              className="px-3 py-1.5 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-medium flex items-center gap-1 transition-colors"
             >
               View Document
               <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
