@@ -29,17 +29,17 @@ import {
 } from 'lucide-react';
 
 export const ELEVEN_STAGES = [
-  { rank: 1, key: 'IDEA', name: '💡 Idea Formulation', desc: 'Concept & Brainstorm' },
-  { rank: 2, key: 'PROBLEM', name: '🎯 Problem Definition', desc: 'Need & Scope' },
-  { rank: 3, key: 'RESEARCH', name: '🔎 Research & Analysis', desc: 'Market & Literature' },
-  { rank: 4, key: 'REQUIREMENTS', name: '📋 Requirements & Planning', desc: 'PRD & Milestones' },
-  { rank: 5, key: 'ARCHITECTURE', name: '🏗️ Architecture & Design', desc: 'System & UI/UX' },
-  { rank: 6, key: 'PROTOTYPE', name: '🧪 PoC / Prototype', desc: 'Proof of Concept' },
-  { rank: 7, key: 'MVP', name: '⚙️ MVP Development', desc: 'Core Engineering' },
-  { rank: 8, key: 'TESTING', name: '🔬 Testing & Validation', desc: 'QA & User Tests' },
-  { rank: 9, key: 'PILOT', name: '🌍 Pilot Deployment', desc: 'Field Sandbox' },
-  { rank: 10, key: 'FINAL_PRODUCT', name: '🚀 Final Product', desc: 'Production Ready' },
-  { rank: 11, key: 'SCALE', name: '📈 Launch → Scale → Maintain', desc: 'Market Scale & IP' }
+  { rank: 1, key: 'IDEA', name: 'Idea Formulation', desc: 'Concept & Brainstorm' },
+  { rank: 2, key: 'PROBLEM', name: 'Problem Definition', desc: 'Need & Scope' },
+  { rank: 3, key: 'RESEARCH', name: 'Research & Analysis', desc: 'Market & Literature' },
+  { rank: 4, key: 'REQUIREMENTS', name: 'Requirements & Planning', desc: 'PRD & Milestones' },
+  { rank: 5, key: 'ARCHITECTURE', name: 'Architecture & Design', desc: 'System & UI/UX' },
+  { rank: 6, key: 'PROTOTYPE', name: 'PoC / Prototype', desc: 'Proof of Concept' },
+  { rank: 7, key: 'MVP', name: 'MVP Development', desc: 'Core Engineering' },
+  { rank: 8, key: 'TESTING', name: 'Testing & Validation', desc: 'QA & User Tests' },
+  { rank: 9, key: 'PILOT', name: 'Pilot Deployment', desc: 'Field Sandbox' },
+  { rank: 10, key: 'FINAL_PRODUCT', name: 'Final Product', desc: 'Production Ready' },
+  { rank: 11, key: 'SCALE', name: 'Launch → Scale → Maintain', desc: 'Market Scale & IP' }
 ];
 
 export default function ProjectDocModal({ project, isOpen, onClose, userRole = 'student' }) {
@@ -165,8 +165,8 @@ export default function ProjectDocModal({ project, isOpen, onClose, userRole = '
                     isCurrent
                       ? 'bg-emerald-950/80 border-emerald-800 text-white font-medium'
                       : isCompleted
-                      ? 'bg-slate-900 border-slate-800 text-slate-300'
-                      : 'bg-slate-950/60 border-slate-800/60 text-slate-600 opacity-60'
+                      ? 'bg-slate-900 border-slate-800 text-slate-200'
+                      : 'bg-slate-900/60 border-slate-800/80 text-slate-400'
                   }`}
                 >
                   <div className="flex items-center justify-between mb-1">
@@ -178,7 +178,7 @@ export default function ProjectDocModal({ project, isOpen, onClose, userRole = '
                     ) : isCompleted ? (
                       <CheckCircle2 className="w-3 h-3 text-emerald-400" />
                     ) : (
-                      <Lock className="w-3 h-3 text-slate-600" />
+                      <Lock className="w-3 h-3 text-slate-400" />
                     )}
                   </div>
                   <div className="text-[11px] font-semibold truncate">{s.name}</div>
@@ -223,7 +223,7 @@ export default function ProjectDocModal({ project, isOpen, onClose, userRole = '
                 <ShieldCheck className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
                 <div>
                   <span className="font-semibold text-white block mb-0.5">
-                    🔒 Intellectual Property (IP) Protection Active for Outsiders
+                    Intellectual Property (IP) Protection Active for Outsiders
                   </span>
                   This project is currently in early stage (Stage {currentRank}/11: {stage}). To protect the innovator's IP, high-level concept details are public, while internal technical blueprints and codebase specs are locked for public viewers.
                 </div>
@@ -243,13 +243,13 @@ export default function ProjectDocModal({ project, isOpen, onClose, userRole = '
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
                 <div>
-                  <span className="text-slate-400 font-medium uppercase tracking-wider block mb-1">🎯 Problem Statement</span>
+                  <span className="text-slate-400 font-medium uppercase tracking-wider block mb-1">Problem Statement</span>
                   <p className="text-slate-300 leading-relaxed font-normal">
                     Existing systems in {domain} suffer from inefficiency and lack real-time AI automation.
                   </p>
                 </div>
                 <div>
-                  <span className="text-slate-400 font-medium uppercase tracking-wider block mb-1">💡 Core Solution Thesis</span>
+                  <span className="text-slate-400 font-medium uppercase tracking-wider block mb-1">Core Solution Thesis</span>
                   <p className="text-slate-300 leading-relaxed font-normal">{description}</p>
                 </div>
               </div>
@@ -287,11 +287,11 @@ export default function ProjectDocModal({ project, isOpen, onClose, userRole = '
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-normal">
                   <div>
-                    <span className="text-slate-400 font-medium uppercase tracking-wider block mb-1">🔎 Literature & Competitor Analysis</span>
+                    <span className="text-slate-400 font-medium uppercase tracking-wider block mb-1">Literature & Competitor Analysis</span>
                     <p className="text-slate-300">Benchmarked against existing legacy APIs; delivers 4x throughput efficiency.</p>
                   </div>
                   <div>
-                    <span className="text-slate-400 font-medium uppercase tracking-wider block mb-1">📋 Technical Requirements (PRD)</span>
+                    <span className="text-slate-400 font-medium uppercase tracking-wider block mb-1">Technical Requirements (PRD)</span>
                     <p className="text-slate-300">REST microservices, sub-150ms execution latency, and role-based ACLs.</p>
                   </div>
                 </div>
@@ -346,7 +346,7 @@ export default function ProjectDocModal({ project, isOpen, onClose, userRole = '
               ) : (
                 <div className="space-y-4 text-xs">
                   <div>
-                    <span className="text-slate-400 font-medium uppercase tracking-wider block mb-1">🏗️ System Architecture Flow</span>
+                    <span className="text-slate-400 font-medium uppercase tracking-wider block mb-1">System Architecture Flow</span>
                     <div className="p-3 rounded-md bg-[#111827] font-mono text-[11px] text-emerald-400 border border-slate-800">
                       Client Frontend → API Gateway → AI Microservice → Supabase Postgres Ledger
                     </div>
@@ -392,11 +392,11 @@ export default function ProjectDocModal({ project, isOpen, onClose, userRole = '
               {currentRank >= 7 && (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-normal">
                   <div>
-                    <span className="text-slate-400 font-medium uppercase tracking-wider block mb-1">⚙️ MVP Feature Set</span>
+                    <span className="text-slate-400 font-medium uppercase tracking-wider block mb-1">MVP Feature Set</span>
                     <p className="text-slate-300">Core engine deployed with automated background batch processing.</p>
                   </div>
                   <div>
-                    <span className="text-slate-400 font-medium uppercase tracking-wider block mb-1">🔬 Testing & QA Benchmarks</span>
+                    <span className="text-slate-400 font-medium uppercase tracking-wider block mb-1">Testing & QA Benchmarks</span>
                     <p className="text-slate-300">96.4% test suite pass rate across 500 simulated user requests.</p>
                   </div>
                 </div>
@@ -428,15 +428,15 @@ export default function ProjectDocModal({ project, isOpen, onClose, userRole = '
               {currentRank >= 9 && (
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-normal">
                   <div>
-                    <span className="text-slate-400 font-medium uppercase tracking-wider block mb-1">🌍 Pilot Sandbox</span>
+                    <span className="text-slate-400 font-medium uppercase tracking-wider block mb-1">Pilot Sandbox</span>
                     <p className="text-slate-300">{college} Innovation Lab</p>
                   </div>
                   <div>
-                    <span className="text-slate-400 font-medium uppercase tracking-wider block mb-1">🚀 Launch Status</span>
+                    <span className="text-slate-400 font-medium uppercase tracking-wider block mb-1">Launch Status</span>
                     <p className="text-slate-300">Production Live Deployment</p>
                   </div>
                   <div>
-                    <span className="text-slate-400 font-medium uppercase tracking-wider block mb-1">📈 Scale & Patent</span>
+                    <span className="text-slate-400 font-medium uppercase tracking-wider block mb-1">Scale & Patent</span>
                     <p className="text-slate-300">Provisional IP Granted</p>
                   </div>
                 </div>

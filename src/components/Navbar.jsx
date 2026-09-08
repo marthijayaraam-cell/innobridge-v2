@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { useTheme } from '../context/ThemeContext';
 import { 
   Sparkles, 
   Compass, 
@@ -16,11 +17,14 @@ import {
   User,
   Home,
   Menu,
-  X
+  X,
+  Sun,
+  Moon
 } from 'lucide-react';
 
 export default function Navbar() {
   const { user, profile, signOut } = useAuth();
+  const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -38,94 +42,87 @@ export default function Navbar() {
     <>
       {/* Top Header Navbar */}
       <header className="sticky top-0 z-40 w-full border-b border-slate-800 bg-[#0B1120]/95 backdrop-blur-md">
-        <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 h-14 flex items-center justify-between">
+        <div className="max-w-[1600px] w-full mx-auto px-4 sm:px-8 lg:px-12 flex items-center justify-between h-14">
           
-          {/* Logo & Brand Statement */}
-          <Link to="/" className="flex items-center gap-2.5 group shrink-0">
-            <div className="w-7 h-7 rounded-md bg-emerald-600 flex items-center justify-center text-white font-bold text-xs group-hover:bg-emerald-500 transition-colors">
-              IB
+          {/* Left Brand Logo */}
+          <Link to="/" className="flex items-center gap-2 group">
+            <div className="w-7 h-7 rounded-md bg-emerald-600 flex items-center justify-center text-white font-extrabold text-xs shadow-sm">
+              <Sparkles className="w-4 h-4 text-white" />
             </div>
             <div className="flex flex-col">
-              <span className="font-bold text-base tracking-tight text-white flex items-center gap-1.5">
+              <span className="font-extrabold text-sm sm:text-base tracking-tight text-white flex items-center gap-1.5">
                 InnoBridge
+                <span className="text-[9px] uppercase px-1.5 py-0.2 rounded-md bg-emerald-500/20 text-emerald-400 font-semibold border border-emerald-500/30">
+                  v2.0
+                </span>
               </span>
             </div>
           </Link>
 
-          {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center gap-1">
+          {/* Navigation Links */}
+          <nav className="hidden md:flex items-center gap-1 text-xs font-medium">
             <Link
               to="/"
-              className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors flex items-center gap-1.5 ${
-                isActive('/')
-                  ? 'bg-slate-800 text-emerald-400 font-semibold'
-                  : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
+              className={`px-3 py-1.5 rounded-md transition-colors ${
+                isActive('/') ? 'text-white bg-slate-800' : 'text-slate-400 hover:text-white'
               }`}
             >
-              <Home className="w-3.5 h-3.5" />
               Home
             </Link>
 
             <Link
               to="/feed"
-              className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors flex items-center gap-1.5 ${
-                isActive('/feed')
-                  ? 'bg-slate-800 text-emerald-400 font-semibold'
-                  : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
+              className={`px-3 py-1.5 rounded-md transition-colors ${
+                isActive('/feed') ? 'text-white bg-slate-800' : 'text-slate-400 hover:text-white'
               }`}
             >
-              <Compass className="w-3.5 h-3.5" />
               Innovation Feed
             </Link>
 
             <Link
               to="/leaderboard"
-              className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors flex items-center gap-1.5 ${
-                isActive('/leaderboard')
-                  ? 'bg-slate-800 text-emerald-400 font-semibold'
-                  : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
+              className={`px-3 py-1.5 rounded-md transition-colors ${
+                isActive('/leaderboard') ? 'text-white bg-slate-800' : 'text-slate-400 hover:text-white'
               }`}
             >
-              <Trophy className="w-3.5 h-3.5 text-amber-400" />
               Leaderboard
             </Link>
 
             {user && (
               <Link
                 to={getDashboardPath()}
-                className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors flex items-center gap-1.5 ${
+                className={`px-3 py-1.5 rounded-md transition-colors ${
                   location.pathname.startsWith('/dashboard')
-                    ? 'bg-slate-800 text-emerald-400 font-semibold'
-                    : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
+                    ? 'text-white bg-slate-800'
+                    : 'text-slate-400 hover:text-white'
                 }`}
               >
-                <LayoutDashboard className="w-3.5 h-3.5" />
                 Workspace
-              </Link>
-            )}
-
-            {user && (
-              <Link
-                to="/profile"
-                className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors flex items-center gap-1.5 ${
-                  isActive('/profile')
-                    ? 'bg-slate-800 text-emerald-400 font-semibold'
-                    : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
-                }`}
-              >
-                <User className="w-3.5 h-3.5" />
-                Portfolio
               </Link>
             )}
           </nav>
 
-          {/* Right Action / Role-Aware User Controls */}
+          {/* Right Action Controls & User State */}
           <div className="flex items-center gap-3">
+            
+            {/* Theme Toggle Button */}
+            <button
+              onClick={toggleTheme}
+              title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+              className="p-1.5 rounded-md text-slate-400 hover:text-white hover:bg-slate-800 transition-colors flex items-center justify-center border border-slate-700/60"
+            >
+              {theme === 'dark' ? (
+                <Sun className="w-4 h-4 text-amber-400 transition-transform duration-200 rotate-0 hover:rotate-45" />
+              ) : (
+                <Moon className="w-4 h-4 text-slate-700 transition-transform duration-200 rotate-0 hover:-rotate-12" />
+              )}
+            </button>
+
             {user ? (
               <div className="flex items-center gap-2">
-                {/* AI Score Badge (Student) */}
-                {profile?.role === 'student' && profile?.innovation_score !== undefined && (
-                  <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-emerald-950/80 border border-emerald-800/60 text-emerald-400 text-xs font-semibold">
+                {/* User Innovation Score Pill */}
+                {profile?.innovation_score !== undefined && (
+                  <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-emerald-950/80 border border-emerald-800/60 text-emerald-400 font-semibold text-xs">
                     <Award className="w-3.5 h-3.5 text-emerald-400" />
                     <span>Score: {profile.innovation_score}</span>
                   </div>

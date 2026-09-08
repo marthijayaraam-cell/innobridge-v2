@@ -164,7 +164,7 @@ export default function ProjectCard({
                 href={demo_url}
                 target="_blank"
                 rel="noreferrer"
-                className="p-1.5 rounded-md bg-slate-800/80 hover:bg-slate-700 text-slate-400 hover:text-white transition-colors"
+                className="p-1.5 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700/60 transition-colors"
                 title="Live Demo"
               >
                 <ExternalLink className="w-3.5 h-3.5" />
@@ -175,7 +175,7 @@ export default function ProjectCard({
                 href={github_url}
                 target="_blank"
                 rel="noreferrer"
-                className="p-1.5 rounded-md bg-slate-800/80 hover:bg-slate-700 text-slate-400 hover:text-white transition-colors"
+                className="p-1.5 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700/60 transition-colors"
                 title="GitHub Repository"
               >
                 <Github className="w-3.5 h-3.5" />

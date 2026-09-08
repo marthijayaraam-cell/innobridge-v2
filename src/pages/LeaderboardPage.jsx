@@ -198,7 +198,9 @@ export default function LeaderboardPage() {
           {/* Rank 1 - Gold Champion */}
           <div className="bg-[#111827] rounded-md p-4 border border-amber-500/40 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <span className="text-xl">🥇</span>
+              <div className="w-8 h-8 rounded-md bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0">
+                <Trophy className="w-4 h-4" />
+              </div>
               <div>
                 <span className="text-[10px] uppercase font-semibold text-amber-400 block">Rank 1 • Gold</span>
                 <h3 className="text-sm font-bold text-white">{filteredLeaderboard[0].full_name}</h3>
@@ -214,7 +216,9 @@ export default function LeaderboardPage() {
           {/* Rank 2 - Silver */}
           <div className="bg-[#111827] rounded-md p-4 border border-slate-700 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <span className="text-xl">🥈</span>
+              <div className="w-8 h-8 rounded-md bg-slate-400/10 border border-slate-400/30 flex items-center justify-center text-slate-300 shrink-0">
+                <Medal className="w-4 h-4" />
+              </div>
               <div>
                 <span className="text-[10px] uppercase font-semibold text-slate-400 block">Rank 2 • Silver</span>
                 <h3 className="text-sm font-bold text-white">{filteredLeaderboard[1].full_name}</h3>
@@ -230,7 +234,9 @@ export default function LeaderboardPage() {
           {/* Rank 3 - Bronze */}
           <div className="bg-[#111827] rounded-md p-4 border border-slate-700 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <span className="text-xl">🥉</span>
+              <div className="w-8 h-8 rounded-md bg-amber-700/10 border border-amber-700/30 flex items-center justify-center text-amber-500 shrink-0">
+                <Award className="w-4 h-4" />
+              </div>
               <div>
                 <span className="text-[10px] uppercase font-semibold text-slate-400 block">Rank 3 • Bronze</span>
                 <h3 className="text-sm font-bold text-white">{filteredLeaderboard[2].full_name}</h3>
@@ -316,11 +322,11 @@ export default function LeaderboardPage() {
                   <tr key={student.id || index} className="hover:bg-slate-800/40 transition-colors">
                     <td className="py-3 px-4 font-semibold text-white">
                       {index === 0 ? (
-                        <span className="inline-flex items-center gap-1 text-amber-400 font-bold">🥇 #1</span>
+                        <span className="inline-flex items-center gap-1.5 text-amber-400 font-bold"><Trophy className="w-3.5 h-3.5 text-amber-400" /> #1</span>
                       ) : index === 1 ? (
-                        <span className="inline-flex items-center gap-1 text-slate-300 font-bold">🥈 #2</span>
+                        <span className="inline-flex items-center gap-1.5 text-slate-300 font-bold"><Medal className="w-3.5 h-3.5 text-slate-300" /> #2</span>
                       ) : index === 2 ? (
-                        <span className="inline-flex items-center gap-1 text-amber-500 font-bold">🥉 #3</span>
+                        <span className="inline-flex items-center gap-1.5 text-amber-500 font-bold"><Award className="w-3.5 h-3.5 text-amber-500" /> #3</span>
                       ) : (
                         <span className="text-slate-400 font-medium">#{index + 1}</span>
                       )}
