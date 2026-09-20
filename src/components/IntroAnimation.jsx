@@ -5,6 +5,7 @@ import { ArrowRight } from 'lucide-react';
  * IntroAnimation - Progressive Logo Formation Opening Showcase
  * Starts with a clean empty screen, slowly forms the hexagonal 'iB' logo
  * in sync with the loading progress bar, and smoothly transitions into the app.
+ * High z-index (z-[9999]) and fixed viewport bounds ensure guaranteed play on mobile devices.
  */
 export default function IntroAnimation({ onComplete = null, forcePlay = false }) {
   const [visible, setVisible] = useState(true);
@@ -13,15 +14,7 @@ export default function IntroAnimation({ onComplete = null, forcePlay = false })
   const [showBrandText, setShowBrandText] = useState(false);
 
   useEffect(() => {
-    // Check if intro has already played in this session (unless forcePlay is true)
-    const hasPlayed = sessionStorage.getItem('innobridge_intro_played');
-    if (hasPlayed && !forcePlay) {
-      setVisible(false);
-      if (onComplete) onComplete();
-      return;
-    }
-
-    // Incremental progress timer from 0 to 100% over ~2.8s
+    // Incremental progress timer from 0 to 100% over ~2.6s
     const interval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
@@ -30,10 +23,10 @@ export default function IntroAnimation({ onComplete = null, forcePlay = false })
         }
         return prev + 2;
       });
-    }, 45);
+    }, 40);
 
     return () => clearInterval(interval);
-  }, [forcePlay]);
+  }, []);
 
   // When progress reaches 100%, show final brand reveal briefly then exit
   useEffect(() => {
@@ -41,18 +34,17 @@ export default function IntroAnimation({ onComplete = null, forcePlay = false })
       setShowBrandText(true);
       const exitTimer = setTimeout(() => {
         finishIntro();
-      }, 800);
+      }, 700);
       return () => clearTimeout(exitTimer);
     }
   }, [progress]);
 
   const finishIntro = () => {
     setExiting(true);
-    sessionStorage.setItem('innobridge_intro_played', 'true');
     setTimeout(() => {
       setVisible(false);
       if (onComplete) onComplete();
-    }, 600);
+    }, 500);
   };
 
   if (!visible) return null;
@@ -64,27 +56,30 @@ export default function IntroAnimation({ onComplete = null, forcePlay = false })
 
   // Scale logo smoothly from 0.6 to 1.0 according to progress
   const logoScale = 0.6 + (progress / 100) * 0.4;
-  const glowIntensity = (progress / 100) * 0.5;
+  const glowIntensity = (progress / 100) * 0.6;
 
   return (
     <div
-      className={`fixed inset-0 z-50 bg-[#070B14] flex flex-col items-center justify-center select-none overflow-hidden transition-all duration-700 ease-in-out ${
+      className={`fixed inset-0 w-screen h-screen min-h-screen z-[9999] bg-[#070B14] flex flex-col items-center justify-center select-none overflow-hidden transition-all duration-500 ease-in-out ${
         exiting ? 'opacity-0 scale-105 pointer-events-none' : 'opacity-100 scale-100'
       }`}
+      style={{ touchAction: 'none' }}
     >
       {/* Background Ambient Glow (Grows with progress) */}
       <div
-        className="absolute w-[500px] h-[500px] rounded-full bg-[#0A66C2] blur-[140px] pointer-events-none transition-opacity duration-300"
+        className="absolute w-[450px] h-[450px] sm:w-[550px] sm:h-[550px] rounded-full bg-[#0A66C2] blur-[120px] pointer-events-none transition-opacity duration-300"
         style={{ opacity: glowIntensity }}
       />
 
       {/* Subtle Background Cybernetic Grid */}
-      <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#70B5F9_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
+      <div className="absolute inset-0 opacity-[0.04] bg-[radial-gradient(#70B5F9_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
 
-      {/* Top Right Skip Button */}
+      {/* Top Right Skip Button (Optimized touch target for mobile) */}
       <button
+        type="button"
         onClick={finishIntro}
-        className="absolute top-6 right-6 px-3.5 py-1.5 rounded-md bg-slate-900/80 hover:bg-slate-800 border border-slate-700/70 text-slate-400 hover:text-white text-xs font-medium flex items-center gap-1.5 transition-colors z-20 backdrop-blur-md"
+        onTouchEnd={finishIntro}
+        className="absolute top-5 right-5 sm:top-6 sm:right-6 px-4 py-2 min-h-[44px] rounded-md bg-slate-900/90 hover:bg-slate-800 border border-slate-700/80 text-slate-300 hover:text-white text-xs font-semibold flex items-center gap-1.5 transition-colors z-[10000] backdrop-blur-md cursor-pointer"
       >
         <span>Skip</span>
         <ArrowRight className="w-3.5 h-3.5 text-[#70B5F9]" />
@@ -98,7 +93,7 @@ export default function IntroAnimation({ onComplete = null, forcePlay = false })
           className="relative flex items-center justify-center transition-transform duration-100 ease-out"
           style={{ transform: `scale(${logoScale})` }}
         >
-          {/* Subtle Outer Orbital Ring (Reveals as progress > 50%) */}
+          {/* Subtle Outer Orbital Ring (Reveals as progress > 40%) */}
           <div
             className="absolute w-36 h-36 sm:w-44 sm:h-44 rounded-full border border-blue-500/20 border-t-[#70B5F9] animate-spin-slow pointer-events-none transition-opacity duration-500"
             style={{ opacity: progress > 40 ? (progress - 40) / 60 : 0 }}
@@ -106,9 +101,9 @@ export default function IntroAnimation({ onComplete = null, forcePlay = false })
 
           {/* Hexagonal Logo Container Box */}
           <div
-            className="w-28 h-28 sm:w-36 sm:h-36 rounded-2xl bg-[#0B1120] border border-blue-500/30 p-5 flex items-center justify-center shadow-2xl transition-all duration-300"
+            className="w-28 h-28 sm:w-36 sm:h-36 rounded-2xl bg-[#0B1120] border border-blue-500/40 p-5 flex items-center justify-center shadow-2xl transition-all duration-300"
             style={{
-              boxShadow: `0 0 ${progress * 0.6}px rgba(10, 102, 194, ${glowIntensity * 0.8})`
+              boxShadow: `0 0 ${progress * 0.6}px rgba(10, 102, 194, ${glowIntensity * 0.9})`
             }}
           >
             {/* Custom Progressive Multi-Facet SVG Logo */}
@@ -125,7 +120,7 @@ export default function IntroAnimation({ onComplete = null, forcePlay = false })
                 fill="#0C3B73"
                 style={{
                   opacity: leftStemOpacity,
-                  transition: 'opacity 0.2s ease-out'
+                  transition: 'opacity 0.15s ease-out'
                 }}
               />
 
@@ -135,7 +130,7 @@ export default function IntroAnimation({ onComplete = null, forcePlay = false })
                 fill="#0066CC"
                 style={{
                   opacity: innerFacetsOpacity,
-                  transition: 'opacity 0.2s ease-out'
+                  transition: 'opacity 0.15s ease-out'
                 }}
               />
               <polygon
@@ -143,7 +138,7 @@ export default function IntroAnimation({ onComplete = null, forcePlay = false })
                 fill="#082C59"
                 style={{
                   opacity: innerFacetsOpacity,
-                  transition: 'opacity 0.2s ease-out'
+                  transition: 'opacity 0.15s ease-out'
                 }}
               />
 
@@ -153,7 +148,7 @@ export default function IntroAnimation({ onComplete = null, forcePlay = false })
                 fill="#009BE8"
                 style={{
                   opacity: rightBCurveOpacity,
-                  transition: 'opacity 0.2s ease-out'
+                  transition: 'opacity 0.15s ease-out'
                 }}
               />
             </svg>
