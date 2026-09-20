@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
+import IBLogo from './IBLogo';
+import logoImg from '../assets/logo.svg';
 import { 
   Sparkles, 
   Compass, 
@@ -45,14 +47,16 @@ export default function Navbar() {
         <div className="max-w-[1600px] w-full mx-auto px-4 sm:px-8 lg:px-12 flex items-center justify-between h-14">
           
           {/* Left Brand Logo */}
-          <Link to="/" className="flex items-center gap-2 group">
-            <div className="w-7 h-7 rounded-md bg-emerald-600 flex items-center justify-center text-white font-extrabold text-xs shadow-sm">
-              <Sparkles className="w-4 h-4 text-white" />
-            </div>
+          <Link to="/" className="flex items-center gap-2.5 group">
+            <img 
+              src={logoImg} 
+              alt="InnoBridge Logo" 
+              className="h-8 w-8 object-contain rounded-md select-none shrink-0" 
+            />
             <div className="flex flex-col">
               <span className="font-extrabold text-sm sm:text-base tracking-tight text-white flex items-center gap-1.5">
                 InnoBridge
-                <span className="text-[9px] uppercase px-1.5 py-0.2 rounded-md bg-emerald-500/20 text-emerald-400 font-semibold border border-emerald-500/30">
+                <span className="text-[9px] uppercase px-1.5 py-0.2 rounded-md bg-blue-500/20 text-[#70B5F9] font-semibold border border-blue-500/30">
                   v2.0
                 </span>
               </span>
@@ -122,8 +126,8 @@ export default function Navbar() {
               <div className="flex items-center gap-2">
                 {/* User Innovation Score Pill */}
                 {profile?.innovation_score !== undefined && (
-                  <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-emerald-950/80 border border-emerald-800/60 text-emerald-400 font-semibold text-xs">
-                    <Award className="w-3.5 h-3.5 text-emerald-400" />
+                  <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-blue-950/80 border border-blue-800/60 text-[#70B5F9] font-semibold text-xs">
+                    <Award className="w-3.5 h-3.5 text-[#70B5F9]" />
                     <span>Score: {profile.innovation_score}</span>
                   </div>
                 )}
@@ -133,7 +137,7 @@ export default function Navbar() {
                   onClick={() => navigate('/profile')}
                   className="flex items-center gap-2 px-2.5 py-1 rounded-md bg-slate-900 border border-slate-700 hover:border-slate-600 transition-colors"
                 >
-                  <div className="w-5 h-5 rounded-full bg-emerald-600 flex items-center justify-center text-white font-semibold text-xs">
+                  <div className="w-5 h-5 rounded-full bg-[#0A66C2] flex items-center justify-center text-white font-semibold text-xs">
                     {((profile?.full_name && !/^\d/.test(profile.full_name)) ? profile.full_name : 'Marthi Jayaraam')[0].toUpperCase()}
                   </div>
                   <span className="text-xs font-medium text-slate-200 max-w-[120px] truncate hidden lg:inline">
@@ -159,7 +163,7 @@ export default function Navbar() {
                 </Link>
                 <Link
                   to="/auth?tab=signup"
-                  className="px-3.5 py-1.5 rounded-md text-xs font-medium bg-emerald-600 hover:bg-emerald-500 text-white transition-colors"
+                  className="px-3.5 py-1.5 rounded-md text-xs font-medium bg-[#0A66C2] hover:bg-[#084E96] text-white transition-colors"
                 >
                   Join as Student
                 </Link>
@@ -169,7 +173,8 @@ export default function Navbar() {
             {/* Mobile Hamburger Menu Toggle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-1.5 rounded-md text-slate-400 hover:text-white"
+              className="md:hidden p-2 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-md text-slate-400 hover:text-white"
+              aria-label="Toggle navigation menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -179,46 +184,46 @@ export default function Navbar() {
         {/* Collapsible Mobile Menu */}
         {mobileMenuOpen && (
           <div className="md:hidden px-4 pt-2 pb-4 border-b border-slate-800 bg-[#111827] space-y-1 text-sm font-medium">
-            <Link to="/" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-200 hover:text-emerald-400">Home</Link>
-            <Link to="/feed" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-200 hover:text-emerald-400">Innovation Feed</Link>
-            <Link to="/leaderboard" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-200 hover:text-emerald-400">Leaderboard</Link>
-            {user && <Link to={getDashboardPath()} onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-200 hover:text-emerald-400">Workspace</Link>}
-            {user && <Link to="/profile" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-200 hover:text-emerald-400">My Portfolio</Link>}
+            <Link to="/" onClick={() => setMobileMenuOpen(false)} className="block py-2.5 px-2 rounded-md text-slate-200 hover:text-[#70B5F9] hover:bg-slate-800/60">Home</Link>
+            <Link to="/feed" onClick={() => setMobileMenuOpen(false)} className="block py-2.5 px-2 rounded-md text-slate-200 hover:text-[#70B5F9] hover:bg-slate-800/60">Innovation Feed</Link>
+            <Link to="/leaderboard" onClick={() => setMobileMenuOpen(false)} className="block py-2.5 px-2 rounded-md text-slate-200 hover:text-[#70B5F9] hover:bg-slate-800/60">Leaderboard</Link>
+            {user && <Link to={getDashboardPath()} onClick={() => setMobileMenuOpen(false)} className="block py-2.5 px-2 rounded-md text-slate-200 hover:text-[#70B5F9] hover:bg-slate-800/60">Workspace</Link>}
+            {user && <Link to="/profile" onClick={() => setMobileMenuOpen(false)} className="block py-2.5 px-2 rounded-md text-slate-200 hover:text-[#70B5F9] hover:bg-slate-800/60">My Portfolio</Link>}
           </div>
         )}
       </header>
 
       {/* Mobile Bottom Tab Bar (For Hackathons & Phone Demos) */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#0B1120]/95 backdrop-blur-lg border-t border-slate-800 py-2 px-3 flex items-center justify-around text-[10px] font-medium text-slate-400">
-        <Link to="/" className={`flex flex-col items-center gap-1 ${isActive('/') ? 'text-emerald-400 font-bold' : ''}`}>
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#0B1120]/95 backdrop-blur-lg border-t border-slate-800 py-1.5 px-2 flex items-center justify-around text-[10px] font-medium text-slate-400">
+        <Link to="/" className={`flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-2 py-1 gap-1 ${isActive('/') ? 'text-[#70B5F9] font-bold' : ''}`}>
           <Home className="w-4 h-4" />
           <span>Home</span>
         </Link>
 
-        <Link to="/feed" className={`flex flex-col items-center gap-1 ${isActive('/feed') ? 'text-emerald-400 font-bold' : ''}`}>
+        <Link to="/feed" className={`flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-2 py-1 gap-1 ${isActive('/feed') ? 'text-[#70B5F9] font-bold' : ''}`}>
           <Compass className="w-4 h-4" />
           <span>Feed</span>
         </Link>
 
         {user ? (
-          <Link to={getDashboardPath()} className={`flex flex-col items-center gap-1 ${location.pathname.startsWith('/dashboard') ? 'text-emerald-400 font-bold' : ''}`}>
+          <Link to={getDashboardPath()} className={`flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-2 py-1 gap-1 ${location.pathname.startsWith('/dashboard') ? 'text-[#70B5F9] font-bold' : ''}`}>
             <LayoutDashboard className="w-4 h-4" />
             <span>Workspace</span>
           </Link>
         ) : (
-          <Link to="/auth?tab=signup" className="flex flex-col items-center gap-1 text-emerald-400 font-bold">
+          <Link to="/auth?tab=signup" className="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-2 py-1 gap-1 text-[#70B5F9] font-bold">
             <UserPlus className="w-4 h-4" />
             <span>Join</span>
           </Link>
         )}
 
-        <Link to="/leaderboard" className={`flex flex-col items-center gap-1 ${isActive('/leaderboard') ? 'text-amber-400 font-bold' : ''}`}>
+        <Link to="/leaderboard" className={`flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-2 py-1 gap-1 ${isActive('/leaderboard') ? 'text-amber-400 font-bold' : ''}`}>
           <Trophy className="w-4 h-4" />
           <span>Ranks</span>
         </Link>
 
         {user && (
-          <Link to="/profile" className={`flex flex-col items-center gap-1 ${isActive('/profile') ? 'text-emerald-400 font-bold' : ''}`}>
+          <Link to="/profile" className={`flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-2 py-1 gap-1 ${isActive('/profile') ? 'text-[#70B5F9] font-bold' : ''}`}>
             <User className="w-4 h-4" />
             <span>Profile</span>
           </Link>

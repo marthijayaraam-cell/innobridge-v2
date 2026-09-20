@@ -42,17 +42,17 @@ export default function ProjectCard({
   const formattedAIScore = (rawScore / 10).toFixed(1);
 
   // Stage badge colors according to brand color language:
-  // Green: Launched / Scale / Final Product
+  // Blue: Launched / Scale / Final Product (LinkedIn Blue Accent)
   // Amber: Prototype / Pilot / Requirements / MVP / Testing
-  // Blue / Indigo: Idea / Problem / Research / Architecture
+  // Sky: Idea / Problem / Research / Architecture
   const getStageBadgeStyle = (stg) => {
     if (stg.includes('Launch') || stg.includes('Final Product') || stg === 'Launched') {
-      return 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30';
+      return 'bg-blue-500/10 text-[#70B5F9] border-blue-500/30';
     }
     if (stg.includes('Pilot') || stg.includes('Prototype') || stg.includes('MVP') || stg.includes('Testing') || stg.includes('Requirements')) {
       return 'bg-amber-500/10 text-amber-400 border-amber-500/30';
     }
-    return 'bg-blue-500/10 text-blue-400 border-blue-500/30';
+    return 'bg-sky-500/10 text-sky-400 border-sky-500/30';
   };
 
   const handleInterestClick = (e) => {
@@ -65,29 +65,29 @@ export default function ProjectCard({
   };
 
   return (
-    <div className="bg-[#111827] rounded-md p-4 border border-slate-800 hover:border-slate-700 transition-colors flex flex-col justify-between relative group">
+    <div className="bg-[#111827] rounded-md p-4 border border-slate-800 card-hover-effect flex flex-col justify-between relative group">
       <div>
         {/* Header Badges */}
-        <div className="flex items-center justify-between gap-2 mb-3">
+        <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
           {/* Domain Tag - GitHub Topic Tag Style */}
-          <span className="text-xs font-medium px-2.5 py-0.5 rounded-md bg-slate-800 text-slate-300 border border-slate-700">
+          <span className="text-xs font-medium px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 border border-slate-700">
             {domain}
           </span>
 
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
             {/* Stage Badge */}
-            <span className={`text-[11px] font-medium px-2.5 py-0.5 rounded-md border ${getStageBadgeStyle(stage)}`}>
+            <span className={`text-[11px] font-medium px-2.5 py-1 rounded-md border ${getStageBadgeStyle(stage)}`}>
               {stage}
             </span>
 
-            {/* Prominent AI Score Badge - Flat Green */}
+            {/* Prominent AI Score Badge - LinkedIn Blue */}
             <div 
               onClick={() => onViewDetails && onViewDetails(project)}
-              className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-emerald-950/80 border border-emerald-800/60 text-emerald-400 cursor-pointer hover:bg-emerald-900/60 transition-colors"
+              className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-blue-950/80 border border-blue-800/60 text-[#70B5F9] cursor-pointer hover:bg-blue-900/60 transition-colors"
               title="View AI 5-parameter evaluation breakdown"
             >
-              <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
-              <span className="text-xs font-semibold text-emerald-400">AI Score: {formattedAIScore}</span>
+              <Sparkles className="w-3.5 h-3.5 text-[#70B5F9]" />
+              <span className="text-xs font-semibold text-[#70B5F9]">AI Score: {formattedAIScore}</span>
             </div>
           </div>
         </div>
@@ -95,7 +95,7 @@ export default function ProjectCard({
         {/* Project Title */}
         <h3 
           onClick={() => onViewDetails && onViewDetails(project)}
-          className="text-base font-bold text-white group-hover:text-emerald-400 transition-colors line-clamp-1 mb-1 cursor-pointer flex items-center justify-between"
+          className="text-base font-bold text-white group-hover:text-[#70B5F9] transition-colors line-clamp-1 mb-1 cursor-pointer flex items-center justify-between"
         >
           <span>{title}</span>
           <ChevronRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity text-slate-400" />
@@ -157,17 +157,17 @@ export default function ProjectCard({
 
 
         {/* Action Buttons */}
-        <div className="flex items-center justify-between gap-2 pt-2 border-t border-slate-800/80">
+        <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-slate-800/80">
           <div className="flex items-center gap-2">
             {demo_url && (
               <a
                 href={demo_url}
                 target="_blank"
                 rel="noreferrer"
-                className="p-1.5 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700/60 transition-colors"
+                className="p-2 min-w-[38px] min-h-[38px] sm:min-w-[44px] sm:min-h-[44px] flex items-center justify-center rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700/60 transition-colors"
                 title="Live Demo"
               >
-                <ExternalLink className="w-3.5 h-3.5" />
+                <ExternalLink className="w-4 h-4" />
               </a>
             )}
             {github_url && (
@@ -175,10 +175,10 @@ export default function ProjectCard({
                 href={github_url}
                 target="_blank"
                 rel="noreferrer"
-                className="p-1.5 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700/60 transition-colors"
+                className="p-2 min-w-[38px] min-h-[38px] sm:min-w-[44px] sm:min-h-[44px] flex items-center justify-center rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700/60 transition-colors"
                 title="GitHub Repository"
               >
-                <Github className="w-3.5 h-3.5" />
+                <Github className="w-4 h-4" />
               </a>
             )}
           </div>
@@ -187,7 +187,7 @@ export default function ProjectCard({
           {userRole === 'faculty' && onReview && (
             <button
               onClick={() => onReview(project)}
-              className="px-3 py-1.5 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-medium flex items-center gap-1.5 transition-colors"
+              className="px-3.5 py-2 min-h-[38px] sm:min-h-[44px] rounded-md bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-medium flex items-center gap-1.5 transition-colors"
             >
               <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
               Review Project
@@ -198,15 +198,15 @@ export default function ProjectCard({
             <button
               onClick={handleInterestClick}
               disabled={interestSubmitted}
-              className={`px-3 py-1.5 rounded-md text-xs font-medium flex items-center gap-1.5 transition-colors ${
+              className={`px-3.5 py-2 min-h-[38px] sm:min-h-[44px] rounded-md text-xs font-medium flex items-center gap-1.5 transition-colors ${
                 interestSubmitted
-                  ? 'bg-emerald-950/80 border border-emerald-800/60 text-emerald-300'
-                  : 'bg-emerald-600 hover:bg-emerald-500 text-white'
+                  ? 'bg-blue-950/80 border border-blue-800/60 text-[#70B5F9]'
+                  : 'bg-[#0A66C2] hover:bg-[#084E96] text-white'
               }`}
             >
               {interestSubmitted ? (
                 <>
-                  <CheckCircle className="w-3.5 h-3.5" />
+                  <CheckCircle className="w-3.5 h-3.5 text-[#70B5F9]" />
                   Interest Saved
                 </>
               ) : (
@@ -221,7 +221,7 @@ export default function ProjectCard({
           {userRole === 'student' && (
             <button
               onClick={() => onViewDetails && onViewDetails(project)}
-              className="px-3 py-1.5 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-medium flex items-center gap-1 transition-colors"
+              className="px-3.5 py-2 min-h-[38px] sm:min-h-[44px] rounded-md bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-medium flex items-center gap-1 transition-colors"
             >
               View Document
               <ChevronRight className="w-3.5 h-3.5 text-slate-400" />

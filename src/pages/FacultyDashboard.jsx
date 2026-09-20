@@ -155,7 +155,7 @@ export default function FacultyDashboard() {
         </div>
 
         {/* Tab Switcher: Pending vs Reviewed */}
-        <div className="flex items-center gap-1.5 p-1 rounded-md bg-[#111827] border border-slate-800 text-xs font-semibold">
+        <div className="flex flex-wrap items-center gap-1.5 p-1 rounded-md bg-[#111827] border border-slate-800 text-xs font-semibold">
           <button
             onClick={() => setActiveTab('pending')}
             className={`px-3.5 py-1.5 rounded-md transition-colors ${
@@ -170,7 +170,7 @@ export default function FacultyDashboard() {
             onClick={() => setActiveTab('reviewed')}
             className={`px-3.5 py-1.5 rounded-md transition-colors ${
               activeTab === 'reviewed'
-                ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-medium'
+                ? 'bg-blue-500/20 text-[#70B5F9] border border-blue-500/30 font-medium'
                 : 'text-slate-400 hover:text-white'
             }`}
           >
@@ -274,7 +274,7 @@ export default function FacultyDashboard() {
                     onClick={() => setStatus('Approved')}
                     className={`p-2.5 rounded-md border text-xs font-medium flex items-center justify-center gap-2 transition-colors ${
                       status === 'Approved'
-                        ? 'bg-emerald-500/20 border-emerald-500 text-emerald-300'
+                        ? 'bg-blue-500/20 border-blue-500 text-[#70B5F9]'
                         : 'bg-[#0B1120] border-slate-800 text-slate-400 hover:text-white'
                     }`}
                   >
@@ -306,7 +306,7 @@ export default function FacultyDashboard() {
                   placeholder="Provide qualitative feedback, technical guidance, or suggestions..."
                   value={comment}
                   onChange={(e) => setComment(e.target.value)}
-                  className="w-full p-3 rounded-md bg-[#0B1120] border border-slate-800 focus:border-slate-600 text-slate-100 text-xs outline-none"
+                  className="w-full p-3 rounded-md bg-[#0B1120] border border-slate-800 focus:border-[#378FE9] text-slate-100 text-xs outline-none"
                 />
               </div>
 
@@ -322,7 +322,7 @@ export default function FacultyDashboard() {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="px-4 py-2 rounded-md bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-medium border border-emerald-500/40 flex items-center gap-1.5"
+                  className="px-4 py-2 rounded-md bg-[#0A66C2] hover:bg-[#084E96] text-white text-xs font-medium border border-blue-500/40 flex items-center gap-1.5 btn-interactive"
                 >
                   <CheckCircle2 className="w-4 h-4" /> Submit Review
                 </button>

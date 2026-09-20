@@ -117,7 +117,7 @@ export default function InteractiveScoreCalculatorWidget() {
         <div className="space-y-2 p-4 rounded-2xl bg-[#0A0A0F]/60 border border-borderSubtle">
           <div className="flex justify-between font-bold text-slate-200">
             <span>Development Stage Bonus</span>
-            <span className="text-emerald-400 font-extrabold">+{selectedStage.bonus} Bonus Pts</span>
+            <span className="text-brandBlueSoft font-extrabold">+{selectedStage.bonus} Bonus Pts</span>
           </div>
           <select
             value={selectedStage.name}

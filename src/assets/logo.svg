@@ -1,0 +1,53 @@
+<svg viewBox="0 0 200 230" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Left Side: Dark Blue Hexagonal Outer Frame & Stem for 'i' -->
+  <!-- Outer Frame of left 'i' -->
+  <path
+    d="M 97,14
+       L 43,45
+       C 33,51 26,62 26,74
+       L 26,148
+       C 26,160 33,171 43,177
+       L 97,208
+       L 97,184
+       L 52,158
+       C 45,154 40,146 40,138
+       L 40,84
+       C 40,76 45,68 52,64
+       L 97,38
+       Z"
+    fill="#0C3B73"
+  />
+  
+  <!-- 'i' Dot (Slanted quadrilateral) -->
+  <polygon points="66,54 97,36 97,60 66,78" fill="#0066CC" />
+
+  <!-- 'i' Vertical Stem -->
+  <polygon points="66,85 97,67 97,215 66,197" fill="#082C59" />
+
+  <!-- Right Side: Bright Azure Blue 'B' Completing Hexagon -->
+  <path
+    d="M 105,14
+       L 157,44
+       C 168,50 175,62 175,74
+       C 175,86 168,97 157,103
+       L 142,111
+       L 159,119
+       C 170,125 177,137 177,149
+       C 177,162 170,173 159,179
+       L 105,210
+       L 105,185
+       L 147,161
+       C 153,158 157,151 157,144
+       C 157,137 153,130 147,127
+       L 124,114
+       L 105,114
+       L 105,94
+       L 124,94
+       L 145,82
+       C 151,79 155,72 155,65
+       C 155,58 151,51 145,48
+       L 105,25
+       Z"
+    fill="#009BE8"
+  />
+</svg>

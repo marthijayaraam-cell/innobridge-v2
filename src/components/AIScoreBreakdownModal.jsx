@@ -9,7 +9,7 @@ export default function AIScoreBreakdownModal({ project, isOpen, onClose }) {
   const metrics = [
     { name: 'Innovation Score', val: ai_scores.innovation_score || 85, weight: '25%', color: 'from-purple-500 to-indigo-500', icon: Lightbulb },
     { name: 'Feasibility Score', val: ai_scores.feasibility_score || 80, weight: '20%', color: 'from-blue-500 to-cyan-500', icon: CheckCircle },
-    { name: 'Impact Score', val: ai_scores.impact_score || 90, weight: '25%', color: 'from-emerald-500 to-teal-500', icon: TrendingUp },
+    { name: 'Impact Score', val: ai_scores.impact_score || 90, weight: '25%', color: 'from-sky-500 to-brandBlue', icon: TrendingUp },
     { name: 'Technical Score', val: ai_scores.technical_score || 88, weight: '15%', color: 'from-violet-500 to-purple-600', icon: Cpu },
     { name: 'Market Score', val: ai_scores.market_score || 82, weight: '15%', color: 'from-amber-500 to-orange-500', icon: ShieldCheck },
   ];

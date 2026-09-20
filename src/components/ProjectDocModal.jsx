@@ -105,15 +105,15 @@ export default function ProjectDocModal({ project, isOpen, onClose, userRole = '
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 border-b border-slate-800 pb-6 pr-8">
           <div className="flex items-start gap-4">
-            <div className="w-12 h-12 rounded-md bg-emerald-950/80 border border-emerald-800/60 p-0.5 shrink-0 flex items-center justify-center text-emerald-400">
-              <FileText className="w-6 h-6 text-emerald-400" />
+            <div className="w-12 h-12 rounded-md bg-[#0A66C2]/15 border border-[#0A66C2]/40 p-0.5 shrink-0 flex items-center justify-center text-brandBlueSoft">
+              <FileText className="w-6 h-6 text-brandBlueSoft" />
             </div>
             <div>
               <div className="flex items-center gap-2 mb-1 flex-wrap">
                 <span className="px-2.5 py-0.5 rounded-md bg-slate-800 text-slate-300 border border-slate-700 text-xs font-medium">
                   {domain}
                 </span>
-                <span className="px-2.5 py-0.5 rounded-md bg-emerald-950/80 border border-emerald-800/60 text-xs font-semibold text-emerald-400 flex items-center gap-1">
+                <span className="px-2.5 py-0.5 rounded-md bg-[#0A66C2]/15 border border-[#0A66C2]/40 text-xs font-semibold text-brandBlueSoft flex items-center gap-1">
                   <span>Stage {currentRank}/11:</span> {stage}
                 </span>
               </div>
@@ -134,10 +134,10 @@ export default function ProjectDocModal({ project, isOpen, onClose, userRole = '
           <div className="flex items-center gap-3 self-start md:self-auto bg-[#0B1120] p-3 rounded-md border border-slate-800">
             <div className="text-right">
               <div className="text-[10px] uppercase font-semibold text-slate-400">AI Score</div>
-              <div className="text-2xl font-bold text-emerald-400">{ai_scores.overall_score || 88}</div>
+              <div className="text-2xl font-bold text-brandBlueSoft">{ai_scores.overall_score || 88}</div>
             </div>
-            <div className="w-9 h-9 rounded-md bg-emerald-950/80 border border-emerald-800/60 flex items-center justify-center text-emerald-400">
-              <Sparkles className="w-4 h-4 text-emerald-400" />
+            <div className="w-9 h-9 rounded-md bg-[#0A66C2]/15 border border-[#0A66C2]/40 flex items-center justify-center text-brandBlueSoft">
+              <Sparkles className="w-4 h-4 text-brandBlueSoft" />
             </div>
           </div>
         </div>
@@ -146,7 +146,7 @@ export default function ProjectDocModal({ project, isOpen, onClose, userRole = '
         <div className="bg-[#0B1120] p-4 rounded-md border border-slate-800 mb-6">
           <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3 flex items-center justify-between">
             <span>Structured 11-Stage Development Pipeline</span>
-            <span className="text-emerald-400 font-semibold">
+            <span className="text-brandBlueSoft font-semibold">
               Currently at Stage {currentRank} of 11
             </span>
           </div>
@@ -163,7 +163,7 @@ export default function ProjectDocModal({ project, isOpen, onClose, userRole = '
                   key={s.key}
                   className={`min-w-[140px] p-2.5 rounded-md border text-left shrink-0 transition-colors ${
                     isCurrent
-                      ? 'bg-emerald-950/80 border-emerald-800 text-white font-medium'
+                      ? 'bg-[#0A66C2]/20 border-[#0A66C2] text-white font-medium'
                       : isCompleted
                       ? 'bg-slate-900 border-slate-800 text-slate-200'
                       : 'bg-slate-900/60 border-slate-800/80 text-slate-400'
@@ -174,9 +174,9 @@ export default function ProjectDocModal({ project, isOpen, onClose, userRole = '
                       #{s.rank}
                     </span>
                     {isCurrent ? (
-                      <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                      <span className="w-2 h-2 rounded-full bg-brandBlueBright" />
                     ) : isCompleted ? (
-                      <CheckCircle2 className="w-3 h-3 text-emerald-400" />
+                      <CheckCircle2 className="w-3 h-3 text-brandBlueSoft" />
                     ) : (
                       <Lock className="w-3 h-3 text-slate-400" />
                     )}
@@ -195,7 +195,7 @@ export default function ProjectDocModal({ project, isOpen, onClose, userRole = '
             onClick={() => setActiveTab('doc')}
             className={`pb-3 px-4 transition-colors border-b-2 flex items-center gap-2 ${
               activeTab === 'doc'
-                ? 'border-emerald-500 text-emerald-400 font-semibold'
+                ? 'border-brandBlue text-brandBlueSoft font-semibold'
                 : 'border-transparent text-slate-400 hover:text-white'
             }`}
           >
@@ -205,7 +205,7 @@ export default function ProjectDocModal({ project, isOpen, onClose, userRole = '
             onClick={() => setActiveTab('ai_scores')}
             className={`pb-3 px-4 transition-colors border-b-2 flex items-center gap-2 ${
               activeTab === 'ai_scores'
-                ? 'border-emerald-500 text-emerald-400 font-semibold'
+                ? 'border-brandBlue text-brandBlueSoft font-semibold'
                 : 'border-transparent text-slate-400 hover:text-white'
             }`}
           >
@@ -237,7 +237,7 @@ export default function ProjectDocModal({ project, isOpen, onClose, userRole = '
                   <Lightbulb className="w-4 h-4 text-amber-400" />
                   Stages 1 & 2: Idea Formulation & Problem Definition
                 </h3>
-                <span className="text-[10px] font-medium px-2.5 py-0.5 rounded-md bg-emerald-950/80 text-emerald-400 border border-emerald-800/60 flex items-center gap-1">
+                <span className="text-[10px] font-medium px-2.5 py-0.5 rounded-md bg-[#0A66C2]/15 text-brandBlueSoft border border-[#0A66C2]/40 flex items-center gap-1">
                   <Eye className="w-3 h-3" /> Public Overview Unlocked
                 </span>
               </div>
@@ -271,7 +271,7 @@ export default function ProjectDocModal({ project, isOpen, onClose, userRole = '
                     <Lock className="w-3 h-3" /> Locked (Outsider Protection)
                   </span>
                 ) : (
-                  <span className="text-[10px] font-medium px-2.5 py-0.5 rounded-md bg-emerald-950/80 text-emerald-400 border border-emerald-800/60 flex items-center gap-1">
+                  <span className="text-[10px] font-medium px-2.5 py-0.5 rounded-md bg-[#0A66C2]/15 text-brandBlueSoft border border-[#0A66C2]/40 flex items-center gap-1">
                     <CheckCircle2 className="w-3 h-3" /> Unlocked
                   </span>
                 )}
@@ -314,7 +314,7 @@ export default function ProjectDocModal({ project, isOpen, onClose, userRole = '
                     <Lock className="w-3 h-3" /> Architecture Locked
                   </span>
                 ) : (
-                  <span className="text-[10px] font-medium px-2.5 py-0.5 rounded-md bg-emerald-950/80 text-emerald-400 border border-emerald-800/60 flex items-center gap-1">
+                  <span className="text-[10px] font-medium px-2.5 py-0.5 rounded-md bg-[#0A66C2]/15 text-brandBlueSoft border border-[#0A66C2]/40 flex items-center gap-1">
                     <CheckCircle2 className="w-3 h-3" /> Unlocked
                   </span>
                 )}
@@ -334,7 +334,7 @@ export default function ProjectDocModal({ project, isOpen, onClose, userRole = '
                   >
                     {accessRequested ? (
                       <>
-                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" /> Access Request Sent to Innovator
+                        <CheckCircle2 className="w-3.5 h-3.5 text-brandBlueSoft" /> Access Request Sent to Innovator
                       </>
                     ) : (
                       <>
@@ -347,13 +347,13 @@ export default function ProjectDocModal({ project, isOpen, onClose, userRole = '
                 <div className="space-y-4 text-xs">
                   <div>
                     <span className="text-slate-400 font-medium uppercase tracking-wider block mb-1">System Architecture Flow</span>
-                    <div className="p-3 rounded-md bg-[#111827] font-mono text-[11px] text-emerald-400 border border-slate-800">
+                    <div className="p-3 rounded-md bg-[#111827] font-mono text-[11px] text-brandBlueSoft border border-slate-800">
                       Client Frontend → API Gateway → AI Microservice → Supabase Postgres Ledger
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
                     {demo_url && (
-                      <a href={demo_url} target="_blank" rel="noreferrer" className="px-3.5 py-1.5 rounded-md bg-emerald-600 hover:bg-emerald-500 text-white font-medium flex items-center gap-2 text-xs transition-colors">
+                      <a href={demo_url} target="_blank" rel="noreferrer" className="px-3.5 py-1.5 rounded-md bg-brandBlue hover:bg-brandBlueBright text-white font-medium flex items-center gap-2 text-xs transition-colors">
                         <ExternalLink className="w-3.5 h-3.5" /> Launch Working Prototype
                       </a>
                     )}
@@ -383,7 +383,7 @@ export default function ProjectDocModal({ project, isOpen, onClose, userRole = '
                     <Lock className="w-3 h-3" /> Upcoming Stage
                   </span>
                 ) : (
-                  <span className="text-[10px] font-medium px-2.5 py-0.5 rounded-md bg-emerald-950/80 text-emerald-400 border border-emerald-800/60 flex items-center gap-1">
+                  <span className="text-[10px] font-medium px-2.5 py-0.5 rounded-md bg-[#0A66C2]/15 text-brandBlueSoft border border-[#0A66C2]/40 flex items-center gap-1">
                     <CheckCircle2 className="w-3 h-3" /> Active MVP
                   </span>
                 )}
@@ -419,7 +419,7 @@ export default function ProjectDocModal({ project, isOpen, onClose, userRole = '
                     <Lock className="w-3 h-3" /> Future Milestones
                   </span>
                 ) : (
-                  <span className="text-[10px] font-medium px-2.5 py-0.5 rounded-md bg-emerald-950/80 text-emerald-400 border border-emerald-800/60 flex items-center gap-1">
+                  <span className="text-[10px] font-medium px-2.5 py-0.5 rounded-md bg-[#0A66C2]/15 text-brandBlueSoft border border-[#0A66C2]/40 flex items-center gap-1">
                     <CheckCircle2 className="w-3 h-3" /> Commercial Scale
                   </span>
                 )}
@@ -455,13 +455,13 @@ export default function ProjectDocModal({ project, isOpen, onClose, userRole = '
                   {ai_scores.overall_score || 88} / 100
                 </div>
               </div>
-              <Award className="w-8 h-8 text-emerald-400" />
+              <Award className="w-8 h-8 text-brandBlueSoft" />
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
               <div className="p-3 rounded-md bg-[#0B1120] border border-slate-800 flex justify-between">
                 <span className="text-slate-400 font-medium">Innovation Score</span>
-                <span className="font-semibold text-emerald-400">{ai_scores.innovation_score || 85}</span>
+                <span className="font-semibold text-brandBlueSoft">{ai_scores.innovation_score || 85}</span>
               </div>
               <div className="p-3 rounded-md bg-[#0B1120] border border-slate-800 flex justify-between">
                 <span className="text-slate-400 font-medium">Feasibility Score</span>
@@ -469,7 +469,7 @@ export default function ProjectDocModal({ project, isOpen, onClose, userRole = '
               </div>
               <div className="p-3 rounded-md bg-[#0B1120] border border-slate-800 flex justify-between">
                 <span className="text-slate-400 font-medium">Impact Score</span>
-                <span className="font-semibold text-emerald-400">{ai_scores.impact_score || 90}</span>
+                <span className="font-semibold text-brandBlueSoft">{ai_scores.impact_score || 90}</span>
               </div>
               <div className="p-3 rounded-md bg-[#0B1120] border border-slate-800 flex justify-between">
                 <span className="text-slate-400 font-medium">Technical Score</span>
@@ -482,7 +482,7 @@ export default function ProjectDocModal({ project, isOpen, onClose, userRole = '
         <div className="mt-6 pt-4 border-t border-slate-800 flex justify-end">
           <button
             onClick={onClose}
-            className="px-4 py-2 rounded-md bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-medium transition-colors"
+            className="px-4 py-2 rounded-md bg-brandBlue hover:bg-brandBlueBright text-white text-xs font-medium transition-colors"
           >
             Close Document View
           </button>

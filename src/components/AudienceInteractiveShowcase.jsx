@@ -40,7 +40,7 @@ export default function AudienceInteractiveShowcase() {
       title: 'Scout Verified Campus Talent & High-Score IP',
       badge: 'Companies, VCs & Talent Scouts',
       icon: Building2,
-      color: 'from-emerald-500 to-teal-500',
+      color: 'from-brandBlue to-sky-500',
       description: 'Filter verified campus projects by domain and minimum AI score cutoff (85+), express hiring interest, and invest in early-stage student IP.',
       features: [
         'Filter by domain (AI/ML, HealthTech, CleanTech, Robotics, FinTech)',
@@ -88,7 +88,7 @@ export default function AudienceInteractiveShowcase() {
           onClick={() => setActiveAudience('company')}
           className={`py-3 rounded-xl transition-all flex items-center justify-center gap-2 ${
             activeAudience === 'company'
-              ? 'bg-emerald-500 text-[#0A0A0F] shadow-glowSm font-extrabold'
+              ? 'bg-brandBlue text-white shadow-glowSm font-extrabold'
               : 'text-subtext hover:text-white'
           }`}
         >
@@ -129,7 +129,7 @@ export default function AudienceInteractiveShowcase() {
           </h4>
           {current.features.map((feat, i) => (
             <div key={i} className="flex items-start gap-3 text-xs text-slate-200">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+              <CheckCircle2 className="w-4 h-4 text-brandBlueSoft shrink-0 mt-0.5" />
               <span>{feat}</span>
             </div>
           ))}

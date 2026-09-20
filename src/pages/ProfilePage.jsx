@@ -21,6 +21,8 @@ import { supabase, isSupabaseConfigured, MOCK_PROJECTS } from '../lib/supabase';
 import ProjectCard from '../components/ProjectCard';
 import ProjectDocModal from '../components/ProjectDocModal';
 
+import logoImg from '../assets/logo.svg';
+
 export default function ProfilePage() {
   const { user, profile } = useAuth();
   const [userProjects, setUserProjects] = useState([]);
@@ -82,8 +84,8 @@ export default function ProfilePage() {
                 <h1 className="text-2xl sm:text-3xl font-extrabold text-white">
                   {profile?.full_name || 'Innovator Profile'}
                 </h1>
-                <span className="px-2.5 py-0.5 rounded-md bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-medium text-xs capitalize flex items-center gap-1">
-                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+                <span className="px-2.5 py-0.5 rounded-md bg-blue-500/10 border border-blue-500/30 text-[#70B5F9] font-medium text-xs capitalize flex items-center gap-1">
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#70B5F9]" />
                   {profile?.role || 'Student'}
                 </span>
               </div>
@@ -102,7 +104,7 @@ export default function ProfilePage() {
 
               <div className="mt-3 flex items-center gap-2">
                 <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-slate-800 border border-slate-700 text-slate-300 text-xs font-normal">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#70B5F9]" />
                   Identity & College Verified
                 </span>
                 <span className="text-xs text-slate-400">Member since 2026</span>
@@ -125,7 +127,7 @@ export default function ProfilePage() {
 
             <button 
               onClick={() => alert("Portfolio link copied to clipboard!")}
-              className="px-4 py-2.5 rounded-md bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-medium border border-emerald-500/40 flex items-center justify-center gap-2 transition-colors"
+              className="px-4 py-2.5 rounded-md bg-[#0A66C2] hover:bg-[#084E96] text-white text-xs font-medium border border-blue-500/40 flex items-center justify-center gap-2 transition-colors btn-interactive"
             >
               <Share2 className="w-4 h-4" />
               Share Portfolio
@@ -148,9 +150,9 @@ export default function ProfilePage() {
         <div className="bg-[#111827] p-5 rounded-md border border-slate-800">
           <div className="flex items-center justify-between text-slate-400 text-xs font-semibold mb-2">
             <span>Peak AI Score</span>
-            <Sparkles className="w-4 h-4 text-emerald-400" />
+            <img src={logoImg} alt="InnoBridge" className="w-4 h-4 object-contain" />
           </div>
-          <div className="text-2xl font-bold text-emerald-400">{highestAIScore}/100</div>
+          <div className="text-2xl font-bold text-[#70B5F9]">{highestAIScore}/100</div>
           <span className="text-[11px] text-slate-400 mt-1 block">Highest evaluation metric</span>
         </div>
 
@@ -177,7 +179,7 @@ export default function ProfilePage() {
       <div className="flex items-center justify-between mb-6 pb-4 border-b border-slate-800">
         <div>
           <h2 className="text-xl font-bold text-white flex items-center gap-2">
-            <FolderGit2 className="w-5 h-5 text-emerald-400" />
+            <FolderGit2 className="w-5 h-5 text-[#70B5F9]" />
             Project Portfolio
           </h2>
           <p className="text-xs text-slate-400 mt-0.5">
@@ -189,7 +191,7 @@ export default function ProfilePage() {
       {/* Project Cards Grid */}
       {loading ? (
         <div className="py-16 text-center text-slate-400 flex flex-col items-center justify-center">
-          <Sparkles className="w-7 h-7 text-emerald-400 animate-spin mb-2" />
+          <Sparkles className="w-7 h-7 text-[#70B5F9] animate-spin mb-2" />
           <span>Loading student portfolio...</span>
         </div>
       ) : userProjects.length === 0 ? (

@@ -135,8 +135,8 @@ export default function CompanyDashboard() {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4 border-b border-slate-800 pb-6">
         <div>
-          <div className="flex items-center gap-2 text-xs font-semibold text-emerald-400 uppercase tracking-wider mb-1">
-            <Building2 className="w-4 h-4" /> Industry & Talent Scouting Workspace
+          <div className="flex items-center gap-2 text-xs font-semibold text-[#70B5F9] uppercase tracking-wider mb-1">
+            <Building2 className="w-4 h-4 text-[#70B5F9]" /> Industry & Talent Scouting Workspace
           </div>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-white">
             {profile?.company_name || 'Company'} Innovation Hub
@@ -147,12 +147,12 @@ export default function CompanyDashboard() {
         </div>
 
         {/* Tab Switcher */}
-        <div className="flex items-center gap-1.5 p-1 rounded-md bg-[#111827] border border-slate-800 text-xs font-semibold">
+        <div className="flex flex-wrap items-center gap-1.5 p-1 rounded-md bg-[#111827] border border-slate-800 text-xs font-semibold">
           <button
             onClick={() => setActiveTab('browse')}
             className={`px-3.5 py-1.5 rounded-md transition-colors flex items-center gap-1.5 ${
               activeTab === 'browse'
-                ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-medium'
+                ? 'bg-blue-500/20 text-[#70B5F9] border border-blue-500/30 font-medium'
                 : 'text-slate-400 hover:text-white'
             }`}
           >
@@ -162,7 +162,7 @@ export default function CompanyDashboard() {
             onClick={() => setActiveTab('shortlist')}
             className={`px-3.5 py-1.5 rounded-md transition-colors flex items-center gap-1.5 ${
               activeTab === 'shortlist'
-                ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-medium'
+                ? 'bg-blue-500/20 text-[#70B5F9] border border-blue-500/30 font-medium'
                 : 'text-slate-400 hover:text-white'
             }`}
           >
@@ -182,7 +182,7 @@ export default function CompanyDashboard() {
                 placeholder="Search high-potential projects by keyword or student name..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2.5 rounded-md bg-[#0B1120] border border-slate-800 focus:border-slate-600 text-slate-100 text-xs outline-none transition-colors"
+                className="w-full pl-10 pr-4 py-2.5 rounded-md bg-[#0B1120] border border-slate-800 focus:border-[#378FE9] text-slate-100 text-xs outline-none transition-colors"
               />
             </div>
 
@@ -194,7 +194,7 @@ export default function CompanyDashboard() {
                 <select
                   value={selectedDomain}
                   onChange={(e) => setSelectedDomain(e.target.value)}
-                  className="w-full px-3 py-2 rounded-md bg-[#0B1120] border border-slate-800 text-xs font-medium text-white outline-none focus:border-slate-600 cursor-pointer"
+                  className="w-full px-3 py-2 rounded-md bg-[#0B1120] border border-slate-800 text-xs font-medium text-white outline-none focus:border-[#378FE9] cursor-pointer"
                 >
                   {DOMAIN_OPTIONS.map((d) => (
                     <option key={d} value={d} className="bg-[#111827] text-white font-normal text-xs py-2">
@@ -211,7 +211,7 @@ export default function CompanyDashboard() {
                 <select
                   value={selectedStage}
                   onChange={(e) => setSelectedStage(e.target.value)}
-                  className="w-full px-3 py-2 rounded-md bg-[#0B1120] border border-slate-800 text-xs font-medium text-white outline-none focus:border-slate-600 cursor-pointer"
+                  className="w-full px-3 py-2 rounded-md bg-[#0B1120] border border-slate-800 text-xs font-medium text-white outline-none focus:border-[#378FE9] cursor-pointer"
                 >
                   {['All Stages', ...ALL_11_STAGES].map((s) => (
                     <option key={s} value={s} className="bg-[#111827] text-white font-normal text-xs py-2">
@@ -224,7 +224,7 @@ export default function CompanyDashboard() {
               <div>
                 <label className="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1 flex justify-between">
                   <span>Minimum AI Score Cutoff</span>
-                  <span className="text-emerald-400 font-bold">{(minAIScore / 10).toFixed(1)}+</span>
+                  <span className="text-[#70B5F9] font-bold">{(minAIScore / 10).toFixed(1)}+</span>
                 </label>
                 <input
                   type="range"
@@ -233,7 +233,7 @@ export default function CompanyDashboard() {
                   step="5"
                   value={minAIScore}
                   onChange={(e) => setMinAIScore(Number(e.target.value))}
-                  className="w-full accent-emerald-500 bg-[#0B1120] h-2 rounded-md cursor-pointer"
+                  className="w-full accent-[#0A66C2] bg-[#0B1120] h-2 rounded-md cursor-pointer"
                 />
               </div>
             </div>
@@ -283,7 +283,7 @@ export default function CompanyDashboard() {
               </p>
               <button
                 onClick={() => setActiveTab('browse')}
-                className="px-4 py-2 rounded-md bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-xs border border-emerald-500/40"
+                className="px-4 py-2 rounded-md bg-[#0A66C2] hover:bg-[#084E96] text-white font-medium text-xs border border-blue-500/40 btn-interactive"
               >
                 Browse Projects
               </button>
@@ -293,10 +293,10 @@ export default function CompanyDashboard() {
               {interestedProjects.map((item) => (
                 <div
                   key={item.id}
-                  className="bg-[#111827] rounded-md p-4 border border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-4"
+                  className="bg-[#111827] rounded-md p-4 border border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-4 card-hover-effect"
                 >
                   <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 flex items-center justify-center font-bold shrink-0">
+                    <div className="w-8 h-8 rounded-md bg-blue-500/10 text-[#70B5F9] border border-blue-500/30 flex items-center justify-center font-bold shrink-0">
                       <GraduationCap className="w-4 h-4" />
                     </div>
                     <div>
@@ -308,7 +308,7 @@ export default function CompanyDashboard() {
                   </div>
 
                   <div className="flex items-center gap-3">
-                    <span className="text-xs text-emerald-400 font-semibold flex items-center gap-1">
+                    <span className="text-xs text-[#70B5F9] font-semibold flex items-center gap-1">
                       <CheckCircle2 className="w-3.5 h-3.5" /> Interest Logged
                     </span>
                     <button
@@ -316,7 +316,7 @@ export default function CompanyDashboard() {
                         const proj = projects.find((p) => p.id === item.project_id);
                         if (proj) setSelectedProject(proj);
                       }}
-                      className="px-3 py-1.5 rounded-md bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs text-slate-300 hover:text-white"
+                      className="px-3 py-1.5 rounded-md bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs text-slate-300 hover:text-white btn-interactive"
                     >
                       View Details
                     </button>

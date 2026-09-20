@@ -21,6 +21,8 @@ import AIMentorWidget from '../components/AIMentorWidget';
 import { supabase, isSupabaseConfigured, MOCK_PROJECTS } from '../lib/supabase';
 import { calculateStudentInnovationScore } from '../lib/scoreCalculator';
 
+import logoImg from '../assets/logo.svg';
+
 export default function StudentDashboard() {
   const { user, profile, updateProfileScore } = useAuth();
   const [myProjects, setMyProjects] = useState([]);
@@ -126,8 +128,8 @@ export default function StudentDashboard() {
       {/* Command Center Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4 border-b border-slate-800 pb-6">
         <div>
-          <div className="flex items-center gap-2 text-xs font-semibold text-emerald-400 uppercase tracking-wider mb-1">
-            <GraduationCap className="w-4 h-4 text-emerald-400" /> Student Innovation Workspace
+          <div className="flex items-center gap-2 text-xs font-semibold text-[#70B5F9] uppercase tracking-wider mb-1">
+            <GraduationCap className="w-4 h-4 text-[#70B5F9]" /> Student Innovation Workspace
           </div>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-white">
             Welcome back, {profile?.full_name || 'Innovator'}
@@ -139,7 +141,7 @@ export default function StudentDashboard() {
 
         <button
           onClick={() => setIsUploadOpen(true)}
-          className="px-5 py-2.5 rounded-md bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-xs border border-emerald-500/40 flex items-center justify-center gap-2 transition-colors"
+          className="px-5 py-2.5 rounded-md bg-[#0A66C2] hover:bg-[#084E96] text-white font-medium text-xs border border-blue-500/40 flex items-center justify-center gap-2 transition-colors btn-interactive"
         >
           <Plus className="w-4 h-4" />
           Upload New Project
@@ -147,7 +149,7 @@ export default function StudentDashboard() {
       </div>
 
       {/* Top Command Center Metrics Row */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
         
         {/* Large Prominent Total Innovation Score Card */}
         <div className="bg-[#111827] rounded-md p-5 border border-slate-800 relative">
@@ -156,7 +158,7 @@ export default function StudentDashboard() {
               Total Innovation Score
             </span>
             <div className="w-8 h-8 rounded-md badge-ai flex items-center justify-center">
-              <Award className="w-4 h-4 text-emerald-400" />
+              <Award className="w-4 h-4 text-[#70B5F9]" />
             </div>
           </div>
           <div className="text-4xl font-extrabold text-white mb-1">
@@ -207,10 +209,10 @@ export default function StudentDashboard() {
               Avg AI Evaluation
             </span>
             <div className="w-8 h-8 rounded-md badge-ai flex items-center justify-center">
-              <Sparkles className="w-4 h-4 text-emerald-400" />
+              <img src={logoImg} alt="InnoBridge" className="w-4 h-4 object-contain" />
             </div>
           </div>
-          <div className="text-3xl font-extrabold text-emerald-400 mb-1">
+          <div className="text-3xl font-extrabold text-[#70B5F9] mb-1">
             {avgAIScore} <span className="text-xs text-slate-400 font-normal">/ 10</span>
           </div>
           <p className="text-[10px] text-slate-400">5-metric LLM benchmark</p>
@@ -237,7 +239,7 @@ export default function StudentDashboard() {
           </p>
           <button
             onClick={() => setIsUploadOpen(true)}
-            className="px-4 py-2 rounded-md bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-medium border border-emerald-500/40"
+            className="px-4 py-2 rounded-md bg-[#0A66C2] hover:bg-[#084E96] text-white text-xs font-medium border border-blue-500/40 btn-interactive"
           >
             Upload First Project
           </button>

@@ -43,6 +43,14 @@
     display: flex;
     flex-direction: column;
     flex: 1 1 auto;
+    overflow-x: hidden !important;
+  }
+
+  /* Prevent iOS Safari auto-zoom on input focus for mobile viewports (<768px) */
+  @media (max-width: 767px) {
+    input, select, textarea {
+      font-size: 16px !important;
+    }
   }
 
   /* Consistent Inter Typography Dropdown Styling */
@@ -88,11 +96,23 @@ html:not(.dark) .bg-slate-800\/40,
 html:not(.dark) .bg-slate-950\/60 {
   background-color: #F1F5F9 !important;
 }
+
+html:not(.dark) footer.bg-\[\#070B14\] {
+  background-color: #F8FAFC !important;
+  border-color: #E2E8F0 !important;
+}
+
+html:not(.dark) footer a.hover\:text-\[\#70B5F9\]:hover {
+  color: #0A66C2 !important;
+}
+html:not(.dark) .bg-[#0A66C2]/15,
+html:not(.dark) .bg-[#0A66C2]/20,
 html:not(.dark) .bg-emerald-950\/80,
-html:not(.dark) .bg-emerald-950\/60 {
-  background-color: rgba(22, 163, 74, 0.12) !important;
-  color: #15803D !important;
-  border-color: rgba(22, 163, 74, 0.3) !important;
+html:not(.dark) .bg-emerald-950\/60,
+html:not(.dark) .bg-blue-950\/80 {
+  background-color: rgba(10, 102, 194, 0.12) !important;
+  color: #0A66C2 !important;
+  border-color: rgba(10, 102, 194, 0.3) !important;
 }
 html:not(.dark) .bg-amber-950\/80 {
   background-color: rgba(245, 158, 11, 0.12) !important;
@@ -153,14 +173,16 @@ html:not(.dark) button.bg-slate-800:hover {
 }
 
 /* Retain solid button text contrast in light mode */
+html:not(.dark) .bg-\[\#0A66C2\],
+html:not(.dark) .bg-\[\#378FE9\],
 html:not(.dark) .bg-emerald-600,
 html:not(.dark) .bg-emerald-700,
 html:not(.dark) .bg-emerald-500,
 html:not(.dark) .bg-blue-600,
 html:not(.dark) .bg-amber-500,
-html:not(.dark) button.bg-emerald-600,
+html:not(.dark) button.bg-\[\#0A66C2\],
 html:not(.dark) button.bg-brandBlue,
-html:not(.dark) a.bg-emerald-600 {
+html:not(.dark) a.bg-\[\#0A66C2\] {
   color: #FFFFFF !important;
 }
 
@@ -188,20 +210,33 @@ html:not(.dark) textarea {
   border-radius: 6px;
 }
 
-/* GitHub/Linear Card Hover Effect - Clean Border Shift Only (No Glow/Transform) */
+/* GitHub/Linear Card Hover Effect - Restrained Border Shift & Subtle Lift (Motion Framer) */
 .card-hover-effect {
-  transition: border-color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+  transition: border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   border-radius: 6px;
 }
 
 .card-hover-effect:hover {
   border-color: #475569;
   background-color: #151F32;
+  transform: translateY(-1px);
 }
 
 html:not(.dark) .card-hover-effect:hover {
   border-color: #94A3B8;
   background-color: #F8FAFC;
+  transform: translateY(-1px);
+}
+
+/* Interactive Button Restrained Micro-motion (Motion Framer & Impeccable) */
+.btn-interactive {
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-interactive:hover {
+  transform: translateY(-0.5px);
+}
+.btn-interactive:active {
+  transform: translateY(0px) scale(0.98);
 }
 
 /* GitHub Topic Tag Style - Flat Neutral Slate Background, Crisp Text */
@@ -219,34 +254,34 @@ html:not(.dark) .badge-domain {
   border: 1px solid #E2E8F0 !important;
 }
 
-/* AI Intelligence Pill & Badge (Flat Green Accent, No Glow) */
+/* AI Intelligence Pill & Badge (LinkedIn Blue Accent, No Glow) */
 .badge-ai {
-  background-color: rgba(22, 163, 74, 0.15);
-  color: #4ADE80;
-  border: 1px solid rgba(34, 197, 94, 0.3);
+  background-color: rgba(10, 102, 194, 0.15);
+  color: #70B5F9;
+  border: 1px solid rgba(55, 143, 233, 0.3);
   border-radius: 6px;
   font-weight: 600;
 }
 
 html:not(.dark) .badge-ai {
-  background-color: rgba(22, 163, 74, 0.1);
-  color: #16A34A;
-  border: 1px solid rgba(22, 163, 74, 0.3);
+  background-color: rgba(10, 102, 194, 0.1);
+  color: #0A66C2;
+  border: 1px solid rgba(10, 102, 194, 0.3);
 }
 
-/* Status Badge - Launched / Scale (Flat Green) */
+/* Status Badge - Launched / Scale (LinkedIn Blue) */
 .badge-success {
-  background-color: rgba(22, 163, 74, 0.12);
-  color: #4ADE80;
-  border: 1px solid rgba(34, 197, 94, 0.25);
+  background-color: rgba(10, 102, 194, 0.12);
+  color: #70B5F9;
+  border: 1px solid rgba(55, 143, 233, 0.25);
   border-radius: 6px;
   font-weight: 500;
 }
 
 html:not(.dark) .badge-success {
-  background-color: rgba(22, 163, 74, 0.1);
-  color: #16A34A;
-  border: 1px solid rgba(22, 163, 74, 0.3);
+  background-color: rgba(10, 102, 194, 0.1);
+  color: #0A66C2;
+  border: 1px solid rgba(10, 102, 194, 0.3);
 }
 
 /* Status Badge - Prototype / Pilot (Flat Amber) */
@@ -283,7 +318,7 @@ html:not(.dark) ::-webkit-scrollbar-track {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #22C55E;
+  background: #0A66C2;
 }
 
 .no-scrollbar::-webkit-scrollbar {

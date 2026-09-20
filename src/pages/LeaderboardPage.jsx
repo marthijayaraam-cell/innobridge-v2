@@ -186,7 +186,7 @@ export default function LeaderboardPage() {
         </h1>
         <p className="text-xs sm:text-sm text-slate-400 mt-2 font-normal">
           Ranked dynamically by total Innovation Score: <br className="hidden sm:inline" />
-          <code className="text-xs text-emerald-400 bg-slate-900 border border-slate-800 px-2 py-0.5 rounded-md font-mono mt-1 inline-block">
+          <code className="text-xs text-[#70B5F9] bg-slate-900 border border-slate-800 px-2 py-0.5 rounded-md font-mono mt-1 inline-block">
             Formula: (Projects × 10) + (AI Score × 5) + (Faculty Rating × 15) + Stage Bonus
           </code>
         </p>
@@ -196,55 +196,55 @@ export default function LeaderboardPage() {
       {!loading && filteredLeaderboard.length >= 3 && (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 max-w-4xl mx-auto">
           {/* Rank 1 - Gold Champion */}
-          <div className="bg-[#111827] rounded-md p-4 border border-amber-500/40 flex items-center justify-between">
+          <div className="bg-[#111827] rounded-md p-4 border border-amber-500/40 flex items-center justify-between card-hover-effect">
             <div className="flex items-center gap-3">
               <div className="w-8 h-8 rounded-md bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0">
                 <Trophy className="w-4 h-4" />
               </div>
               <div>
-                <span className="text-[10px] uppercase font-semibold text-amber-400 block">Rank 1 • Gold</span>
-                <h3 className="text-sm font-bold text-white">{filteredLeaderboard[0].full_name}</h3>
+                <span className="text-[10px] uppercase font-semibold text-amber-400 block tracking-wider">Rank 1 • Gold</span>
+                <h3 className="text-sm font-bold text-white tracking-tight">{filteredLeaderboard[0].full_name}</h3>
                 <p className="text-[11px] text-slate-400 font-normal">{filteredLeaderboard[0].college}</p>
               </div>
             </div>
             <div className="text-right">
-              <span className="text-xs font-bold text-emerald-400 block">{filteredLeaderboard[0].innovation_score} pts</span>
+              <span className="text-xs font-bold text-[#70B5F9] block font-mono">{filteredLeaderboard[0].innovation_score} pts</span>
               <span className="text-[10px] text-slate-500 font-normal">{filteredLeaderboard[0].project_count} projects</span>
             </div>
           </div>
 
           {/* Rank 2 - Silver */}
-          <div className="bg-[#111827] rounded-md p-4 border border-slate-700 flex items-center justify-between">
+          <div className="bg-[#111827] rounded-md p-4 border border-slate-700 flex items-center justify-between card-hover-effect">
             <div className="flex items-center gap-3">
               <div className="w-8 h-8 rounded-md bg-slate-400/10 border border-slate-400/30 flex items-center justify-center text-slate-300 shrink-0">
                 <Medal className="w-4 h-4" />
               </div>
               <div>
-                <span className="text-[10px] uppercase font-semibold text-slate-400 block">Rank 2 • Silver</span>
-                <h3 className="text-sm font-bold text-white">{filteredLeaderboard[1].full_name}</h3>
+                <span className="text-[10px] uppercase font-semibold text-slate-400 block tracking-wider">Rank 2 • Silver</span>
+                <h3 className="text-sm font-bold text-white tracking-tight">{filteredLeaderboard[1].full_name}</h3>
                 <p className="text-[11px] text-slate-400 font-normal">{filteredLeaderboard[1].college}</p>
               </div>
             </div>
             <div className="text-right">
-              <span className="text-xs font-bold text-emerald-400 block">{filteredLeaderboard[1].innovation_score} pts</span>
+              <span className="text-xs font-bold text-[#70B5F9] block font-mono">{filteredLeaderboard[1].innovation_score} pts</span>
               <span className="text-[10px] text-slate-500 font-normal">{filteredLeaderboard[1].project_count} projects</span>
             </div>
           </div>
 
           {/* Rank 3 - Bronze */}
-          <div className="bg-[#111827] rounded-md p-4 border border-slate-700 flex items-center justify-between">
+          <div className="bg-[#111827] rounded-md p-4 border border-slate-700 flex items-center justify-between card-hover-effect">
             <div className="flex items-center gap-3">
               <div className="w-8 h-8 rounded-md bg-amber-700/10 border border-amber-700/30 flex items-center justify-center text-amber-500 shrink-0">
                 <Award className="w-4 h-4" />
               </div>
               <div>
-                <span className="text-[10px] uppercase font-semibold text-slate-400 block">Rank 3 • Bronze</span>
-                <h3 className="text-sm font-bold text-white">{filteredLeaderboard[2].full_name}</h3>
+                <span className="text-[10px] uppercase font-semibold text-slate-400 block tracking-wider">Rank 3 • Bronze</span>
+                <h3 className="text-sm font-bold text-white tracking-tight">{filteredLeaderboard[2].full_name}</h3>
                 <p className="text-[11px] text-slate-400 font-normal">{filteredLeaderboard[2].college}</p>
               </div>
             </div>
             <div className="text-right">
-              <span className="text-xs font-bold text-emerald-400 block">{filteredLeaderboard[2].innovation_score} pts</span>
+              <span className="text-xs font-bold text-[#70B5F9] block font-mono">{filteredLeaderboard[2].innovation_score} pts</span>
               <span className="text-[10px] text-slate-500 font-normal">{filteredLeaderboard[2].project_count} projects</span>
             </div>
           </div>
@@ -261,7 +261,7 @@ export default function LeaderboardPage() {
             placeholder="Search student or university..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-9 pr-3 py-2 rounded-md bg-slate-900 border border-slate-700 text-xs text-slate-200 outline-none focus:border-emerald-500 transition-colors font-normal"
+            className="w-full pl-9 pr-3 py-2 rounded-md bg-slate-900 border border-slate-700 text-xs text-slate-200 outline-none focus:border-[#378FE9] transition-colors font-normal"
           />
         </div>
 
@@ -270,7 +270,7 @@ export default function LeaderboardPage() {
           <select
             value={selectedDomain}
             onChange={(e) => setSelectedDomain(e.target.value)}
-            className="w-full px-3 py-2 rounded-md bg-slate-900 border border-slate-700 focus:border-emerald-500 text-xs sm:text-sm font-semibold text-white outline-none cursor-pointer"
+            className="w-full px-3 py-2 rounded-md bg-slate-900 border border-slate-700 focus:border-[#378FE9] text-xs sm:text-sm font-semibold text-white outline-none cursor-pointer"
           >
             {DOMAIN_OPTIONS.map((d) => (
               <option key={d} value={d} className="bg-[#111827] text-white font-semibold text-xs sm:text-sm py-2">
@@ -285,7 +285,7 @@ export default function LeaderboardPage() {
           <select
             value={selectedCollege}
             onChange={(e) => setSelectedCollege(e.target.value)}
-            className="w-full px-3 py-2 rounded-md bg-slate-900 border border-slate-700 focus:border-emerald-500 text-xs sm:text-sm font-semibold text-white outline-none cursor-pointer"
+            className="w-full px-3 py-2 rounded-md bg-slate-900 border border-slate-700 focus:border-[#378FE9] text-xs sm:text-sm font-semibold text-white outline-none cursor-pointer"
           >
             {COLLEGE_OPTIONS.map((c) => (
               <option key={c} value={c} className="bg-[#111827] text-white font-semibold text-xs sm:text-sm py-2">
@@ -299,7 +299,7 @@ export default function LeaderboardPage() {
       {/* Leaderboard Table - GitHub Style Clean Borders & Subtle Hover */}
       {loading ? (
         <div className="py-16 text-center text-slate-400 flex flex-col items-center justify-center space-y-2">
-          <Sparkles className="w-6 h-6 text-emerald-400 animate-spin" />
+          <Sparkles className="w-6 h-6 text-[#70B5F9] animate-spin" />
           <span className="text-xs font-normal">Computing innovation score leaderboard...</span>
         </div>
       ) : (
@@ -333,7 +333,7 @@ export default function LeaderboardPage() {
                     </td>
                     <td className="py-3 px-4">
                       <div className="flex items-center gap-2.5">
-                        <div className="w-7 h-7 rounded-full bg-emerald-600 text-white flex items-center justify-center font-medium text-xs shrink-0">
+                        <div className="w-7 h-7 rounded-full bg-[#0A66C2] text-white flex items-center justify-center font-medium text-xs shrink-0">
                           {student.full_name?.charAt(0) || 'S'}
                         </div>
                         <div>
@@ -351,11 +351,11 @@ export default function LeaderboardPage() {
                       {student.project_count || 3}
                     </td>
                     <td className="py-3 px-4 text-center">
-                      <span className="px-2 py-0.5 rounded-md bg-emerald-950/80 text-emerald-400 font-semibold border border-emerald-800/60 text-[11px]">
+                      <span className="px-2 py-0.5 rounded-md bg-blue-950/80 text-[#70B5F9] font-semibold border border-blue-800/60 text-[11px]">
                         {student.avg_ai_score || 90}
                       </span>
                     </td>
-                    <td className="py-3 px-4 text-right font-bold text-sm text-emerald-400">
+                    <td className="py-3 px-4 text-right font-bold text-sm text-[#70B5F9]">
                       {student.innovation_score}
                     </td>
                   </tr>

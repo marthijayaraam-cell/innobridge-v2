@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import logoImg from '../assets/logo.svg';
 import { 
   Sparkles, 
   GraduationCap, 
@@ -84,9 +85,7 @@ export default function AuthPage() {
         
         {/* Header Icon & Title */}
         <div className="flex flex-col items-center text-center mb-6">
-          <div className="w-9 h-9 rounded-md bg-emerald-950/80 border border-emerald-800/60 flex items-center justify-center text-emerald-400 font-bold mb-3">
-            <Sparkles className="w-4 h-4" />
-          </div>
+          <img src={logoImg} alt="InnoBridge Logo" className="w-10 h-10 object-contain rounded-md mb-3" />
           <h1 className="text-2xl font-extrabold text-white">
             {isSignUp ? 'Join InnoBridge Platform' : 'Welcome Back'}
           </h1>
@@ -101,7 +100,7 @@ export default function AuthPage() {
             type="button"
             onClick={() => { setIsSignUp(false); setErrorMsg(''); }}
             className={`py-1.5 rounded-md transition-colors ${
-              !isSignUp ? 'bg-emerald-600 text-white font-medium' : 'text-slate-400 hover:text-white'
+              !isSignUp ? 'bg-brandBlue text-white font-medium' : 'text-slate-400 hover:text-white'
             }`}
           >
             Sign In
@@ -110,7 +109,7 @@ export default function AuthPage() {
             type="button"
             onClick={() => { setIsSignUp(true); setErrorMsg(''); }}
             className={`py-1.5 rounded-md transition-colors ${
-              isSignUp ? 'bg-emerald-600 text-white font-medium' : 'text-slate-400 hover:text-white'
+              isSignUp ? 'bg-brandBlue text-white font-medium' : 'text-slate-400 hover:text-white'
             }`}
           >
             Create Account
@@ -127,7 +126,7 @@ export default function AuthPage() {
                   <button
                     type="button"
                     onClick={() => { setIsSignUp(true); setErrorMsg(''); }}
-                    className="block text-emerald-400 font-bold hover:underline mt-1"
+                    className="block text-brandBlueSoft font-bold hover:underline mt-1"
                   >
                     Click here to Create a new Account →
                   </button>
@@ -149,20 +148,20 @@ export default function AuthPage() {
                 <button
                   type="button"
                   onClick={() => setRole('student')}
-                  className={`p-2.5 rounded-md border flex flex-col items-center justify-center gap-1.5 transition-colors ${
+                  className={`p-2.5 min-h-[44px] rounded-md border flex flex-col items-center justify-center gap-1.5 transition-colors ${
                     role === 'student'
-                      ? 'bg-emerald-500/15 border-emerald-500 text-white font-medium'
+                      ? 'bg-brandBlue/15 border-brandBlue text-white font-medium'
                       : 'bg-[#0B1120] border-slate-800 text-slate-400 hover:text-white'
                   }`}
                 >
-                  <GraduationCap className="w-4 h-4 text-emerald-400" />
+                  <GraduationCap className="w-4 h-4 text-brandBlueSoft" />
                   <span className="text-[11px]">Student</span>
                 </button>
 
                 <button
                   type="button"
                   onClick={() => setRole('faculty')}
-                  className={`p-2.5 rounded-md border flex flex-col items-center justify-center gap-1.5 transition-colors ${
+                  className={`p-2.5 min-h-[44px] rounded-md border flex flex-col items-center justify-center gap-1.5 transition-colors ${
                     role === 'faculty'
                       ? 'bg-amber-500/15 border-amber-500 text-white font-medium'
                       : 'bg-[#0B1120] border-slate-800 text-slate-400 hover:text-white'
@@ -175,13 +174,13 @@ export default function AuthPage() {
                 <button
                   type="button"
                   onClick={() => setRole('company')}
-                  className={`p-2.5 rounded-md border flex flex-col items-center justify-center gap-1.5 transition-colors ${
+                  className={`p-2.5 min-h-[44px] rounded-md border flex flex-col items-center justify-center gap-1.5 transition-colors ${
                     role === 'company'
-                      ? 'bg-emerald-500/15 border-emerald-500 text-white font-medium'
+                      ? 'bg-brandBlue/15 border-brandBlue text-white font-medium'
                       : 'bg-[#0B1120] border-slate-800 text-slate-400 hover:text-white'
                   }`}
                 >
-                  <Building2 className="w-4 h-4 text-emerald-400" />
+                  <Building2 className="w-4 h-4 text-brandBlueSoft" />
                   <span className="text-[11px]">Company</span>
                 </button>
               </div>
@@ -294,7 +293,7 @@ export default function AuthPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-2.5 rounded-md bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-medium border border-emerald-500/40 flex items-center justify-center gap-2 transition-colors mt-6"
+            className="w-full py-2.5 rounded-md bg-brandBlue hover:bg-brandBlueBright text-white text-xs font-medium border border-brandBlue/40 flex items-center justify-center gap-2 transition-colors mt-6"
           >
             {loading ? (
               <Loader2 className="w-4 h-4 animate-spin" />

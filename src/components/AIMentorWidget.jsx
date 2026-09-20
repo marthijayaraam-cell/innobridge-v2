@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { MessageSquare, X, Send, Sparkles, Bot, Minimize2, Lightbulb, Compass, Award, Rocket, CheckCircle2 } from 'lucide-react';
+import { MessageSquare, X, Send, Sparkles, Bot, Minimize2, Lightbulb, Compass, Award, Rocket, CheckCircle2, GripVertical } from 'lucide-react';
+import logoImg from '../assets/logo.svg';
 import { useAuth } from '../context/AuthContext';
 
 export default function AIMentorWidget({ currentProjectContext = null }) {
@@ -8,6 +9,12 @@ export default function AIMentorWidget({ currentProjectContext = null }) {
   const [inputMessage, setInputMessage] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const chatEndRef = useRef(null);
+
+  // Draggable Position State
+  const [position, setPosition] = useState(null); // { x: px, y: px }
+  const [isDragging, setIsDragging] = useState(false);
+  const dragStartRef = useRef({ x: 0, y: 0, posX: 0, posY: 0, moved: false });
+  const widgetRef = useRef(null);
 
   const userName = profile?.full_name?.split(' ')[0] || 'Innovator';
   const userRole = profile?.role || 'student';
@@ -45,6 +52,85 @@ export default function AIMentorWidget({ currentProjectContext = null }) {
       chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
   }, [messages, isOpen]);
+
+  // Pointer Down (Drag Start)
+  const handlePointerDown = (e) => {
+    // Ignore drag if clicking inputs, scrollbars or action buttons
+    if (
+      e.target.closest('input') || 
+      e.target.closest('textarea') || 
+      e.target.closest('button.close-btn') ||
+      e.target.closest('button.quick-prompt-btn')
+    ) {
+      return;
+    }
+
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+    const rect = widgetRef.current?.getBoundingClientRect();
+    const initialX = rect ? rect.left : (window.innerWidth - 180);
+    const initialY = rect ? rect.top : (window.innerHeight - 60);
+
+    dragStartRef.current = {
+      x: clientX,
+      y: clientY,
+      posX: initialX,
+      posY: initialY,
+      moved: false
+    };
+
+    setIsDragging(true);
+  };
+
+  // Drag Movement Listener
+  useEffect(() => {
+    const handlePointerMove = (e) => {
+      if (!isDragging) return;
+
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+      const dx = clientX - dragStartRef.current.x;
+      const dy = clientY - dragStartRef.current.y;
+
+      if (Math.abs(dx) > 3 || Math.abs(dy) > 3) {
+        dragStartRef.current.moved = true;
+      }
+
+      let newX = dragStartRef.current.posX + dx;
+      let newY = dragStartRef.current.posY + dy;
+
+      // Keep widget within screen bounds
+      const width = widgetRef.current ? widgetRef.current.offsetWidth : 180;
+      const height = widgetRef.current ? widgetRef.current.offsetHeight : 60;
+
+      newX = Math.max(12, Math.min(newX, window.innerWidth - width - 12));
+      newY = Math.max(12, Math.min(newY, window.innerHeight - height - 12));
+
+      setPosition({ x: newX, y: newY });
+    };
+
+    const handlePointerUp = () => {
+      if (isDragging) {
+        setIsDragging(false);
+      }
+    };
+
+    if (isDragging) {
+      window.addEventListener('mousemove', handlePointerMove);
+      window.addEventListener('mouseup', handlePointerUp);
+      window.addEventListener('touchmove', handlePointerMove);
+      window.addEventListener('touchend', handlePointerUp);
+    }
+
+    return () => {
+      window.removeEventListener('mousemove', handlePointerMove);
+      window.removeEventListener('mouseup', handlePointerUp);
+      window.removeEventListener('touchmove', handlePointerMove);
+      window.removeEventListener('touchend', handlePointerUp);
+    };
+  }, [isDragging]);
 
   const handleSend = async (textToSend = inputMessage) => {
     const text = textToSend.trim();
@@ -98,29 +184,52 @@ export default function AIMentorWidget({ currentProjectContext = null }) {
     }, 900);
   };
 
+  const containerStyle = position
+    ? { left: `${position.x}px`, top: `${position.y}px` }
+    : {};
+
+  const containerClasses = position
+    ? "fixed z-50 select-none transition-shadow"
+    : "fixed bottom-6 right-6 z-50 select-none transition-shadow";
+
   return (
-    <div className="fixed bottom-6 right-6 z-50">
+    <div
+      ref={widgetRef}
+      style={containerStyle}
+      className={containerClasses}
+    >
       {/* Expanded Chat Panel */}
       {isOpen ? (
-        <div className="bg-[#111827] w-96 max-w-[calc(100vw-2rem)] h-[500px] max-h-[82vh] rounded-md border border-slate-800 shadow-md flex flex-col overflow-hidden animate-fade-in">
-          {/* Header */}
-          <div className="p-3 bg-[#0B1120] border-b border-slate-800 flex items-center justify-between">
+        <div className="bg-[#111827] w-96 max-w-[calc(100vw-2rem)] h-[500px] max-h-[82vh] rounded-md border border-slate-800 shadow-2xl flex flex-col overflow-hidden animate-fade-in">
+          {/* Header - Drag Handle */}
+          <div
+            onMouseDown={handlePointerDown}
+            onTouchStart={handlePointerDown}
+            className="p-3 bg-[#0B1120] border-b border-slate-800 flex items-center justify-between cursor-grab active:cursor-grabbing select-none"
+            title="Drag to reposition widget anywhere on screen"
+          >
             <div className="flex items-center gap-2">
-              <div className="w-7 h-7 rounded-md bg-emerald-600/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-medium">
-                <Sparkles className="w-3.5 h-3.5" />
+              <GripVertical className="w-3.5 h-3.5 text-slate-500 shrink-0 opacity-70" />
+              <div className="w-7 h-7 rounded-md bg-blue-600/20 border border-blue-500/30 flex items-center justify-center font-medium">
+                <img src={logoImg} alt="InnoBridge Logo" className="w-4 h-4 object-contain rounded-sm" />
               </div>
               <div>
                 <h3 className="text-xs font-semibold text-white flex items-center gap-1.5">
                   AI Personal Guide
-                  <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                  <span className="w-2 h-2 rounded-full bg-[#70B5F9]" />
                 </h3>
                 <p className="text-[10px] text-slate-400 capitalize">{userRole} Ecosystem Mentor</p>
               </div>
             </div>
 
             <button
-              onClick={() => setIsOpen(false)}
-              className="p-1 rounded-md text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsOpen(false);
+              }}
+              className="p-1 rounded-md text-slate-400 hover:text-white hover:bg-slate-800 transition-colors close-btn"
+              title="Minimize Guide"
             >
               <Minimize2 className="w-3.5 h-3.5" />
             </button>
@@ -128,13 +237,13 @@ export default function AIMentorWidget({ currentProjectContext = null }) {
 
           {/* Active Context Banner */}
           {currentProjectContext ? (
-            <div className="px-3 py-1.5 bg-emerald-950/60 border-b border-emerald-800/40 text-[10px] text-emerald-300 flex items-center justify-between">
+            <div className="px-3 py-1.5 bg-blue-950/60 border-b border-blue-800/40 text-[10px] text-[#70B5F9] flex items-center justify-between">
               <span className="truncate max-w-[220px] font-medium">Focused: {currentProjectContext.title}</span>
-              <span className="px-2 py-0.5 rounded-md bg-emerald-900/60 font-semibold text-[9px]">{currentProjectContext.stage}</span>
+              <span className="px-2 py-0.5 rounded-md bg-blue-900/60 font-semibold text-[9px]">{currentProjectContext.stage}</span>
             </div>
           ) : (
             <div className="px-3 py-1 bg-slate-900 border-b border-slate-800 text-[10px] text-slate-400 flex items-center gap-1.5">
-              <Compass className="w-3 h-3 text-emerald-400" />
+              <Compass className="w-3 h-3 text-[#70B5F9]" />
               <span>Ask me anything about your projects, stage roadmap, or AI scores!</span>
             </div>
           )}
@@ -147,15 +256,15 @@ export default function AIMentorWidget({ currentProjectContext = null }) {
                 className={`flex gap-2 ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
               >
                 {msg.sender === 'ai' && (
-                  <div className="w-6 h-6 rounded-md bg-emerald-950/80 border border-emerald-800/60 flex items-center justify-center shrink-0 mt-0.5">
-                    <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
+                  <div className="w-6 h-6 rounded-md bg-blue-950/80 border border-blue-800/60 flex items-center justify-center shrink-0 mt-0.5">
+                    <Sparkles className="w-3.5 h-3.5 text-[#70B5F9]" />
                   </div>
                 )}
 
                 <div
                   className={`max-w-[85%] p-3 rounded-md text-xs leading-relaxed ${
                     msg.sender === 'user'
-                      ? 'bg-emerald-600 text-white font-medium'
+                      ? 'bg-[#0A66C2] text-white font-medium'
                       : 'bg-[#0B1120] border border-slate-800 text-slate-200'
                   }`}
                 >
@@ -169,7 +278,7 @@ export default function AIMentorWidget({ currentProjectContext = null }) {
 
             {isTyping && (
               <div className="flex items-center gap-2 text-slate-400 text-xs py-1">
-                <Bot className="w-3.5 h-3.5 text-emerald-400 animate-spin" />
+                <Bot className="w-3.5 h-3.5 text-[#70B5F9] animate-spin" />
                 <span className="text-[11px]">Personal AI Mentor is analyzing...</span>
               </div>
             )}
@@ -181,8 +290,9 @@ export default function AIMentorWidget({ currentProjectContext = null }) {
             {quickPrompts.map((prompt, i) => (
               <button
                 key={i}
+                type="button"
                 onClick={() => handleSend(prompt)}
-                className="whitespace-nowrap px-2.5 py-1 rounded-md bg-slate-800 hover:bg-slate-700 border border-slate-700 text-[10px] text-slate-300 hover:text-white transition-colors shrink-0 font-medium"
+                className="whitespace-nowrap px-2.5 py-1 rounded-md bg-slate-800 hover:bg-slate-700 border border-slate-700 text-[10px] text-slate-300 hover:text-white transition-colors shrink-0 font-medium quick-prompt-btn"
               >
                 {prompt}
               </button>
@@ -202,30 +312,38 @@ export default function AIMentorWidget({ currentProjectContext = null }) {
               placeholder="Ask your AI Personal Guide..."
               value={inputMessage}
               onChange={(e) => setInputMessage(e.target.value)}
-              className="flex-1 px-3 py-1.5 rounded-md bg-[#111827] border border-slate-700 text-xs text-white placeholder-slate-500 outline-none focus:border-emerald-500 transition-colors"
+              className="flex-1 px-3 py-1.5 rounded-md bg-[#111827] border border-slate-700 text-xs text-white placeholder-slate-500 outline-none focus:border-[#378FE9] transition-colors"
             />
             <button
               type="submit"
               disabled={!inputMessage.trim() || isTyping}
-              className="p-2 rounded-md bg-emerald-600 hover:bg-emerald-500 text-white disabled:opacity-50 transition-colors"
+              className="p-2 rounded-md bg-[#0A66C2] hover:bg-[#084E96] text-white disabled:opacity-50 transition-colors btn-interactive"
             >
               <Send className="w-3.5 h-3.5" />
             </button>
           </form>
         </div>
       ) : (
-        /* Collapsed Floating Widget */
+        /* Collapsed Floating Draggable Widget */
         <button
-          onClick={() => setIsOpen(true)}
-          className="px-3.5 py-2 rounded-md bg-emerald-600 hover:bg-emerald-500 text-white transition-colors flex items-center gap-2 font-medium text-xs border border-emerald-500"
-          title="Open Personal AI Innovation Guide"
+          type="button"
+          onMouseDown={handlePointerDown}
+          onTouchStart={handlePointerDown}
+          onClick={() => {
+            if (!dragStartRef.current.moved) {
+              setIsOpen(true);
+            }
+          }}
+          className={`px-3.5 py-2.5 rounded-md bg-[#0A66C2] hover:bg-[#084E96] text-white transition-all flex items-center gap-2 font-medium text-xs border border-[#0A66C2] shadow-xl cursor-grab active:cursor-grabbing ${
+            isDragging ? 'scale-105 opacity-90 shadow-2xl ring-2 ring-[#70B5F9]' : ''
+          }`}
+          title="Hold & drag to move anywhere on screen | Click to open AI Guide"
         >
-          <Sparkles className="w-4 h-4 text-white" />
-          <span className="hidden sm:inline">AI Personal Guide</span>
+          <GripVertical className="w-3.5 h-3.5 text-white/70 shrink-0" />
+          <img src={logoImg} alt="InnoBridge Logo" className="w-4 h-4 object-contain rounded-sm" />
+          <span className="hidden sm:inline font-semibold">AI Personal Guide</span>
         </button>
       )}
     </div>
   );
 }
-
-

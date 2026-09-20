@@ -99,7 +99,7 @@ export default function ProjectUploadModal({ isOpen, onClose, onProjectCreated }
 
         {/* Modal Header */}
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-9 h-9 rounded-md bg-emerald-950/80 border border-emerald-800/60 flex items-center justify-center text-emerald-400">
+          <div className="w-9 h-9 rounded-md bg-[#0A66C2]/15 border border-[#0A66C2]/40 flex items-center justify-center text-brandBlueSoft">
             <Sparkles className="w-4 h-4" />
           </div>
           <div>
@@ -111,8 +111,8 @@ export default function ProjectUploadModal({ isOpen, onClose, onProjectCreated }
         {/* Loading State */}
         {loadingAI ? (
           <div className="py-16 flex flex-col items-center justify-center text-center space-y-4">
-            <div className="w-12 h-12 rounded-md bg-emerald-950/80 border border-emerald-800/60 flex items-center justify-center">
-              <Cpu className="w-6 h-6 text-emerald-400 animate-spin" />
+            <div className="w-12 h-12 rounded-md bg-[#0A66C2]/15 border border-[#0A66C2]/40 flex items-center justify-center">
+              <Cpu className="w-6 h-6 text-brandBlueSoft animate-spin" />
             </div>
             <div>
               <h3 className="text-base font-bold text-white">Analyzing Your Project...</h3>
@@ -128,13 +128,13 @@ export default function ProjectUploadModal({ isOpen, onClose, onProjectCreated }
               <div>
                 <span className="text-[11px] uppercase font-semibold text-slate-400">AI Composite Evaluation</span>
                 <div className="text-2xl font-bold text-white mt-0.5 flex items-baseline gap-2">
-                  <span className="text-emerald-400">{(aiResult.overall_score / 10).toFixed(1)}</span>
+                  <span className="text-brandBlueSoft">{(aiResult.overall_score / 10).toFixed(1)}</span>
                   <span className="text-xs text-slate-400 font-normal">/ 10</span>
                 </div>
               </div>
 
-              <div className="px-3 py-1 rounded-md bg-emerald-950/80 border border-emerald-800/60 text-emerald-400 font-semibold text-xs flex items-center gap-1.5">
-                <Award className="w-4 h-4 text-emerald-400" /> Verified Score: {aiResult.overall_score}/100
+              <div className="px-3 py-1 rounded-md bg-[#0A66C2]/15 border border-[#0A66C2]/40 text-brandBlueSoft font-semibold text-xs flex items-center gap-1.5">
+                <Award className="w-4 h-4 text-brandBlueSoft" /> Verified Score: {aiResult.overall_score}/100
               </div>
             </div>
 
@@ -142,7 +142,7 @@ export default function ProjectUploadModal({ isOpen, onClose, onProjectCreated }
             <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 text-xs">
               <div className="p-3 rounded-md bg-[#0B1120] border border-slate-800 text-center">
                 <span className="text-slate-400 text-[10px] block font-medium">Innovation</span>
-                <span className="font-bold text-emerald-400 text-sm">{aiResult.innovation_score}</span>
+                <span className="font-bold text-brandBlueSoft text-sm">{aiResult.innovation_score}</span>
               </div>
               <div className="p-3 rounded-md bg-[#0B1120] border border-slate-800 text-center">
                 <span className="text-slate-400 text-[10px] block font-medium">Feasibility</span>
@@ -150,7 +150,7 @@ export default function ProjectUploadModal({ isOpen, onClose, onProjectCreated }
               </div>
               <div className="p-3 rounded-md bg-[#0B1120] border border-slate-800 text-center">
                 <span className="text-slate-400 text-[10px] block font-medium">Impact</span>
-                <span className="font-bold text-emerald-400 text-sm">{aiResult.impact_score}</span>
+                <span className="font-bold text-brandBlueSoft text-sm">{aiResult.impact_score}</span>
               </div>
               <div className="p-3 rounded-md bg-[#0B1120] border border-slate-800 text-center">
                 <span className="text-slate-400 text-[10px] block font-medium">Technical</span>
@@ -164,7 +164,7 @@ export default function ProjectUploadModal({ isOpen, onClose, onProjectCreated }
 
             {/* Written Advice Card */}
             <div className="p-4 rounded-md bg-[#0B1120] border border-slate-800 text-xs text-slate-300">
-              <span className="font-semibold text-emerald-400 block mb-1 flex items-center gap-1.5">
+              <span className="font-semibold text-brandBlueSoft block mb-1 flex items-center gap-1.5">
                 <Lightbulb className="w-4 h-4" /> AI Mentor Expert Commentary:
               </span>
               <p className="italic text-slate-300 leading-relaxed font-normal">"{aiResult.feedback}"</p>
@@ -173,7 +173,7 @@ export default function ProjectUploadModal({ isOpen, onClose, onProjectCreated }
             <div className="flex justify-end pt-2">
               <button
                 onClick={handleCloseAndReset}
-                className="px-4 py-2 rounded-md bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-medium flex items-center gap-2 transition-colors"
+                className="px-4 py-2 rounded-md bg-brandBlue hover:bg-brandBlueBright text-white text-xs font-medium flex items-center gap-2 transition-colors"
               >
                 <CheckCircle2 className="w-4 h-4" /> Publish to Feed & Done
               </button>
@@ -192,7 +192,7 @@ export default function ProjectUploadModal({ isOpen, onClose, onProjectCreated }
                 placeholder="e.g. EcoPulse — Solar Micro-Grid Controller"
                 value={formData.title}
                 onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                className="w-full px-3 py-2 rounded-md bg-[#0B1120] border border-slate-700 focus:border-emerald-500 text-slate-100 text-xs outline-none transition-colors"
+                className="w-full px-3 py-2 rounded-md bg-[#0B1120] border border-slate-700 focus:border-brandBlue text-slate-100 text-xs outline-none transition-colors"
               />
             </div>
 
@@ -207,7 +207,7 @@ export default function ProjectUploadModal({ isOpen, onClose, onProjectCreated }
                 placeholder="Describe the problem, key innovation, architecture, tech stack, and impact..."
                 value={formData.description}
                 onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                className="w-full px-3 py-2 rounded-md bg-[#0B1120] border border-slate-700 focus:border-emerald-500 text-slate-100 text-xs outline-none transition-colors"
+                className="w-full px-3 py-2 rounded-md bg-[#0B1120] border border-slate-700 focus:border-brandBlue text-slate-100 text-xs outline-none transition-colors"
               />
             </div>
 
@@ -220,7 +220,7 @@ export default function ProjectUploadModal({ isOpen, onClose, onProjectCreated }
                 <select
                   value={formData.domain}
                   onChange={(e) => setFormData({ ...formData, domain: e.target.value })}
-                  className="w-full px-3 py-2 rounded-md bg-[#0B1120] border border-slate-700 focus:border-emerald-500 text-xs sm:text-sm font-semibold text-white outline-none cursor-pointer"
+                  className="w-full px-3 py-2 rounded-md bg-[#0B1120] border border-slate-700 focus:border-brandBlue text-xs sm:text-sm font-semibold text-white outline-none cursor-pointer"
                 >
                   {DOMAINS.map((d) => (
                     <option key={d} value={d} className="bg-[#111827] text-white font-semibold text-xs sm:text-sm py-2">
@@ -237,7 +237,7 @@ export default function ProjectUploadModal({ isOpen, onClose, onProjectCreated }
                 <select
                   value={formData.stage}
                   onChange={(e) => setFormData({ ...formData, stage: e.target.value })}
-                  className="w-full px-3 py-2 rounded-md bg-[#0B1120] border border-slate-700 focus:border-emerald-500 text-xs sm:text-sm font-semibold text-white outline-none cursor-pointer"
+                  className="w-full px-3 py-2 rounded-md bg-[#0B1120] border border-slate-700 focus:border-brandBlue text-xs sm:text-sm font-semibold text-white outline-none cursor-pointer"
                 >
                   {ALL_11_STAGES.map((s, idx) => (
                     <option key={s} value={s} className="bg-[#111827] text-white font-semibold text-xs sm:text-sm py-2">
@@ -259,7 +259,7 @@ export default function ProjectUploadModal({ isOpen, onClose, onProjectCreated }
                   placeholder="https://my-demo-app.vercel.app"
                   value={formData.demo_url}
                   onChange={(e) => setFormData({ ...formData, demo_url: e.target.value })}
-                  className="w-full px-3 py-2 rounded-md bg-[#0B1120] border border-slate-700 focus:border-emerald-500 text-slate-100 text-xs outline-none transition-colors"
+                  className="w-full px-3 py-2 rounded-md bg-[#0B1120] border border-slate-700 focus:border-brandBlue text-slate-100 text-xs outline-none transition-colors"
                 />
               </div>
 
@@ -272,7 +272,7 @@ export default function ProjectUploadModal({ isOpen, onClose, onProjectCreated }
                   placeholder="https://github.com/user/project"
                   value={formData.github_url}
                   onChange={(e) => setFormData({ ...formData, github_url: e.target.value })}
-                  className="w-full px-3 py-2 rounded-md bg-[#0B1120] border border-slate-700 focus:border-emerald-500 text-slate-100 text-xs outline-none transition-colors"
+                  className="w-full px-3 py-2 rounded-md bg-[#0B1120] border border-slate-700 focus:border-brandBlue text-slate-100 text-xs outline-none transition-colors"
                 />
               </div>
             </div>
@@ -288,7 +288,7 @@ export default function ProjectUploadModal({ isOpen, onClose, onProjectCreated }
                   onClick={() => setFormData({ ...formData, visibility: 'public' })}
                   className={`p-3 rounded-md border flex items-center gap-3 transition-colors ${
                     formData.visibility === 'public'
-                      ? 'bg-emerald-950/80 border-emerald-800/60 text-white font-medium'
+                      ? 'bg-[#0A66C2]/20 border-[#0A66C2] text-white font-medium'
                       : 'bg-[#0B1120] border-slate-700 text-slate-400 hover:text-white'
                   }`}
                 >
@@ -304,7 +304,7 @@ export default function ProjectUploadModal({ isOpen, onClose, onProjectCreated }
                   onClick={() => setFormData({ ...formData, visibility: 'private' })}
                   className={`p-3 rounded-md border flex items-center gap-3 transition-colors ${
                     formData.visibility === 'private'
-                      ? 'bg-emerald-950/80 border-emerald-800/60 text-white font-medium'
+                      ? 'bg-[#0A66C2]/20 border-[#0A66C2] text-white font-medium'
                       : 'bg-[#0B1120] border-slate-700 text-slate-400 hover:text-white'
                   }`}
                 >
@@ -328,7 +328,7 @@ export default function ProjectUploadModal({ isOpen, onClose, onProjectCreated }
               </button>
               <button
                 type="submit"
-                className="px-4 py-2 rounded-md bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-medium shadow-sm flex items-center gap-2 transition-colors"
+                className="px-4 py-2 rounded-md bg-brandBlue hover:bg-brandBlueBright text-white text-xs font-medium shadow-sm flex items-center gap-2 transition-colors"
               >
                 <Sparkles className="w-4 h-4" />
                 Analyze & Submit Project

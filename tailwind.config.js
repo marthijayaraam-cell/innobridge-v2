@@ -18,17 +18,21 @@ export default {
         borderLight: '#E2E8F0',
         borderDark: '#334155',
         
-        // Brand color language (Green Primary Accent)
-        brandGreen: '#16A34A',       // Primary brand green
-        brandGreenHover: '#15803D',
-        brandGreenBright: '#22C55E',  // Bright accent green
-        brandGreenMint: '#4ADE80',    // Soft mint accent (dark mode)
+        // Brand color language (LinkedIn Blue Primary Accent)
+        brandBlue: '#0A66C2',         // Primary brand blue (LinkedIn)
+        brandBlueHover: '#084E96',
+        brandBlueBright: '#378FE9',    // Bright accent blue
+        brandBlueSoft: '#70B5F9',      // Soft accent (dark mode)
         
-        brandBlue: '#2563EB',         // Secondary actions, links, informational elements
-        brandBlueHover: '#1D4ED8',
-        electricCyan: '#38BDF8',       // Domain pills & tags only
-        aiIndigo: '#22C55E',           // AI features mapped to Green intelligence color
-        aiIndigoDark: '#4ADE80',
+        // Brand aliases for system compatibility
+        brandGreen: '#0A66C2',       
+        brandGreenHover: '#084E96',
+        brandGreenBright: '#378FE9',  
+        brandGreenMint: '#70B5F9',    
+        
+        electricCyan: '#38BDF8',       // Domain pills & tags
+        aiIndigo: '#378FE9',           // AI features mapped to Blue intelligence color
+        aiIndigoDark: '#70B5F9',
         
         // Text semantics
         textMainLight: '#0F172A',
@@ -38,7 +42,7 @@ export default {
         textMuted: '#94A3B8',
         
         // Status semantics
-        statusSuccess: '#22C55E',
+        statusSuccess: '#378FE9',
         statusWarning: '#F59E0B',
         statusError: '#EF4444',
       },

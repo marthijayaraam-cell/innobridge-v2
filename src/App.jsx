@@ -13,13 +13,18 @@ import ProfilePage from './pages/ProfilePage';
 import { useAuth } from './context/AuthContext';
 import AIMentorWidget from './components/AIMentorWidget';
 
+import logoImg from './assets/logo.svg';
+
+import Footer from './components/Footer';
+
 function ProtectedRoute({ children, allowedRoles = [] }) {
   const { user, profile, loading } = useAuth();
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-slate-900 flex items-center justify-center text-slate-400 text-sm font-semibold">
-        Loading InnoBridge Workspace...
+      <div className="min-h-screen bg-[#0B1120] flex flex-col items-center justify-center text-slate-400 text-xs font-medium">
+        <img src={logoImg} alt="InnoBridge Logo" className="w-10 h-10 object-contain rounded-md mb-3 animate-pulse" />
+        <span>Loading InnoBridge Workspace...</span>
       </div>
     );
   }
@@ -42,7 +47,7 @@ export default function App() {
     <div className="min-h-screen w-full bg-[#0B1120] text-slate-100 font-['Inter',sans-serif] overflow-x-hidden">
       <ScrollProgressBar />
       <Navbar />
-      <main className="w-full flex-1">
+      <main className="w-full flex-1 pb-16 md:pb-0">
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/auth" element={<AuthPage />} />
@@ -87,6 +92,9 @@ export default function App() {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
+
+      {/* Shared Platform Footer */}
+      <Footer />
 
       {/* Floating Universal AI Personal Guide */}
       <AIMentorWidget />

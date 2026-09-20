@@ -28,7 +28,7 @@ export default function PartnerInfiniteRibbon() {
             {partner.type.includes('University') || partner.type.includes('Lab') || partner.type.includes('Research') ? (
               <School className="w-4 h-4 text-primary-light" />
             ) : (
-              <Building2 className="w-4 h-4 text-emerald-400" />
+              <Building2 className="w-4 h-4 text-brandBlueSoft" />
             )}
             <span>{partner.name}</span>
             <span className="text-[9px] uppercase px-2 py-0.5 rounded-full bg-white/5 text-subtext font-bold">
