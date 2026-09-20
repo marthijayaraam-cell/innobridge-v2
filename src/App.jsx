@@ -15,6 +15,7 @@ import AIMentorWidget from './components/AIMentorWidget';
 
 import logoImg from './assets/logo.svg';
 
+import IntroAnimation from './components/IntroAnimation';
 import Footer from './components/Footer';
 
 function ProtectedRoute({ children, allowedRoles = [] }) {
@@ -45,6 +46,9 @@ function ProtectedRoute({ children, allowedRoles = [] }) {
 export default function App() {
   return (
     <div className="min-h-screen w-full bg-[#0B1120] text-slate-100 font-['Inter',sans-serif] overflow-x-hidden">
+      {/* Opening Intro Showcase Animation */}
+      <IntroAnimation />
+
       <ScrollProgressBar />
       <Navbar />
       <main className="w-full flex-1 pb-16 md:pb-0">

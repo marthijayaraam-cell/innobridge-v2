@@ -200,7 +200,18 @@ export default function Footer() {
             </a>.
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 flex-wrap">
+            <button
+              onClick={() => {
+                sessionStorage.removeItem('innobridge_intro_played');
+                window.location.reload();
+              }}
+              className="text-[#70B5F9] font-semibold hover:underline transition-colors flex items-center gap-1"
+              title="Replay website opening logo animation"
+            >
+              <span>Replay Intro</span>
+            </button>
+            <span className="text-slate-700">•</span>
             <a href="#privacy" className="hover:text-slate-200 hover:underline transition-colors">
               Privacy Policy
             </a>
